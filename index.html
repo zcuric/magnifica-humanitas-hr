@@ -2094,6 +2094,9 @@
       .reader p.pp-read::before { display: none !important; }
     }
 
+    /* Print-only translation disclaimer (hidden on screen) */
+    .print-disclaimer { display: none; }
+
     /* ───────────────────────── Sidebar footer credit ───────────────────────── */
     .side-foot {
       margin-top: 1.5rem;
@@ -2230,7 +2233,38 @@
         font-size: 10pt;
         color: #555;
         margin: 0 0 1.6em;
+      }
+
+      /* Print-only translation disclaimer — sits on the cover page */
+      .print-disclaimer {
+        display: block !important;
+        margin: 1.5em auto 0;
+        padding: 0.9em 1em;
+        border: 1px solid #c4a460;
+        border-radius: 4px;
+        background: #fbf3df;
+        font-family: Georgia, serif;
+        font-size: 9.5pt;
+        line-height: 1.5;
+        color: #2a1f15;
+        max-width: 36em;
         page-break-after: always;
+        break-after: page;
+      }
+      .print-disclaimer p { margin: 0 0 0.55em; }
+      .print-disclaimer p:last-child { margin-bottom: 0; }
+      .print-disclaimer__lead {
+        font-size: 11pt;
+        color: #6e2733;
+        text-align: center;
+        margin-bottom: 0.75em !important;
+      }
+      .print-disclaimer__src {
+        font-size: 8.5pt;
+        color: #6f5e4e;
+        font-style: italic;
+        text-align: center;
+        margin-top: 0.8em !important;
       }
 
       /* Chapter headings restart on new page */
@@ -2420,6 +2454,10 @@
                 </div>
 
                 <button type="button" class="btn-primary" id="show-all">Pročitaj cijeli tekst</button>
+                <button type="button" class="btn-primary" id="save-pdf" aria-label="Spremi cijelu enciklicu kao PDF">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 0.95rem; height: 0.95rem; vertical-align: -2px; margin-right: 0.45em;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Spremi kao PDF
+                </button>
               </div>
             </div>
           </details>
@@ -2563,6 +2601,12 @@
           <button type="button" class="full-link" id="show-all-mobile">Cijeli tekst</button>
         </div>
         <div class="reader">
+          <aside class="print-disclaimer" aria-hidden="true">
+            <p class="print-disclaimer__lead"><strong>Neslužbeni prijevod — samo za osobnu upotrebu.</strong></p>
+            <p>Ovaj dokument <strong>nije službeni prijevod</strong> enciklike <em>Magnifica Humanitas</em>. Hrvatsku verziju s engleskoga izvornika preveo je jezični model GPT&#8209;5.4; moguće su pogreške, nepreciznosti i netočno prenesena značenja. Za autoritativan, službeni tekst pogledajte jezične inačice objavljene na <strong>vatican.va</strong>.</p>
+            <p>Sva prava na izvorni tekst pripadaju originalnom izdavaču — © Dikasterij za komunikaciju · Libreria Editrice Vaticana.</p>
+            <p class="print-disclaimer__src">Izvor sučelja: zcuric.github.io/magnifica-humanitas-hr · Prilagodba: castelcode.hr</p>
+          </aside>
           <article id="document">
           <section class="doc-section" data-section="intro">
 <div class="abstract text parbase vaticanrichtext"><p style="text-align: center;"><span class="color-text">ENCIKLIKA</span><i><br> <b><span class="title-1-color">MAGNIFICA HUMANITAS</span><br> </b></i><span class="color-text">NJEGOVE SVETOSTI<br> <b>PAPE LEONA XIV.<br> </b>O ZAŠTITI LJUDSKE OSOBE<br> </span>U VREMENU UMJETNE INTELIGENCIJE</p> 
@@ -4667,6 +4711,15 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
     document.getElementById("reset-font").addEventListener("click", () => applySize(defaultSize));
 
     document.getElementById("show-all").addEventListener("click", () => { applySection("all"); closeDrawer(); });
+
+    // Save as PDF — ensures the entire encyclical is in the print preview, then
+    // hands off to the browser's native print-to-PDF (which includes the
+    // disclaimer banner on the cover page via the print stylesheet).
+    document.getElementById("save-pdf").addEventListener("click", () => {
+      applySection("all", true, false);
+      closeDrawer();
+      requestAnimationFrame(() => requestAnimationFrame(() => window.print()));
+    });
     document.getElementById("show-all-mobile").addEventListener("click", () => applySection("all"));
     sectionSelect.addEventListener("change", (e) => applySection(e.target.value));
 
