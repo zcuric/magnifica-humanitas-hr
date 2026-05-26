@@ -1830,6 +1830,265 @@
       html { scroll-behavior: auto; }
     }
 
+    /* ───────────────────────── Reading progress feature ───────────────────────── */
+    /* Bookmark button attached to each numbered paragraph */
+    .reader p[data-pp] { position: relative; }
+    .pp-bookmark {
+      position: absolute;
+      top: 0.15em;
+      right: -0.25rem;
+      width: 1.6rem;
+      height: 1.6rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.18s ease, color 0.18s ease, transform 0.15s ease;
+      border-radius: 999px;
+    }
+    .pp-bookmark svg { width: 0.95rem; height: 0.95rem; }
+    .reader p[data-pp]:hover .pp-bookmark,
+    .pp-bookmark:focus-visible,
+    .pp-bookmark.pp-bookmark--on { opacity: 1; }
+    .pp-bookmark:hover { color: var(--accent); transform: scale(1.08); }
+    .pp-bookmark--on { color: var(--accent); }
+    .pp-bookmark--on svg { fill: var(--accent); }
+    @media (hover: none) {
+      .pp-bookmark { opacity: 0.35; }
+    }
+
+    /* Read-paragraph marker — subtle accent rule on the left edge */
+    .reader p.pp-read::before {
+      content: "";
+      position: absolute;
+      left: -0.55rem;
+      top: 0.4em;
+      bottom: 0.4em;
+      width: 2px;
+      background: var(--accent-2);
+      border-radius: 2px;
+      opacity: 0.55;
+    }
+    @media (max-width: 559px) {
+      .reader p.pp-read::before { left: -0.4rem; }
+    }
+
+    /* Sidebar progress panel */
+    .pp-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      padding: 0.85rem 0.95rem;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface-2);
+      font-family: var(--font-ui);
+    }
+    .pp-card + .pp-card { margin-top: 0.7rem; }
+    .pp-card__title {
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0;
+      font-weight: 600;
+    }
+    .pp-card__value {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--ink);
+      margin: 0;
+    }
+    .pp-bar {
+      position: relative;
+      height: 6px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--line) 65%, transparent);
+      overflow: hidden;
+    }
+    .pp-bar__fill {
+      position: absolute;
+      inset: 0;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+      transition: width 0.35s ease;
+    }
+    .pp-card__row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+    .pp-card__row .pp-card__value { font-size: 0.95rem; }
+    .pp-btn {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      font: 600 0.74rem / 1 var(--font-ui);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+    .pp-btn:hover { background: var(--surface-2); border-color: var(--accent); color: var(--accent); }
+    .pp-btn--primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #f8efe1;
+    }
+    .pp-btn--primary:hover { background: var(--accent-soft); border-color: var(--accent-soft); color: #f8efe1; }
+    .pp-btn--ghost {
+      background: transparent;
+      border-color: transparent;
+      color: var(--muted);
+      padding: 0.25rem 0.5rem;
+      letter-spacing: 0.06em;
+    }
+    .pp-btn--ghost:hover { color: var(--accent); background: transparent; }
+
+    .pp-plan__select {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      padding: 0.3rem 1.8rem 0.3rem 0.6rem;
+      border-radius: 999px;
+      font: 500 0.78rem / 1 var(--font-ui);
+      cursor: pointer;
+      background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+      background-position: calc(100% - 14px) 50%, calc(100% - 9px) 50%;
+      background-size: 5px 5px, 5px 5px;
+      background-repeat: no-repeat;
+    }
+
+    /* Bookmark list */
+    .pp-bm-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-height: 14rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .pp-bm-list li {
+      display: flex;
+      align-items: stretch;
+      gap: 0.25rem;
+      background: var(--surface);
+      border: 1px solid var(--line-soft);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .pp-bm__link {
+      flex: 1;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      padding: 0.5rem 0.6rem;
+      text-decoration: none;
+      color: var(--ink);
+      min-width: 0;
+    }
+    .pp-bm__link:hover { background: var(--surface-2); color: var(--accent); }
+    .pp-bm__num {
+      font-family: var(--font-display);
+      font-style: italic;
+      color: var(--accent);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .pp-bm__snippet {
+      font-size: 0.78rem;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
+    .pp-bm__remove {
+      appearance: none;
+      background: transparent;
+      border: none;
+      border-left: 1px solid var(--line-soft);
+      color: var(--muted);
+      width: 2rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .pp-bm__remove:hover { background: var(--surface-2); color: var(--accent); }
+    .pp-bm-empty {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-style: italic;
+      margin: 0;
+    }
+
+    /* Resume toast */
+    .resume-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 1.25rem;
+      transform: translate(-50%, 120%);
+      z-index: 70;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 0.85rem 0.75rem 1.1rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      box-shadow: 0 16px 40px -18px rgba(80, 45, 20, 0.45), 0 1px 0 rgba(60, 35, 12, 0.04);
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      color: var(--ink);
+      max-width: calc(100vw - 1.5rem);
+      transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.25s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .resume-toast.show {
+      transform: translate(-50%, 0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .resume-toast__text { display: inline-flex; align-items: baseline; gap: 0.35rem; }
+    .resume-toast__num { font-family: var(--font-display); font-style: italic; color: var(--accent); }
+    .resume-toast__close {
+      appearance: none;
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      width: 1.75rem;
+      height: 1.75rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 999px;
+    }
+    .resume-toast__close:hover { color: var(--accent); background: var(--surface-2); }
+    .resume-toast__close svg { width: 0.9rem; height: 0.9rem; }
+    @media (max-width: 559px) {
+      .resume-toast { font-size: 0.8rem; padding: 0.6rem 0.7rem 0.6rem 0.95rem; }
+    }
+
+    /* Print: hide all progress UI */
+    @media print {
+      .pp-bookmark, .resume-toast, .pp-card, .pp-bm-list { display: none !important; }
+      .reader p.pp-read::before { display: none !important; }
+    }
+
     /* ───────────────────────── Sidebar footer credit ───────────────────────── */
     .side-foot {
       margin-top: 1.5rem;
@@ -2197,6 +2456,56 @@
                   <button type="button" class="chip" data-q="rad">rad</button>
                   <button type="button" class="chip" data-q="siromasi">siromasi</button>
                 </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="panel" id="panel-progress" open>
+            <summary>
+              <span class="panel__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              </span>
+              <span class="panel__title">Tvoje čitanje</span>
+              <span class="panel__chevron" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </summary>
+            <div class="panel__body">
+              <div class="pp-card">
+                <p class="pp-card__title">Ukupan napredak</p>
+                <p class="pp-card__value" id="pp-overall-label">0 / 0 odlomaka · 0%</p>
+                <div class="pp-bar" aria-hidden="true"><div class="pp-bar__fill" id="pp-overall-bar"></div></div>
+              </div>
+
+              <div class="pp-card">
+                <div class="pp-card__row">
+                  <p class="pp-card__title">Plan čitanja</p>
+                  <select id="pp-plan-days" class="pp-plan__select" aria-label="Broj dana plana">
+                    <option value="3">3 dana</option>
+                    <option value="5">5 dana</option>
+                    <option value="7" selected>7 dana</option>
+                    <option value="14">14 dana</option>
+                    <option value="30">30 dana</option>
+                  </select>
+                </div>
+                <div class="pp-card__row">
+                  <p class="pp-card__value" id="pp-plan-day">Dan 1 / 7</p>
+                  <p class="pp-card__value" id="pp-plan-range" style="color: var(--muted); font-size: 0.85rem;">¶1 – ¶33</p>
+                </div>
+                <div class="pp-bar" aria-hidden="true"><div class="pp-bar__fill" id="pp-plan-progress"></div></div>
+                <div class="pp-card__row" style="justify-content: flex-end;">
+                  <button type="button" class="pp-btn pp-btn--primary" id="pp-plan-go">Započni</button>
+                </div>
+              </div>
+
+              <div class="pp-card">
+                <p class="pp-card__title">Oznake</p>
+                <p class="pp-bm-empty" id="pp-bookmark-empty">Klikni ikonu uz odlomak da ga označiš.</p>
+                <ul class="pp-bm-list" id="pp-bookmark-list" aria-label="Označeni odlomci"></ul>
+              </div>
+
+              <div class="pp-card__row" style="justify-content: flex-end;">
+                <button type="button" class="pp-btn pp-btn--ghost" id="pp-reset">Resetiraj napredak</button>
               </div>
             </div>
           </details>
@@ -4260,6 +4569,14 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
     <a class="fn-pop__jump" id="fn-pop-jump" href="#">Otvori bilješku ↓</a>
   </div>
 
+  <div class="resume-toast" id="resume-toast" role="status" aria-live="polite">
+    <span class="resume-toast__text">Nastavi gdje si stao · <span class="resume-toast__num" id="resume-toast-num">¶1</span></span>
+    <button type="button" class="pp-btn pp-btn--primary" id="resume-toast-go">Nastavi</button>
+    <button type="button" class="resume-toast__close" id="resume-toast-dismiss" aria-label="Zatvori">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+    </button>
+  </div>
+
   <script>
     const root = document.documentElement;
     const body = document.body;
@@ -5026,6 +5343,373 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
         closeStats();
       }
     });
+
+    // ─────────────────────────────────────────────────────────────────────
+    // Reading progress: auto-resume, bookmarks, read-tracking, plan
+    // ─────────────────────────────────────────────────────────────────────
+    (function() {
+      const STORAGE_KEY = "magnifica-progress-v1";
+      const PLAN_DEFAULT_DAYS = 7;
+      const READ_RATIO = 0.6;
+      const READ_DWELL_MS = 1500;
+      const LASTREAD_DEBOUNCE_MS = 700;
+      const SVG_NS = "http://www.w3.org/2000/svg";
+
+      const docEl = document.getElementById("document");
+      if (!docEl) return;
+
+      function svg(strokeWidth) {
+        const s = document.createElementNS(SVG_NS, "svg");
+        s.setAttribute("viewBox", "0 0 24 24");
+        s.setAttribute("fill", "none");
+        s.setAttribute("stroke", "currentColor");
+        s.setAttribute("stroke-width", String(strokeWidth || 2));
+        s.setAttribute("stroke-linecap", "round");
+        s.setAttribute("stroke-linejoin", "round");
+        s.setAttribute("aria-hidden", "true");
+        return s;
+      }
+      function svgPath(d) {
+        const p = document.createElementNS(SVG_NS, "path");
+        p.setAttribute("d", d);
+        return p;
+      }
+      function bookmarkSvg() {
+        const s = svg(2);
+        s.appendChild(svgPath("M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"));
+        return s;
+      }
+      function clearChildren(el) { while (el.firstChild) el.removeChild(el.firstChild); }
+
+      // ── Discover numbered paragraphs (skip footnotes section) ─────────
+      const footnoteSection = document.querySelector('.doc-section[data-section="footnotes"]');
+      const numbered = [];
+      const byNumSeen = new Set();
+      docEl.querySelectorAll("p").forEach((p) => {
+        if (footnoteSection && footnoteSection.contains(p)) return;
+        const m = (p.textContent || "").trim().match(/^(\d+)\.\s/);
+        if (!m) return;
+        const num = parseInt(m[1], 10);
+        if (byNumSeen.has(num)) return;
+        byNumSeen.add(num);
+        p.dataset.pp = String(num);
+        p.id = "pp-" + num;
+        numbered.push({ num, el: p });
+      });
+      numbered.sort((a, b) => a.num - b.num);
+      const total = numbered.length;
+      if (!total) return;
+      const byNum = new Map(numbered.map((x) => [x.num, x.el]));
+
+      // ── State (localStorage) ──────────────────────────────────────────
+      function loadState() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return null;
+          const parsed = JSON.parse(raw);
+          if (typeof parsed !== "object" || !parsed) return null;
+          return parsed;
+        } catch (e) { return null; }
+      }
+      function saveState() {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+      }
+      const defaults = { lastRead: null, bookmarks: [], read: {}, plan: null };
+      let state = Object.assign({}, defaults, loadState() || {});
+      state.bookmarks = Array.isArray(state.bookmarks) ? state.bookmarks : [];
+      state.read = (state.read && typeof state.read === "object") ? state.read : {};
+      // Snapshot before observers can overwrite, so the resume toast can compare against pre-session state
+      const initialLastRead = state.lastRead ? { ...state.lastRead } : null;
+
+      // ── Inject bookmark buttons ───────────────────────────────────────
+      numbered.forEach(({ num, el }) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "pp-bookmark";
+        btn.dataset.num = String(num);
+        btn.setAttribute("aria-label", "Označi odlomak " + num);
+        btn.appendChild(bookmarkSvg());
+        el.appendChild(btn);
+      });
+
+      // ── Element refs (sidebar widgets) ────────────────────────────────
+      const elOverallBar = document.getElementById("pp-overall-bar");
+      const elOverallLabel = document.getElementById("pp-overall-label");
+      const elPlanDay = document.getElementById("pp-plan-day");
+      const elPlanRange = document.getElementById("pp-plan-range");
+      const elPlanProgress = document.getElementById("pp-plan-progress");
+      const elPlanGo = document.getElementById("pp-plan-go");
+      const elPlanDays = document.getElementById("pp-plan-days");
+      const elBmList = document.getElementById("pp-bookmark-list");
+      const elBmEmpty = document.getElementById("pp-bookmark-empty");
+      const elReset = document.getElementById("pp-reset");
+      const elToast = document.getElementById("resume-toast");
+      const elToastNum = document.getElementById("resume-toast-num");
+      const elToastGo = document.getElementById("resume-toast-go");
+      const elToastDismiss = document.getElementById("resume-toast-dismiss");
+
+      // ── Visual sync ───────────────────────────────────────────────────
+      function refreshReadClasses() {
+        numbered.forEach(({ num, el }) => {
+          el.classList.toggle("pp-read", !!state.read[num]);
+        });
+      }
+      function refreshBookmarkClasses() {
+        const set = new Set(state.bookmarks.map((b) => b.num));
+        document.querySelectorAll(".pp-bookmark").forEach((btn) => {
+          const n = parseInt(btn.dataset.num, 10);
+          btn.classList.toggle("pp-bookmark--on", set.has(n));
+        });
+      }
+
+      // ── Sidebar render ────────────────────────────────────────────────
+      function readCount() { return Object.keys(state.read).length; }
+      function renderOverall() {
+        const c = readCount();
+        const pct = total ? Math.round((c / total) * 100) : 0;
+        if (elOverallBar) elOverallBar.style.width = pct + "%";
+        if (elOverallLabel) elOverallLabel.textContent = c + " / " + total + " odlomaka · " + pct + "%";
+      }
+      function snippetOf(num) {
+        const el = byNum.get(num);
+        if (!el) return "";
+        const clone = el.cloneNode(true);
+        clone.querySelectorAll(".pp-bookmark, sup, a.cleaner").forEach((n) => n.remove());
+        return (clone.textContent || "").replace(/^\d+\.\s*/, "").trim().slice(0, 90);
+      }
+      function renderBookmarks() {
+        if (!elBmList) return;
+        clearChildren(elBmList);
+        if (!state.bookmarks.length) {
+          if (elBmEmpty) elBmEmpty.hidden = false;
+          return;
+        }
+        if (elBmEmpty) elBmEmpty.hidden = true;
+        state.bookmarks.slice().sort((a, b) => a.num - b.num).forEach((b) => {
+          const li = document.createElement("li");
+          const link = document.createElement("a");
+          link.className = "pp-bm__link";
+          link.href = "#pp-" + b.num;
+          const numSpan = document.createElement("span");
+          numSpan.className = "pp-bm__num";
+          numSpan.textContent = "¶" + b.num;
+          const snip = document.createElement("span");
+          snip.className = "pp-bm__snippet";
+          snip.textContent = snippetOf(b.num) + "…";
+          link.appendChild(numSpan);
+          link.appendChild(snip);
+          const rm = document.createElement("button");
+          rm.type = "button";
+          rm.className = "pp-bm__remove";
+          rm.dataset.num = String(b.num);
+          rm.setAttribute("aria-label", "Ukloni oznaku " + b.num);
+          rm.textContent = "×";
+          li.appendChild(link);
+          li.appendChild(rm);
+          elBmList.appendChild(li);
+        });
+      }
+
+      // ── Plan ──────────────────────────────────────────────────────────
+      function buildPlan(days) {
+        const per = Math.ceil(total / days);
+        const perDay = [];
+        for (let d = 0; d < days; d++) {
+          const fromIdx = d * per;
+          if (fromIdx >= total) { perDay.push(null); continue; }
+          const toIdx = Math.min(total - 1, (d + 1) * per - 1);
+          perDay.push([numbered[fromIdx].num, numbered[toIdx].num]);
+        }
+        return { startDate: new Date().toISOString().slice(0, 10), days, perDay, totalParas: total };
+      }
+      function ensurePlan() {
+        const lastNum = numbered[numbered.length - 1].num;
+        const stale = state.plan && Array.isArray(state.plan.perDay) && state.plan.perDay.length
+          && (state.plan.totalParas !== total || state.plan.perDay[state.plan.perDay.length - 1]?.[1] !== lastNum);
+        if (stale) state.plan = buildPlan(state.plan.days || PLAN_DEFAULT_DAYS);
+        if (!state.plan || !Array.isArray(state.plan.perDay) || !state.plan.perDay.length) {
+          state.plan = buildPlan(PLAN_DEFAULT_DAYS);
+        }
+      }
+      function currentPlanDay() {
+        if (!state.plan) return 0;
+        const start = new Date(state.plan.startDate + "T00:00:00");
+        const today = new Date(); today.setHours(0, 0, 0, 0);
+        const diff = Math.floor((today - start) / 86400000);
+        return Math.max(0, Math.min(state.plan.days - 1, diff));
+      }
+      function planDayProgress(idx) {
+        if (!state.plan || !state.plan.perDay[idx]) return { read: 0, total: 0, pct: 0 };
+        const [from, to] = state.plan.perDay[idx];
+        let t = 0, r = 0;
+        for (let n = from; n <= to; n++) {
+          if (!byNum.has(n)) continue;
+          t++;
+          if (state.read[n]) r++;
+        }
+        return { read: r, total: t, pct: t ? Math.round((r / t) * 100) : 0 };
+      }
+      function renderPlan() {
+        ensurePlan();
+        if (!elPlanDay) return;
+        const idx = currentPlanDay();
+        const range = state.plan.perDay[idx];
+        if (!range) return;
+        const [from, to] = range;
+        const prog = planDayProgress(idx);
+        elPlanDay.textContent = "Dan " + (idx + 1) + " / " + state.plan.days;
+        elPlanRange.textContent = "¶" + from + " – ¶" + to;
+        elPlanProgress.style.width = prog.pct + "%";
+        if (elPlanGo) {
+          elPlanGo.dataset.target = "pp-" + from;
+          elPlanGo.textContent = prog.pct === 100 ? "Pročitano" : (prog.read > 0 ? "Nastavi" : "Započni");
+        }
+        if (elPlanDays) elPlanDays.value = String(state.plan.days);
+      }
+
+      // ── Bookmark toggle ───────────────────────────────────────────────
+      function toggleBookmark(num) {
+        const idx = state.bookmarks.findIndex((b) => b.num === num);
+        if (idx >= 0) state.bookmarks.splice(idx, 1);
+        else state.bookmarks.push({ num, ts: Date.now() });
+        saveState();
+        refreshBookmarkClasses();
+        renderBookmarks();
+      }
+
+      // Click delegation for bookmark buttons and removes
+      document.addEventListener("click", (e) => {
+        const btn = e.target.closest(".pp-bookmark");
+        if (btn) {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleBookmark(parseInt(btn.dataset.num, 10));
+          return;
+        }
+        const rm = e.target.closest(".pp-bm__remove");
+        if (rm) {
+          e.preventDefault();
+          toggleBookmark(parseInt(rm.dataset.num, 10));
+        }
+      });
+
+      // ── Read tracking via IntersectionObserver ───────────────────────
+      const dwellTimers = new Map();
+      const readObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const num = parseInt(entry.target.dataset.pp, 10);
+          if (state.read[num]) return;
+          if (entry.isIntersecting && entry.intersectionRatio >= READ_RATIO) {
+            if (dwellTimers.has(num)) return;
+            dwellTimers.set(num, setTimeout(() => {
+              state.read[num] = Date.now();
+              saveState();
+              entry.target.classList.add("pp-read");
+              renderOverall();
+              renderPlan();
+              dwellTimers.delete(num);
+            }, READ_DWELL_MS));
+          } else if (dwellTimers.has(num)) {
+            clearTimeout(dwellTimers.get(num));
+            dwellTimers.delete(num);
+          }
+        });
+      }, { threshold: [READ_RATIO] });
+
+      // ── Last-read (topmost visible) tracking ─────────────────────────
+      let topMostNum = null;
+      const topObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const top = entry.boundingClientRect.top;
+          if (top >= -20 && top < window.innerHeight * 0.5) {
+            const num = parseInt(entry.target.dataset.pp, 10);
+            if (topMostNum == null || num < topMostNum || top < 100) topMostNum = num;
+          }
+        });
+      }, { threshold: [0, 0.25, 0.5] });
+
+      numbered.forEach(({ el }) => {
+        readObserver.observe(el);
+        topObserver.observe(el);
+      });
+
+      let lastReadTimer = null;
+      function scheduleLastReadSave() {
+        if (lastReadTimer) clearTimeout(lastReadTimer);
+        lastReadTimer = setTimeout(() => {
+          if (topMostNum != null) {
+            state.lastRead = { num: topMostNum, ts: Date.now() };
+            saveState();
+            topMostNum = null;
+          }
+        }, LASTREAD_DEBOUNCE_MS);
+      }
+      window.addEventListener("scroll", scheduleLastReadSave, { passive: true });
+
+      // ── Resume toast ─────────────────────────────────────────────────
+      function maybeShowResumeToast() {
+        if (!elToast || !initialLastRead) return;
+        if (location.hash) return;
+        const num = initialLastRead.num;
+        if (!num || num < 3) return;
+        const target = byNum.get(num);
+        if (!target) return;
+        const r = target.getBoundingClientRect();
+        if (r.top >= 0 && r.top < window.innerHeight) return;
+        elToastNum.textContent = "¶" + num;
+        elToast.classList.add("show");
+        const hide = () => elToast.classList.remove("show");
+        elToastGo.onclick = () => { target.scrollIntoView({ behavior: "smooth", block: "start" }); hide(); };
+        elToastDismiss.onclick = hide;
+        setTimeout(hide, 14000);
+      }
+
+      // ── Plan controls ─────────────────────────────────────────────────
+      if (elPlanGo) {
+        elPlanGo.addEventListener("click", () => {
+          const id = elPlanGo.dataset.target;
+          const t = id && document.getElementById(id);
+          if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
+      if (elPlanDays) {
+        elPlanDays.addEventListener("change", () => {
+          const d = parseInt(elPlanDays.value, 10);
+          if (!d || d < 1) return;
+          state.plan = buildPlan(d);
+          saveState();
+          renderPlan();
+        });
+      }
+
+      // ── Reset ─────────────────────────────────────────────────────────
+      if (elReset) {
+        elReset.addEventListener("click", () => {
+          if (!confirm("Resetirati sav napredak, oznake i plan?")) return;
+          state = Object.assign({}, defaults);
+          state.bookmarks = [];
+          state.read = {};
+          ensurePlan();
+          saveState();
+          refreshReadClasses();
+          refreshBookmarkClasses();
+          renderBookmarks();
+          renderOverall();
+          renderPlan();
+        });
+      }
+
+      // ── Initial render ───────────────────────────────────────────────
+      ensurePlan();
+      saveState();
+      refreshReadClasses();
+      refreshBookmarkClasses();
+      renderBookmarks();
+      renderOverall();
+      renderPlan();
+      setTimeout(maybeShowResumeToast, 900);
+    })();
   </script>
 </body>
 </html>
