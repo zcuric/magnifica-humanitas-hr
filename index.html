@@ -284,6 +284,11 @@
       margin: 0 auto;
       padding: 0 clamp(0.6rem, 2.4vw, 1.4rem) clamp(1.5rem, 4vw, 2.5rem);
     }
+    @media (max-width: 559px) {
+      .page {
+        padding-inline: max(8px, env(safe-area-inset-left)) max(8px, env(safe-area-inset-right));
+      }
+    }
 
     /* ───────────────────────── Hero ───────────────────────── */
     .hero {
