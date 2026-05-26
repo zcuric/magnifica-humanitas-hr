@@ -1832,11 +1832,11 @@
 
     /* ───────────────────────── Reading progress feature ───────────────────────── */
     /* Bookmark button attached to each numbered paragraph */
-    .reader p[data-pp] { position: relative; }
+    .reader p[data-pp] { position: relative; padding-right: 2rem; }
     .pp-bookmark {
       position: absolute;
-      top: 0.15em;
-      right: -0.25rem;
+      top: 0.1em;
+      right: 0;
       width: 1.6rem;
       height: 1.6rem;
       display: inline-flex;
@@ -1850,6 +1850,11 @@
       opacity: 0;
       transition: opacity 0.18s ease, color 0.18s ease, transform 0.15s ease;
       border-radius: 999px;
+    }
+    /* Desktop: park the button outside the text column to keep the gutter clean */
+    @media (min-width: 920px) {
+      .reader p[data-pp] { padding-right: 0; }
+      .pp-bookmark { right: -2.25rem; }
     }
     .pp-bookmark svg { width: 0.95rem; height: 0.95rem; }
     .reader p[data-pp]:hover .pp-bookmark,
