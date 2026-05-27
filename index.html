@@ -724,6 +724,26 @@
       transition: border-color 0.15s ease, color 0.15s ease;
     }
     .reader-status .full-link:hover { color: var(--accent); border-color: var(--accent); }
+    .reader-status__tabs {
+      display: inline-flex;
+      gap: 0.4rem;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .reader-status .full-link--pk {
+      color: var(--accent-2);
+      border-color: color-mix(in srgb, var(--accent-2) 55%, var(--line));
+    }
+    .reader-status .full-link--pk:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .reader-status .full-link.is-active {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+    }
 
     .reader {
       padding: clamp(1.25rem, 3vw, 2.25rem) clamp(1rem, 2vw, 1.25rem) clamp(2rem, 4vw, 3rem);
@@ -2349,6 +2369,368 @@
     .side-foot__legal a { color: var(--muted); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 2px; }
     .side-foot__legal a:hover { color: var(--accent); text-decoration-color: currentColor; }
 
+    /* ───────────────────────── Pastoral kit (appendix) ───────────────────────── */
+    .pk {
+      margin-top: 3.2rem;
+      padding-top: 2.4rem;
+      border-top: 2px solid var(--line);
+    }
+    .pk-hero {
+      text-align: center;
+      max-width: var(--measure);
+      margin: 0 auto 2.4rem;
+      padding: 0.4rem 0.5rem 1.6rem;
+    }
+    .pk-hero__eyebrow {
+      font-family: var(--font-ui);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-2);
+      font-size: 0.74rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    .pk-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 4.2vw, 2.8rem);
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+      margin: 0.45rem 0 0.7rem;
+      letter-spacing: -0.012em;
+      line-height: 1.05;
+    }
+    .pk-hero__lede {
+      color: var(--ink-soft);
+      margin: 0 auto 1rem;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .pk-hero__source {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.35rem 0.65rem;
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-family: var(--font-ui);
+    }
+    .pk-hero__source a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-color: var(--line);
+      text-underline-offset: 2px;
+    }
+    .pk-hero__source a:hover { text-decoration-color: currentColor; }
+
+    .pk-chapter {
+      margin: 3rem 0;
+      scroll-margin-top: 5rem;
+    }
+    .pk-chapter__head {
+      text-align: center;
+      margin: 0 0 1.8rem;
+    }
+    .pk-chapter__kicker {
+      display: block;
+      font-family: var(--font-ui);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.72rem;
+      color: var(--accent-2);
+      font-weight: 600;
+      margin: 0;
+    }
+    .pk-chapter__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.45rem, 3.4vw, 2.1rem);
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+      margin: 0.4rem 0 0.3rem;
+      line-height: 1.18;
+    }
+    .pk-chapter__subtitle {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin: 0;
+    }
+
+    .pk-block { margin: 1.7rem 0; }
+    .pk-block__title {
+      font-family: var(--font-display);
+      font-size: 1.18rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin: 0 0 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      line-height: 1.25;
+    }
+    .pk-block__title::before {
+      content: "";
+      width: 1.4rem;
+      height: 1px;
+      background: var(--accent-2);
+      flex-shrink: 0;
+    }
+    .pk-block__sub {
+      font-family: var(--font-ui);
+      font-size: 0.74rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      margin: 1.1rem 0 0.45rem;
+    }
+    .pk-block p { margin: 0.45rem 0; }
+    .pk-block ol, .pk-block ul {
+      margin: 0.45rem 0 0.45rem 0;
+      padding-left: 1.4rem;
+    }
+    .pk-block li { margin: 0.3rem 0; }
+    .pk-block li > strong { color: var(--accent); }
+
+    .pk-quote {
+      border-left: 3px solid var(--accent-2);
+      padding: 0.2rem 0 0.2rem 1rem;
+      margin: 0.9rem 0;
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+    .pk-quote p { margin: 0.2rem 0; }
+    .pk-quote__ref {
+      display: block;
+      font-style: normal;
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      margin-top: 0.5rem;
+      font-weight: 700;
+    }
+
+    .pk-bible {
+      background: var(--surface-2);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-sm);
+      padding: 1.3rem 1.3rem 1rem;
+      margin: 1rem 0;
+      position: relative;
+    }
+    .pk-bible__tag {
+      position: absolute;
+      top: -0.55rem;
+      left: 1rem;
+      background: var(--bg);
+      padding: 0 0.6rem;
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      font-weight: 700;
+    }
+    .pk-bible p { margin: 0.3rem 0; font-style: italic; color: var(--ink); }
+    .pk-bible__ref {
+      display: block;
+      font-style: normal;
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 0.55rem;
+    }
+
+    .pk-prayer {
+      border-top: 1px solid var(--line-soft);
+      border-bottom: 1px solid var(--line-soft);
+      padding: 1.5rem 1rem;
+      margin: 1.8rem 0;
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-style: italic;
+      line-height: 1.65;
+      color: var(--ink);
+      background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--surface-2) 70%, transparent));
+    }
+    .pk-prayer p { margin: 0.35rem 0; }
+    .pk-prayer__amen {
+      display: block;
+      margin-top: 0.7rem;
+      font-style: normal;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      font-family: var(--font-ui);
+    }
+
+    .pk-quiz { margin: 0.6rem 0; }
+    .pk-quiz__list {
+      counter-reset: pkq;
+      list-style: none;
+      padding-left: 0;
+    }
+    .pk-quiz__list > li {
+      counter-increment: pkq;
+      position: relative;
+      padding-left: 2rem;
+      margin: 0.6rem 0;
+    }
+    .pk-quiz__list > li::before {
+      content: counter(pkq) ".";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-family: var(--font-display);
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .pk-quiz__list ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.3rem 0 0;
+    }
+    .pk-quiz__list ul li {
+      position: relative;
+      padding-left: 1.3rem;
+      margin: 0.2rem 0;
+      color: var(--ink-soft);
+      font-size: 0.96rem;
+    }
+    .pk-quiz__list ul li::before {
+      content: "○";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent-2);
+      font-size: 0.8rem;
+    }
+    .pk-quiz--tf ul li::before { content: "□"; }
+
+    .pk-answers {
+      margin-top: 1rem;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius-sm);
+      padding: 0.45rem 0.9rem;
+      background: color-mix(in srgb, var(--surface) 60%, transparent);
+    }
+    .pk-answers > summary {
+      cursor: pointer;
+      font-family: var(--font-ui);
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--accent);
+      list-style: none;
+      padding: 0.25rem 0;
+      user-select: none;
+    }
+    .pk-answers > summary::-webkit-details-marker { display: none; }
+    .pk-answers > summary::before {
+      content: "▸";
+      display: inline-block;
+      margin-right: 0.45rem;
+      transition: transform 0.18s ease;
+      color: var(--accent-2);
+    }
+    .pk-answers[open] > summary::before { content: "▾"; }
+    .pk-answers ol, .pk-answers ul {
+      margin: 0.4rem 0 0.5rem;
+      padding-left: 1.4rem;
+      font-size: 0.93rem;
+      color: var(--ink-soft);
+    }
+    .pk-answers li { margin: 0.25rem 0; }
+
+    .pk-vocab { margin: 0.4rem 0; }
+    .pk-vocab dt {
+      font-family: var(--font-display);
+      font-weight: 500;
+      color: var(--accent);
+      margin-top: 0.7rem;
+      font-style: italic;
+    }
+    .pk-vocab dd {
+      margin: 0.2rem 0 0;
+      padding-left: 0;
+      color: var(--ink-soft);
+      font-size: 0.96rem;
+    }
+
+    .pk-activity {
+      background: var(--surface);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.2rem;
+      margin: 0.85rem 0;
+    }
+    .pk-activity__title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 0 0 0.45rem;
+    }
+    .pk-activity p:last-child { margin-bottom: 0; }
+
+    /* Hero-card pointer to the pastoral kit, shown above section-select */
+    .pk-pointer {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      margin: 1.4rem 0 0;
+      padding: 0.85rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--line-soft);
+      border-left: 3px solid var(--accent-2);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      text-align: left;
+    }
+    .pk-pointer__icon {
+      flex-shrink: 0;
+      width: 1.4rem;
+      height: 1.4rem;
+      color: var(--accent-2);
+      margin-top: 0.05rem;
+    }
+    .pk-pointer__body strong {
+      display: block;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.1rem;
+    }
+    .pk-pointer__cta {
+      display: inline-block;
+      margin-top: 0.3rem;
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-color: var(--line);
+      text-underline-offset: 3px;
+    }
+    .pk-pointer__cta:hover { text-decoration-color: currentColor; }
+
+    @media (min-width: 720px) {
+      .pk-questions-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem 1.6rem;
+        align-items: start;
+      }
+      .pk-questions-grid > .pk-questions-group { margin: 0; }
+    }
+
     /* ───────────────────────── Print stylesheet ───────────────────────── */
     @page {
       size: A4;
@@ -2486,6 +2868,27 @@
       hr { display: none; }
       /* keep block-level content from breaking awkwardly */
       .reader p, .reader .MsoFootnoteText { break-inside: avoid; }
+
+      /* Pastoral kit appendix — print rules */
+      .pk-pointer { display: none !important; }
+      .pk { border-top: 1pt solid #999; margin-top: 1.5em; padding-top: 1em; }
+      .pk-hero { page-break-before: always; }
+      .pk-hero__title { color: #6e2733; font-size: 22pt; font-style: italic; }
+      .pk-hero__eyebrow, .pk-chapter__kicker { color: #6e2733; }
+      .pk-chapter__head { page-break-before: always; }
+      .pk-chapter__title { color: #6e2733; font-size: 18pt; font-style: italic; }
+      .pk-block__title { color: #6e2733; }
+      .pk-bible, .pk-prayer, .pk-activity, .pk-answers {
+        background: white !important;
+        border: 1px solid #bbb !important;
+        break-inside: avoid;
+      }
+      .pk-bible::before, .pk-bible__tag { background: white !important; }
+      .pk-answers[open] > summary::before, .pk-answers > summary::before { content: ""; margin: 0; }
+      .pk-answers { padding: 0.4em 0.8em; }
+      .pk-answers > summary { color: #6e2733; }
+      .pk-quote { border-left: 2pt solid #999; color: #333; }
+      .pk-quote__ref, .pk-bible__ref { color: #6e2733; }
     }
   </style>
 
@@ -2542,6 +2945,15 @@
         <span><strong>Neslužbeni prijevod — samo za osobnu upotrebu.</strong> Hrvatsku verziju s engleskoga izvornika preveo je jezični model GPT&#8209;5.4 — moguće su pogreške ili netočno prenesena značenja. Sva prava na izvorni tekst pripadaju originalnom izdavaču (© Dikasterij za komunikaciju — Libreria Editrice Vaticana). Za autoritativan tekst pogledajte službene jezične inačice na vatican.va.</span>
       </p>
 
+      <a class="pk-pointer" href="#pk-top" id="pk-jump">
+        <svg class="pk-pointer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h11l3 3v13.5"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M9 7h5"/><path d="M9 11h7"/></svg>
+        <span class="pk-pointer__body">
+          <strong>Prilog: Pastoralni priručnik</strong>
+          Neslužbeni hrvatski prijevod priručnika za župe, katehezu i animatore mladih — sažeci, biblijski tekstovi, pitanja, aktivnosti i molitve uz svako poglavlje.
+          <span class="pk-pointer__cta">Pogledaj prilog →</span>
+        </span>
+      </a>
+
       <nav class="lang-links" aria-label="Službeni prijevodi enciklike">
         <span class="lang-links__title">Službeni prijevodi:</span>
         <a href="https://www.vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html" lang="en" hreflang="en" rel="noopener" target="_blank"><span class="lang-links__code">EN</span><span class="lang-links__name">English</span></a>
@@ -2597,6 +3009,7 @@
                     <option value="chapter5">Peto poglavlje</option>
                     <option value="conclusion">Zaključak</option>
                     <option value="footnotes">Bilješke</option>
+                    <option value="pastoral">Pastoralni priručnik (prilog)</option>
                   </select>
                 </div>
 
@@ -2744,6 +3157,7 @@
               <li><a href="#CHAPTER_FIVE"><span class="num">V</span><span>Kultura moći i civilizacija ljubavi</span></a></li>
               <li><a href="#CONCLUSION"><span class="num">Z</span><span>Zaključak</span></a></li>
               <li><a href="#_ftn1"><span class="num">§</span><span>Bilješke</span></a></li>
+              <li><a href="#pk-top"><span class="num">+</span><span>Pastoralni priručnik</span></a></li>
             </ul>
             <p class="toc__hint">Unutarnje poveznice otvaraju odgovarajući odjeljak. Bilješke se otvaraju u oblačiću pri prijelazu mišem.</p>
           </div>
@@ -2777,7 +3191,10 @@
             Izbornik
           </button>
           <span><span class="label">Prikaz</span> · <span id="reading-status">cijeli dokument</span></span>
-          <button type="button" class="full-link" id="show-all-mobile">Cijeli tekst</button>
+          <div class="reader-status__tabs">
+            <button type="button" class="full-link" id="show-all-mobile">Cijeli tekst</button>
+            <button type="button" class="full-link full-link--pk" id="show-pk-mobile" aria-label="Otvori pastoralni priručnik">Priručnik</button>
+          </div>
         </div>
         <div class="reader">
           <aside class="print-disclaimer" aria-hidden="true">
@@ -2959,6 +3376,25 @@
                             <li><a href="#One_body_in_Christ"><em>Jedno tijelo u Kristu</em></a></li>
                             <li><a href="#The_construction"><em>Gradilište našega vremena</em></a></li>
                             <li><a href="#The_song_of_hope"><em>Pjesma nade: Magnificat</em></a></li>
+                          </ol>
+                        </li>
+
+                        <li class="doc-contents__chapter">
+                          <a class="doc-contents__heading" href="#pk-top">
+                            <span class="doc-contents__roman">+</span>
+                            <span class="doc-contents__name"><span class="doc-contents__kicker">Prilog</span>Pastoralni priručnik</span>
+                          </a>
+                          <ol class="doc-contents__sections">
+                            <li><a href="#pk-uvod-prirucnik">Uvod u priručnik</a></li>
+                            <li><a href="#pk-uvod">Uz Uvod enciklike</a></li>
+                            <li><a href="#pk-poglavlje-1">Prvo poglavlje</a></li>
+                            <li><a href="#pk-poglavlje-2">Drugo poglavlje</a></li>
+                            <li><a href="#pk-poglavlje-3">Treće poglavlje</a></li>
+                            <li><a href="#pk-poglavlje-4">Četvrto poglavlje</a></li>
+                            <li><a href="#pk-poglavlje-5">Peto poglavlje</a></li>
+                            <li><a href="#pk-zakljucak">Zaključak</a></li>
+                            <li><a href="#pk-djeca">Za djecu</a></li>
+                            <li><a href="#pk-mladi">Za mlade</a></li>
                           </ol>
                         </li>
 
@@ -4724,6 +5160,1108 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
   <p class="MsoFootnoteText"><a name="_ftn223" href="#_ftnref223" class=" cleaner">[223]</a> <i><a href="https://www.vatican.va/content/leo-xiv/en/speeches/2025/october/documents/20251011-veglia-di-preghiera.html">Meditacija prigodom molitvenoga bdjenja i krunice za mir</a></i>&nbsp;(11. listopada 2025.): <i>L’Osservatore Romano</i>, 13. listopada 2025., 2.</p> 
   <p class="MsoFootnoteText"><a name="_ftn224" href="#_ftnref224" class=" cleaner">[224]</a>&nbsp;sveti Pavao VI., <i>Homilija u marijanskom svetištu Gospe od Bonarije</i>, (24. travnja 1970.): <i>AAS</i> 62 (1970), 301.</p>
           </section>
+
+          <section class="doc-section pk" data-section="pastoral" aria-label="Pastoralni priručnik">
+            <header class="pk-hero" id="pk-top">
+              <p class="pk-hero__eyebrow">Prilog — pastoralni priručnik</p>
+              <h2 class="pk-hero__title">Magnifica Humanitas</h2>
+              <p class="pk-hero__lede">Neslužbeni hrvatski prijevod pastoralnog priručnika koji prati encikliku. Materijal je namijenjen župnim skupinama, katehezi, animatorima mladih i pastoralu djece — sažeci, biblijski odlomci, pitanja za razmišljanje, konkretne aktivnosti i završne molitve.</p>
+              <p class="pk-hero__source">
+                <span>Izvor:</span>
+                <a href="https://www.humandevelopment.va/en/magnifica-humanitas/risorse/kit-pastorale.html" rel="noopener" target="_blank">humandevelopment.va · Kit Pastorale</a>
+                <span>· © Dikasterij za promicanje cjelovitoga ljudskog razvoja</span>
+              </p>
+              <p class="pk-hero__source" style="margin-top: 0.4rem;">
+                <button type="button" class="btn-primary" id="pk-save-pdf" style="margin-top: 0.6rem;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 0.95rem; height: 0.95rem; vertical-align: -2px; margin-right: 0.45em;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Spremi priručnik kao PDF
+                </button>
+              </p>
+            </header>
+
+            <article class="pk-chapter" id="pk-uvod-prirucnik">
+              <header class="pk-chapter__head">
+                <span class="pk-chapter__kicker">Uvod</span>
+                <h3 class="pk-chapter__title">Uvod u ovaj pastoralni priručnik</h3>
+              </header>
+              <div class="pk-block">
+                <p>Živimo u vremenu velikih promjena. Digitalne tehnologije i umjetna inteligencija mijenjaju način na koji radimo, komuniciramo, učimo, gradimo odnose pa čak i razumijemo same sebe. Pred tim promjenama možemo osjećati oduševljenje, strah, znatiželju ili zbunjenost. No kao vjernici, prije svega smo pozvani živjeti ovo vrijeme s razboritošću, nadom i odgovornošću.</p>
+                <p>Ovaj je pastoralni priručnik nastao kako bi pojedince, skupine i zajednice pratio u jednostavnom, ali dubokom promišljanju o odnosu između vjere, ljudskog dostojanstva i tehnološke inovacije. Nadahnut enciklikom <em>Magnifica Humanitas</em>, predlaže put koji povezuje Božju riječ, socijalni nauk Crkve i konkretno iskustvo svakodnevnoga života.</p>
+                <p>Biblijske slike Babilonske kule i obnove Jeruzalema prate čitav tijek ovoga priručnika. S jedne strane postoji opasnost izgradnje svijeta kojim vladaju moć, individualizam i dehumanizacija; s druge strane postoji mogućnost da zajedno gradimo „grad” utemeljen na slušanju, bratstvu, pravednosti i uzajamnoj brizi.</p>
+              </div>
+              <div class="pk-block">
+                <h4 class="pk-block__title">Kako je priručnik strukturiran</h4>
+                <p>Svako poglavlje nudi:</p>
+                <ul>
+                  <li>sažetak glavnih tema</li>
+                  <li>biblijske tekstove i citate za razmatranje</li>
+                  <li>osobna i zajednička pitanja</li>
+                  <li>konkretna iskustva</li>
+                  <li>trenutke preispitivanja i molitve</li>
+                </ul>
+                <p>Priručnik sadrži dio za odrasle (župne skupine, katehezu, pastoralno savjetovanje te trenutke osobne i zajedničke duhovnosti), zatim dio za mlade i dio za djecu.</p>
+                <p>Ne radi se o tome da samo „govorimo o tehnologiji”, nego da naučimo očuvati ljudskost usred promjena našega vremena. Kao kršćani, pozvani smo biti graditelji zajedništva, obrtnici mira i tkalci nade, pa i u digitalnom dobu.</p>
+                <p>Neka nam ovo putovanje pomogne ponovno otkriti našu „veličanstvenu ljudskost”, kako bi svaka inovacija bila obasjana Evanđeljem i usmjerena prema općem dobru.</p>
+              </div>
+            </article>
+
+            <article class="pk-chapter" id="pk-uvod">
+              <header class="pk-chapter__head">
+                <span class="pk-chapter__kicker">Uz Uvod enciklike</span>
+                <h3 class="pk-chapter__title">Babilonska kula ili Sveti grad</h3>
+              </header>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Kratak sažetak</h4>
+                <p>Enciklika započinje snažnom biblijskom metaforom: čovječanstvo stoji pred izborom između podizanja nove Babilonske kule (svijeta samodostatne tehničke moći) i izgradnje Svetoga grada (svijeta u kojem Bog i čovjek prebivaju zajedno).</p>
+                <p><strong>Čovjek u središtu:</strong> svaki tehnološki napredak mora se mjeriti svojom sposobnošću da štiti dostojanstvo osobe. Nema istinskoga napretka ako srce ostaje zatvoreno drugima.</p>
+                <p><strong>Kristovo prvenstvo:</strong> otajstvo čovjeka razumije se samo u otajstvu utjelovljene Riječi. Ta veličanstvena ljudskost u Isusu Kristu postaje Put, Istina i Život te svakomu od nas otvara put rasta prema punini naše ljudskosti.</p>
+                <p><strong>Gradilište vremena:</strong> svi smo pozvani „uprljati ruke” kako bi „odbačeno kamenje” postalo zaglavnim kamenom našega zajedničkog doma.</p>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Navodi iz enciklike</h4>
+                <blockquote class="pk-quote">
+                  <p>Čovječanstvo, stvoreno od Boga u svoj svojoj veličini, danas je suočeno s presudnim izborom: ili izgraditi novu Kulu babilonsku ili graditi grad u kojem Bog i čovjek prebivaju zajedno.</p>
+                  <span class="pk-quote__ref">MH 1</span>
+                </blockquote>
+                <blockquote class="pk-quote">
+                  <p>U dobu umjetne inteligencije, kada je ljudsko dostojanstvo ugroženo novim oblicima dehumanizacije, naša je hitna dužnost ostati duboko ljudskima. Moramo s ljubavlju čuvati veličinu čovještva koja nam je darovana i u punini objavljena u Kristu, a čiji sjaj nijedan stroj nikada ne može nadomjestiti.</p>
+                  <span class="pk-quote__ref">MH 15</span>
+                </blockquote>
+                <blockquote class="pk-quote">
+                  <p>Istinski napredak uvijek izvire iz srca otvorena drugima, iz razuma spremna slušati i iz volje koja traži ono što sjedinjuje, a ne ono što razdvaja.</p>
+                  <span class="pk-quote__ref">MH 15</span>
+                </blockquote>
+              </div>
+
+              <div class="pk-bible">
+                <span class="pk-bible__tag">Biblijski odlomak</span>
+                <p>Ljubav će se i Vjernost sastati, Pravda i Mir zagrliti. Vjernost će nicat' iz zemlje, Pravda će gledat' s nebesa.</p>
+                <span class="pk-bible__ref">Ps 85, 11–12</span>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Pitanja za razmišljanje</h4>
+                <div class="pk-questions-grid">
+                  <div class="pk-questions-group">
+                    <p class="pk-block__sub">Na osobnoj razini</p>
+                    <ol>
+                      <li>Što gradim? Radim li na svojoj osobnoj „kuli” (uspjeh, moć) ili na „gradu” u kojem ima mjesta i za druge?</li>
+                      <li>Gledam li tehnološke promjene sa strahom ili u njima tražim priliku da svjedočim svoju vjeru?</li>
+                    </ol>
+                  </div>
+                  <div class="pk-questions-group">
+                    <p class="pk-block__sub">U zajednici</p>
+                    <ol>
+                      <li>Tko su „odbačeni kamenovi” digitalne preobrazbe oko nas? Kako ih možemo učiniti protagonistima našega gradilišta?</li>
+                      <li>Jesmo li mjesto slušanja i dijaloga ili riskiramo postati zatvorene i nerazumljive skupine, kao što se dogodilo s Babilonskom kulom?</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Iskustva</h4>
+                <p class="pk-block__sub">Na osobnoj razini</p>
+                <ol>
+                  <li><strong>„Odbačeni kamen”:</strong> prepoznaj osobu koju zanemaruješ ili „odbacuješ” (sramežljiv kolega, beskućnik, starija osoba) i posveti joj 15 minuta pažljivoga slušanja. Pokušaj u toj osobi vidjeti Kristovo lice.</li>
+                  <li><strong>„Gradilište” stvarnosti:</strong> izaberi ručnu ili tjelesnu aktivnost koja traži strpljenje i brižnost (nešto popraviti, kuhati za nekoga, uređivati vrt). Učini to kao oblik molitve, tražeći „ustrajnost” o kojoj govori tekst.</li>
+                </ol>
+                <p class="pk-block__sub">U zajednici</p>
+                <ol>
+                  <li><strong>Kamenje ili opeke?</strong> Donesite nekoliko opeka (sve iste, kao simbol Babilona, gdje su ljudi standardizirani) i nekoliko kamenova (različitih, kao simbol nebeskoga Jeruzalema, gdje je svaka osoba jedinstvena). Neka svatko uzme jedan kamen i promotri njegove nepravilnosti. Zajedno se zapitajte: pokušavamo li sve učiniti istima (opeke) ili vrednujemo jedinstvenost svakoga (kamenje), osobito najranjivijih? Zatim neka svatko na svoj kamen napiše ime jednoga „odbačenog kamena” (osobe koja je usamljena, ranjiva ili u nepovoljnu položaju) koju bi zajednica mogla ponovno staviti u središte.</li>
+                </ol>
+              </div>
+
+              <div class="pk-block pk-quiz">
+                <h4 class="pk-block__title">Osobno vrednovanje</h4>
+                <p class="pk-block__sub">Odaberi točan odgovor</p>
+                <ol class="pk-quiz__list">
+                  <li>Koja se glavna opasnost spominje u Uvodu s obzirom na sadašnje doba?
+                    <ul>
+                      <li>Nedostatak energetskih izvora.</li>
+                      <li>Opasnost da izgubimo svoj identitet gradeći novi Babel.</li>
+                      <li>Pretjerana brzina prijevoza.</li>
+                    </ul>
+                  </li>
+                  <li>Prema tekstu, gdje otajstvo čovjeka nalazi svoje svjetlo?
+                    <ul>
+                      <li>U otkrićima znanosti i umjetne inteligencije.</li>
+                      <li>U otajstvu utjelovljene Riječi.</li>
+                      <li>U snazi pojedinačne volje.</li>
+                    </ul>
+                  </li>
+                  <li>Tko su „odbačeni kamenovi” koji moraju postati „kamenovi zaglavni”?
+                    <ul>
+                      <li>Računalni znanstvenici.</li>
+                      <li>Siromašni, bolesni, migranti i maleni.</li>
+                      <li>Svjetski politički vođe.</li>
+                    </ul>
+                  </li>
+                </ol>
+                <details class="pk-answers">
+                  <summary>Točni odgovori</summary>
+                  <ol>
+                    <li>Opasnost da izgubimo svoj identitet gradeći novi Babel.</li>
+                    <li>U otajstvu utjelovljene Riječi.</li>
+                    <li>Siromašni, bolesni, migranti i maleni.</li>
+                  </ol>
+                </details>
+              </div>
+
+              <div class="pk-prayer">
+                <p>Gospodine, zahvaljujemo ti za „veličanstvenu ljudskost” koju si nam darovao.</p>
+                <p>Daj nam oči da u ovom vremenu velikih strojeva</p>
+                <p>prepoznamo sjaj lica tvoga Sina koji je postao tijelom.</p>
+                <p>Pouči nas da se ne bojimo gradilišta povijesti,</p>
+                <p>nego da ga nastanimo mudrošću onih koji grade zajedništvo.</p>
+                <p>Odagnaj od nas babilonsku oholost i pomozi nam da uvijek tražimo ono što povezuje.</p>
+                <p>Preobrazi naše ruke u oruđa pravednosti,</p>
+                <p>da naša zemlja postane zajednički dom</p>
+                <p>u kojem se mogu susresti ljubav, istina i mir.</p>
+                <span class="pk-prayer__amen">Amen.</span>
+              </div>
+            </article>
+
+            <article class="pk-chapter" id="pk-poglavlje-1">
+              <header class="pk-chapter__head">
+                <span class="pk-chapter__kicker">Prvo poglavlje</span>
+                <h3 class="pk-chapter__title">Dinamična misao vjerna Evanđelju</h3>
+              </header>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Kratak sažetak</h4>
+                <p>Socijalni nauk Crkve (SNC) nije „statičan skup pojmova”, nego dinamična misao koja se razvija u dijalogu s poviješću. Rađa se iz poslanja Crkve da hodi s čovječanstvom, poštujući autonomiju građanskih stvarnosti, ali nudeći Evanđelje kao mjerilo pravednosti.</p>
+                <p><strong>Povijesni razvoj:</strong> od obrane radnika pape Lava XIII. (<em>Rerum Novarum</em>) do načela supsidijarnosti pape Pija XI., sve do sveopće pozornosti svetoga Ivana XXIII.</p>
+                <p><strong>Prekretnica Drugoga vatikanskog sabora:</strong> predlaže metodu osluškivanja „znakova vremena”, čineći dijalog s humanim znanostima sastavnim dijelom poslanja Crkve.</p>
+                <p><strong>Novije učiteljstvo:</strong> sveti Ivan Pavao II. naglašava dostojanstvo rada, Benedikt XVI. ističe ljubav u istini, a papa Franjo bratstvo i cjelovitu ekologiju, povezujući brigu za zajednički dom i povlaštenu opciju za siromašne.</p>
+                <p>Digitalni svijet i umjetna inteligencija stvarnosti su koje traže daljnji razvoj socijalnog nauka Crkve.</p>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Navodi iz enciklike</h4>
+                <blockquote class="pk-quote">
+                  <p>Ni umjetnu inteligenciju ne treba smatrati tek još jednom temom koju valja proučavati ili krizom kojom treba upravljati, nego razvojem koji iznutra stavlja na kušnju kategorije Socijalnoga nauka, tražeći njihov daljnji razvoj u vjernosti Evanđelju.</p>
+                  <span class="pk-quote__ref">MH 17</span>
+                </blockquote>
+                <blockquote class="pk-quote">
+                  <p>Povijest se tako razumije kao jedno od mjesta na kojima Crkva dopušta Duhu da je poučava o pounutarnjujućoj, humanizirajućoj snazi Evanđelja; te uči razvijati vlastiti nauk u službi dostojanstva svake osobe i dobra svih naroda.</p>
+                  <span class="pk-quote__ref">MH 22</span>
+                </blockquote>
+                <blockquote class="pk-quote">
+                  <p>[Socijalni nauk] nije priručnik načela i normi koje treba primijeniti, nego proces zajedničkoga razlučivanja. Rađa se iz susreta vječne istine Evanđelja i pitanja povijesti. Dopušta da ga izazivaju znakovi vremena i hrani se doprinosima znanosti, kulture i ljudskoga iskustva.</p>
+                  <span class="pk-quote__ref">MH 27</span>
+                </blockquote>
+              </div>
+
+              <div class="pk-bible">
+                <span class="pk-bible__tag">Biblijski odlomak</span>
+                <p>Neki je čovjek silazio iz Jeruzalema u Jerihon. Upao je među razbojnike koji ga svukoše i izraniše pa odoše ostavivši ga polumrtva. Slučajno je onim putem silazio neki svećenik, vidje ga i zaobiđe. A tako i levit: prolazeći onuda, vidje ga i zaobiđe. Neki Samarijanac putujući dođe do njega, vidje ga, sažali se pa mu pristupi i povije rane zalivši ih uljem i vinom. Zatim ga posadi na svoje živinče, odvede u gostinjac i pobrinu se za nj.</p>
+                <span class="pk-bible__ref">Lk 10, 30–35</span>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Pitanja za razmišljanje</h4>
+                <div class="pk-questions-grid">
+                  <div class="pk-questions-group">
+                    <p class="pk-block__sub">Na osobnoj razini</p>
+                    <ol>
+                      <li>Smatram li svoju vjeru „statičnim kodeksom” pravila ili dinamičnim načinom mišljenja sposobnim prihvatiti izazove promjena u svijetu?</li>
+                      <li>Trudim li se u svakodnevnom životu živjeti poput „dobroga Samarijanca”, pristupajući „ranama” onih oko sebe bez osuđivanja s visoka?</li>
+                      <li>Kada promišljam svoj rad ili rad drugih, nastojim li dati prednost dostojanstvu osobe ili dopuštam da na mene utječe čisto financijska ili profitna logika?</li>
+                    </ol>
+                  </div>
+                  <div class="pk-questions-group">
+                    <p class="pk-block__sub">U zajednici</p>
+                    <ol>
+                      <li>Jesmo li sposobni slušati i tumačiti „različite jezike” ljudi u našoj zajednici kako bismo razumjeli kako doista promicati njihov život?</li>
+                      <li>Kako možemo bolje vrednovati raznolikost poziva i kultura u našoj zajednici, da istina ne postane nešto što treba braniti, nego dobro koje se dijeli?</li>
+                      <li>Kako naši zajednički izbori (gospodarski, organizacijski, pastoralni) istodobno odgovaraju na „krik siromašnih” i „krik zemlje”?</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Iskustva</h4>
+                <p class="pk-block__sub">Na osobnoj razini</p>
+                <ol>
+                  <li><strong>Slušanje znakova:</strong> izaberi neku vijest ili događaj u svojem susjedstvu i pokušaj ga promatrati ne s osuđivačkim stavom, nego „pogledom dobroga Samarijanca”, pitajući se koje se ljudske rane i nade u njemu skrivaju.</li>
+                </ol>
+                <p class="pk-block__sub">U zajednici</p>
+                <ol>
+                  <li><strong>Metoda poliedra:</strong> na sastanku skupine ili radnom sastanku pokušaj vrednovati mišljenje drukčije od vlastitoga, sjećajući se da je istina poput „poliedra” koji se odražava iz više kutova.</li>
+                </ol>
+              </div>
+
+              <div class="pk-block pk-quiz pk-quiz--tf">
+                <h4 class="pk-block__title">Osobno vrednovanje</h4>
+                <p class="pk-block__sub">Točno ili netočno?</p>
+                <ol class="pk-quiz__list">
+                  <li>Socijalni nauk Crkve statičan je kodeks normi koji se nepromijenjen primjenjuje kroz vrijeme.</li>
+                  <li>Crkva priznaje legitimnu autonomiju zemaljskih stvarnosti i politike.</li>
+                  <li>Umjetna inteligencija smatra se tek izvanrednim stanjem kojim treba upravljati.</li>
+                  <li>Načelo supsidijarnosti traži da ustanove viših razina priznaju, štite i promiču slobodu i kreativnost nižih razina.</li>
+                </ol>
+                <details class="pk-answers">
+                  <summary>Rješenja</summary>
+                  <ol>
+                    <li><strong>Netočno.</strong> SNC nije statičan kodeks normi.</li>
+                    <li><strong>Točno.</strong> Crkva priznaje legitimnu autonomiju zemaljskih stvarnosti i politike.</li>
+                    <li><strong>Netočno.</strong> Umjetna inteligencija nije tek izvanredno stanje kojim treba upravljati.</li>
+                    <li><strong>Točno.</strong> Načelo supsidijarnosti štiti slobodu i kreativnost nižih razina.</li>
+                  </ol>
+                </details>
+              </div>
+
+              <div class="pk-prayer">
+                <p>Gospodine, vodi naše korake kroz povijest.</p>
+                <p>Pouči nas da otvorena srca slušamo „znakove vremena”,</p>
+                <p>kako bismo u preobrazbama našega svijeta prepoznali tvoju prisutnost.</p>
+                <p>Daj nam mudrost da nove tehnologije koristimo</p>
+                <p>ne kao sredstva dominacije, nego kao putove služenja dostojanstvu svake osobe.</p>
+                <p>Učini nas poniznim suputnicima na putu čovječanstva,</p>
+                <p>sposobnima u jednom zagrljaju sjediniti krik zemlje i krik siromašnih.</p>
+                <p>Pomozi nam graditi zajednice koje su poput poliedra,</p>
+                <p>u kojima je svaka različitost dar, a svako djelovanje usmjereno prema općem dobru.</p>
+                <span class="pk-prayer__amen">Amen.</span>
+              </div>
+            </article>
+
+            <article class="pk-chapter" id="pk-poglavlje-2">
+              <header class="pk-chapter__head">
+                <span class="pk-chapter__kicker">Drugo poglavlje</span>
+                <h3 class="pk-chapter__title">Temelji i načela socijalnoga nauka Crkve</h3>
+              </header>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Kratak sažetak</h4>
+                <p>Drugo poglavlje enciklike usredotočuje se na temeljne kamenove socijalnoga nauka Crkve, prikazujući ih kao „živu mudrost” potrebnu za vođenje čovječanstva u dobu umjetne inteligencije i velikih tehnoloških promjena.</p>
+                <p>Ljudska osoba temelj je svega. Ljudsko biće nikada nije objekt ni podatkovna točka, nego subjekt s dostojanstvom kojemu tehnologija treba služiti, a ne ga zamijeniti.</p>
+                <p class="pk-block__sub">Načela</p>
+                <ol>
+                  <li><strong>Opće dobro:</strong> nenegocijabilna je vrijednost; skup uvjeta koji svima omogućuju postići vlastito ispunjenje. U digitalnom dobu to uključuje pravo na pristup tehnologiji i zaštitu osobnih podataka.</li>
+                  <li><strong>Opća namjena dobara:</strong> dobra zemlje (uključujući digitalna dobra i inovacije) pripadaju svima. Profit ne može biti jedino mjerilo; inovacija mora smanjivati nejednakosti, a ne ih povećavati.</li>
+                  <li><strong>Supsidijarnost:</strong> štiti slobodu pojedinaca i posrednih zajednica od miješanja moćnih sila, bilo državnih bilo tehnoloških.</li>
+                  <li><strong>Solidarnost:</strong> sudbina svake osobe povezana je sa sudbinom svih: „nitko se ne spašava sam”.</li>
+                  <li><strong>Socijalna pravednost:</strong> ne radi se samo o najpravednijoj raspodjeli dobara, nego i o aktivnom sudjelovanju i transparentnosti u procesima odlučivanja, uključujući one koje pokreću algoritmi.</li>
+                </ol>
+                <p>Ta načela, promatrana zajedno, tvore društvenu etiku sposobnu humanizirati modernitet i promicati cjelovit ljudski razvoj svake osobe, nikoga ne isključujući.</p>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Navodi iz enciklike</h4>
+                <blockquote class="pk-quote">
+                  <p>Ljudsko dostojanstvo ne ovisi o čovjekovim sposobnostima, bogatstvu ili položaju u životu, niti o ispravnim ili pogrešnim izborima; naprotiv, ono je dar koji prethodi svakoj osobi i nadilazi je, a Bog ga daje kao izraz svoje neugasive ljubavi.</p>
+                  <span class="pk-quote__ref">MH 50</span>
+                </blockquote>
+                <blockquote class="pk-quote">
+                  <p>Solidarnost zahtijeva da odluke glede podataka, algoritama, platformi i umjetne inteligencije uzimaju u obzir ne samo neposrednu korist nekolicine, nego i učinak na sve narode i na buduće naraštaje.</p>
+                  <span class="pk-quote__ref">MH 76</span>
+                </blockquote>
+                <blockquote class="pk-quote">
+                  <p>U današnje vrijeme socijalna pravda mora se također suočiti s okruženjem oblikovanim digitalnim tehnologijama.</p>
+                  <span class="pk-quote__ref">MH 80</span>
+                </blockquote>
+              </div>
+
+              <div class="pk-bible">
+                <span class="pk-bible__tag">Biblijski odlomak</span>
+                <p>Bijahu postojani u nauku apostolskom, u zajedništvu, lomljenju kruha i molitvama. Strahopoštovanje obuzimahu svi jer su apostoli činili mnoga čudesa i znamenja. Svi koji prigrliše vjeru bijahu zajedno i sve im bijaše zajedničko. Prodavali bi imanja i dobra i dijelili svima kako bi tko trebao. Svaki bi dan jednodušno provodili mnogo vremena u Hramu, po kućama bi lomili kruh i u radosti i prostodušnosti srca zajedno uzimali hranu, hvaleći Boga i uživajući naklonost svega naroda. A Gospodin je danomice zajednici pridruživao one koji su se spašavali.</p>
+                <span class="pk-bible__ref">Dj 2, 42–47</span>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Pitanja za razmišljanje</h4>
+                <div class="pk-questions-grid">
+                  <div class="pk-questions-group">
+                    <p class="pk-block__sub">Na osobnoj razini</p>
+                    <ol>
+                      <li>Što određuje vrijednost ljudi?</li>
+                      <li>Traže li moji svakodnevni izbori opće dobro ili samo moje vlastite interese?</li>
+                      <li>Služi li moja svakodnevna uporaba tehnologije (društvene mreže, aplikacije, alati umjetne inteligencije) poboljšanju mojih odnosa i uključivanju drugih ili postaje oblik izolacije koji hrani samo moje privatne interese?</li>
+                    </ol>
+                  </div>
+                  <div class="pk-questions-group">
+                    <p class="pk-block__sub">U zajednici</p>
+                    <ol>
+                      <li>Jesmo li pozorni na one koje digitalna nejednakost „ostavlja po strani”? Što konkretno činimo da inovacija ne stvori nove oblike marginalizacije među starijima ili siromašnijima?</li>
+                      <li>Jesmo li sposobni tražiti „transparentnost i odgovornost” u procesima odlučivanja koji na nas utječu?</li>
+                      <li>Kako možemo spriječiti da „sigurna utočišta” algoritama zamijene ljudsko razlučivanje i istinsko sudjelovanje krštenika?</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Iskustva</h4>
+                <p class="pk-block__sub">Na osobnoj razini</p>
+                <ol>
+                  <li><strong>Provjera „općega dobra”:</strong> prije nego što doneseš poslovnu ili obiteljsku odluku, ne pitaj se samo „što je najbolje za mene?”, nego i: kako ovaj izbor utječe na ljude oko mene? Potiče li uključivanje ili stvara zapreke?</li>
+                  <li><strong>Darivanje znanja:</strong> u duhu „opće namjene dobara”, ovaj tjedan odvoji vrijeme da nekome tko to teško razumije objasniš nešto što dobro znaš, ne tražeći ništa zauzvrat.</li>
+                </ol>
+                <p class="pk-block__sub">U zajednici</p>
+                <ol>
+                  <li><strong>Digitalna solidarnost:</strong> organizirajte mali „help desk” za one koji teško koriste tehnologiju (na primjer starije osobe koje moraju ispunjavati obrasce na internetu), pretvarajući tehnologiju u korisno sredstvo za sve.</li>
+                </ol>
+              </div>
+
+              <div class="pk-block pk-quiz">
+                <h4 class="pk-block__title">Osobno vrednovanje</h4>
+                <p class="pk-block__sub">Odaberi točan odgovor</p>
+                <ol class="pk-quiz__list">
+                  <li>Tehnološka inovacija koja povećava profit platforme, ali isključuje najsiromašnije slojeve stanovništva, krši načelo:
+                    <ul>
+                      <li>industrijske tajne</li>
+                      <li>općega dobra</li>
+                      <li>tehničkoga napretka</li>
+                    </ul>
+                  </li>
+                  <li>Kada središnja institucija sprječava lokalnu udrugu da riješi problem koji bi mogla učinkovito riješiti, ona krši:
+                    <ul>
+                      <li>solidarnost</li>
+                      <li>supsidijarnost</li>
+                      <li>distributivnu pravednost</li>
+                    </ul>
+                  </li>
+                  <li>Što znači primijeniti „opću namjenu dobara” na digitalno znanje i umjetnu inteligenciju?
+                    <ul>
+                      <li>zakonom učiniti sav softver besplatnim</li>
+                      <li>ukinuti privatno vlasništvo nad podacima</li>
+                      <li>usmjeriti plodove ljudske domišljatosti tako da napredak doista pripada svima, a ne samo nekolicini</li>
+                    </ul>
+                  </li>
+                  <li>Ako tvrtka koristi algoritam da bi procjenjivala rad zaposlenika isključivo na temelju brojeva, koje je načelo socijalnoga nauka Crkve primarno ugroženo?
+                    <ul>
+                      <li>solidarnost</li>
+                      <li>dostojanstvo ljudske osobe</li>
+                      <li>opća namjena dobara</li>
+                    </ul>
+                  </li>
+                </ol>
+                <details class="pk-answers">
+                  <summary>Točni odgovori</summary>
+                  <ol>
+                    <li>Opće dobro.</li>
+                    <li>Supsidijarnost.</li>
+                    <li>Usmjeriti plodove ljudske domišljatosti tako da napredak doista pripada svima, a ne samo nekolicini.</li>
+                    <li>Dostojanstvo ljudske osobe.</li>
+                  </ol>
+                </details>
+              </div>
+
+              <div class="pk-prayer">
+                <p>Gospodine, izvore života, nauči nas da u svakoj osobi vidimo lice,</p>
+                <p>kako bi tehnologija uvijek bila u službi čovjeka.</p>
+                <p>Pomozi nam tražiti dobro svih, dijeleći znanje u duhu solidarnosti</p>
+                <p>i vrednujući dobro koje dolazi odozdo.</p>
+                <p>Daj nam mudrost da gradimo istinsku pravednost,</p>
+                <p>da tehnološki napredak bude put mira za cijelo čovječanstvo.</p>
+                <span class="pk-prayer__amen">Amen.</span>
+              </div>
+            </article>
+
+            <article class="pk-chapter" id="pk-poglavlje-3">
+              <header class="pk-chapter__head">
+                <span class="pk-chapter__kicker">Treće poglavlje</span>
+                <h3 class="pk-chapter__title">Tehnologija i dominacija</h3>
+                <p class="pk-chapter__subtitle">Veličina čovještva pred obećanjima umjetne inteligencije</p>
+              </header>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Kratak sažetak</h4>
+                <p>Treće poglavlje analizira antropološki i etički izazov koji postavljaju umjetna inteligencija i tehnologije u nastajanju. Tekst se služi dvjema biblijskim slikama kako bi opisao ljudsko djelovanje.</p>
+                <p><strong>Babilonska kula:</strong> predstavlja opasnost napretka vođena željom za dominacijom, gdje tehnička učinkovitost može postati „idol” koji dehumanizira i razara odnose.</p>
+                <p><strong>Obnova Jeruzalema (Nehemija):</strong> predstavlja model podijeljene odgovornosti, u kojem se tehnologija koristi za zacjeljivanje rana i obnovu društvenih veza na sudionički način.</p>
+                <p class="pk-block__sub">Ključni pojmovi</p>
+                <ol>
+                  <li><strong>Tehnokratska paradigma:</strong> tehnologija nije neutralna. Ako njome ne upravljaju srce i vrijednosti, sklona je nametnuti logiku potpune kontrole koja stvarnost svodi na objekt iskorištavanja.</li>
+                  <li><strong>Granica kao resurs:</strong> ljudska „ograničenost” nije manjak, nego prostor koji omogućuje odnos i potrebu za drugima.</li>
+                  <li><strong>Napredak nasuprot razvoju:</strong> ako tehnološka inovacija raste, a ljudsko srce vene, suočeni smo s lažnim napretkom.</li>
+                  <li><strong>Odgovornost i izbor:</strong> umjetna inteligencija nije neizbježna sudbina, nego trajno gradilište. Vjernici su pozvani svaki dan birati hoće li raditi na projektu dominacije ili na djelu brige i zaštite čovještva.</li>
+                </ol>
+              </div>
+
+              <div class="pk-bible">
+                <span class="pk-bible__tag">Biblijski odlomak</span>
+                <p>Rekoh im: „Vidite nevolju u kojoj se nalazimo: Jeruzalem je razvaljen, a vrata su mu spaljena. Dođite, sagradimo opet jeruzalemske zidine da više ne budemo ruglo.” […] A oni rekoše: „Ustanimo i gradimo!” I ohrabriše ruke za dobro djelo. […] Nosači tereta nosili su tako da su jednom rukom radili posao, a drugom držali oružje.</p>
+                <span class="pk-bible__ref">Neh 2, 17–18; 4, 17</span>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Navodi iz enciklike</h4>
+                <blockquote class="pk-quote">
+                  <p>Pozvani smo promišljati o velikim „gradilištima” našega doba i pitati se: što gradimo? […] To je izbor ne samo za našu budućnost nego i za našu sadašnjost, jer su umjetna inteligencija i druge tehnologije u nastajanju već dio našega svakodnevnog života.</p>
+                  <span class="pk-quote__ref">MH 90</span>
+                </blockquote>
+                <blockquote class="pk-quote">
+                  <p>Stvaralačka inteligencija čovječanstva dar je koji može ublažiti patnju i otvoriti nove mogućnosti, ali mora ostati usmjerena prema općemu dobru, pravednosti, brizi za ranjive i stvorenje.</p>
+                  <span class="pk-quote__ref">MH 129</span>
+                </blockquote>
+                <blockquote class="pk-quote">
+                  <p>Ako pak moć raste dok srce vene, a ljudske se veze kidaju, tada se suočavamo s novim oblikom Babilona — građevinom koja je veličanstvena, ali u svojoj biti obezčovječujuća.</p>
+                  <span class="pk-quote__ref">MH 129</span>
+                </blockquote>
+                <blockquote class="pk-quote">
+                  <p>Doba UI-a nije iznimka: gradnja Babilona ili obnova Jeruzalema započinje u svakome od nas.</p>
+                  <span class="pk-quote__ref">MH 130</span>
+                </blockquote>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Pitanja za razmišljanje</h4>
+                <div class="pk-questions-grid">
+                  <div class="pk-questions-group">
+                    <p class="pk-block__sub">Na osobnoj razini</p>
+                    <ol>
+                      <li>Osjećam li da moj život postaje „ljudskiji” zahvaljujući tehnološkim alatima koje koristim ili primjećujem da sam manje sposoban slušati, nestrpljiviji i usmjereniji na neposredne rezultate?</li>
+                      <li>Prihvaćam li svoja ograničenja (vremena, znanja, umora) kao prostor koji me otvara Božjoj i ljudskoj pomoći ili u tehnologiji tražim „beskonačnu moć” zbog koje mislim da mi nitko nije potreban?</li>
+                    </ol>
+                  </div>
+                  <div class="pk-questions-group">
+                    <p class="pk-block__sub">U zajednici</p>
+                    <ol>
+                      <li>Nalikuje li naša obitelj, župa ili crkvena skupina centraliziranom projektu u kojem nekolicina o svemu odlučuje (Babel) ili gradilištu na kojem svatko, kao u Nehemijino vrijeme, odgovorno i sudionički doprinosi svojim „dijelom”?</li>
+                      <li>Zaustavljamo li se, osim same uporabe tehnologije, i da zajedno postavimo pitanje: „Po kojim kriterijima odlučujemo je li neka inovacija za nas doista napredak? Čini li ono što gradimo našu zajednicu dostojnijom čovještva?”</li>
+                      <li>Možete pokušati, kao skupina ili pojedinačno, dovršiti ovu rečenicu iz teksta: „Danas odlučujem ne graditi svoju ‚Babilonsku kulu’ kada izbjegavam… a biram biti poput Nehemije kada…”</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Iskustva</h4>
+                <p class="pk-block__sub">Na osobnoj razini</p>
+                <ol>
+                  <li><strong>Post od „kontrole”:</strong> odaberi dio dana u kojem se odričeš uporabe tehnologije da bi nešto nadzirao ili kontrolirao (na primjer, da ne provjeravaš stalno obavijesti na mobitelu ili „lajkove” na društvenim mrežama).</li>
+                  <li><strong>Popravljanje odnosa:</strong> kao što je Nehemija iz ruševina ponovno podigao zidine, prepoznaj neki odnos „u ruševinama” u vlastitom životu. Pošalji poruku ili nazovi, ne da bi se prepirao, nego da pokušaš sagraditi most i, ako je moguće, dogovoriti susret licem u lice.</li>
+                </ol>
+                <p class="pk-block__sub">U zajednici</p>
+                <ol>
+                  <li><strong>Slavlje granica:</strong> organizirajte zajednički događaj (večeru, duhovnu obnovu) koji je „low tech”. Proslavite ljepotu potrebe jednih za drugima u kuhanju, pjevanju ili razgovoru, ponovno otkrivajući da nas upravo krhkost i ograničenja doista povezuju.</li>
+                </ol>
+              </div>
+
+              <div class="pk-block pk-quiz pk-quiz--tf">
+                <h4 class="pk-block__title">Osobno vrednovanje</h4>
+                <p class="pk-block__sub">Točno ili netočno?</p>
+                <ol class="pk-quiz__list">
+                  <li>U biblijskoj metafori koju tekst predlaže, Babilonska kula u odnosu na tehnologiju predstavlja neizbježan neuspjeh svakoga znanstvenog napretka.</li>
+                  <li>Temeljno pitanje koje treba postaviti pred tehnološkom inovacijom jest čini li ona ljudski život na zemlji dostojnijim čovještva.</li>
+                  <li>Nehemijin model i obnova Jeruzalema sugeriraju da stručnjacima moramo prepustiti da sami riješe sve probleme.</li>
+                  <li>Kada govorimo o „srcu koje vene” zbog tehnologije, govorimo o gubitku osjetljivosti, povezanosti i sposobnosti ljubavi u korist same moći.</li>
+                </ol>
+                <details class="pk-answers">
+                  <summary>Rješenja</summary>
+                  <ol>
+                    <li><strong>Netočno.</strong> Babilonska kula nije znak neizbježnoga neuspjeha znanstvenoga napretka.</li>
+                    <li><strong>Točno.</strong> Temeljno je pitanje čini li inovacija život dostojnijim čovještva.</li>
+                    <li><strong>Netočno.</strong> Nehemijin model traži zajedničku odgovornost, a ne prepuštanje stručnjacima.</li>
+                    <li><strong>Točno.</strong> „Srce koje vene” znači gubitak osjetljivosti, povezanosti i sposobnosti ljubavi.</li>
+                  </ol>
+                </details>
+              </div>
+
+              <div class="pk-prayer">
+                <p>Gospodine, arhitekte dobrote, daruj nam duh Nehemije,</p>
+                <p>da hrabro nastanimo gradilište povijesti,</p>
+                <p>prihvaćajući svoja ograničenja kao prostor susreta</p>
+                <p>i strpljivo obnavljajući ranjene veze.</p>
+                <p>Neka svako otkriće i svaki tehnički alat služi tome</p>
+                <p>da život na ovoj zemlji bude dostojniji, pravedniji i čovječniji.</p>
+                <span class="pk-prayer__amen">Amen.</span>
+              </div>
+            </article>
+
+            <article class="pk-chapter" id="pk-poglavlje-4">
+              <header class="pk-chapter__head">
+                <span class="pk-chapter__kicker">Četvrto poglavlje</span>
+                <h3 class="pk-chapter__title">Očuvati ljudsko u preobrazbi</h3>
+                <p class="pk-chapter__subtitle">Istina, rad, sloboda</p>
+              </header>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Kratak sažetak</h4>
+                <p>Četvrto poglavlje istražuje kako umjetna inteligencija i digitalne tehnologije preoblikuju svakodnevne geste i društvene strukture. Tekst se usredotočuje na tri temeljna načela.</p>
+                <ol>
+                  <li><strong>Istina kao opće dobro:</strong> upozorava na opasnost dezinformacija te manipulacije sadržajem, slikama i videozapisima. Suočeni s iskrivljenim narativima, istina nije tek „privatna stvar”, nego temelj demokracije. Tehnologija ne smije zamagliti granicu između istinitoga i lažnoga.</li>
+                  <li><strong>Dostojanstvo rada:</strong> govori o prijelazu s automatizacije na „zamjenu” čovjeka; rad nije samo proizvodnja, nego način na koji se osoba izražava. Upozorava na gubitak vještina, podvrgavanje automatiziranom nadzoru i opasnost svođenja ljudi na krute i ponavljajuće zadatke koji ih lišavaju autonomije i dostojanstva.</li>
+                  <li><strong>Zaštita slobode od svih oblika ovisnosti i komodifikacije:</strong> kritizira pretvaranje korisnika u „proizvod”. Osobni podatci, osobito biometrijski ili zdravstveni, postali su nove „rijetke rude” moći. Opasnost je novi digitalni kolonijalizam u kojem se podatci najslabijih iskorištavaju za treniranje modela od kojih najviše koriste najbogatiji.</li>
+                </ol>
+                <p>Tekst zaključuje da nije dovoljno samo „regulirati” tehnologiju; potrebno je kritičko obrazovanje koje će pomoći ljudima da ne postanu ovisni o tehnološkim alatima i da ponovno otkriju ljepotu stvarnih susreta.</p>
+              </div>
+
+              <div class="pk-bible">
+                <span class="pk-bible__tag">Biblijski odlomak</span>
+                <p>Ta na slobodu ste pozvani, braćo! Samo neka ta sloboda ne bude izlikom tijelu, nego iz ljubavi služite jedni drugima.</p>
+                <span class="pk-bible__ref">Gal 5, 13</span>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Navodi iz enciklike</h4>
+                <blockquote class="pk-quote">
+                  <p>Traženje istine bitan je element demokracije, koja je sama po sebi sredstvo doprinošenja općemu dobru. […] Ravnodušnost prema istini polako, ali sigurno, vodi silasku u totalitarizam.</p>
+                  <span class="pk-quote__ref">MH 134</span>
+                </blockquote>
+                <blockquote class="pk-quote">
+                  <p>Učiteljstvo je u radu prepoznalo „bitni ključ” za razumijevanje cjelokupnoga društvenog pitanja, jer upravo kroz svoj rad pojedinci razvijaju mnoge dimenzije vlastitoga postojanja.</p>
+                  <span class="pk-quote__ref">MH 148</span>
+                </blockquote>
+                <blockquote class="pk-quote">
+                  <p>Ovdje leži jedan od najhitnijih moralnih izazova našega vremena: osigurati da zajedničko znanje postane istinsko opće dobro, a ne sredstvo dominacije.</p>
+                  <span class="pk-quote__ref">MH 178</span>
+                </blockquote>
+                <blockquote class="pk-quote">
+                  <p>To su postali novi „rijetki zemni elementi” moći: vitalni podaci koji se, jednom prikupljeni i analizirani, mogu rabiti za treniranje prediktivnih modela, usmjeravanje investicijskih strategija, predviđanje kriza i, iznad svega, određivanje toga tko i što se smatra važnim.</p>
+                  <span class="pk-quote__ref">MH 178</span>
+                </blockquote>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Pitanja za razmišljanje</h4>
+                <div class="pk-questions-grid">
+                  <div class="pk-questions-group">
+                    <p class="pk-block__sub">Na osobnoj razini</p>
+                    <ol>
+                      <li>Provjeravam li informacije prije nego što ih podijelim?</li>
+                      <li>Jesam li svjestan da mi društvene mreže uglavnom pokazuju ono što potvrđuje moje sklonosti?</li>
+                      <li>Koliko puta tijekom dana svjesno biram pogledati osobu ispred sebe u oči?</li>
+                      <li>Čuvam li svoju sposobnost da ostanem u „stvarnom” svijetu, a ne da živim u „digitalnom svijetu”?</li>
+                    </ol>
+                  </div>
+                  <div class="pk-questions-group">
+                    <p class="pk-block__sub">U zajednici</p>
+                    <ol>
+                      <li>Što činimo da poučimo mlade, ali i starije, kako prepoznati manipulaciju i suprotstaviti joj se? Možemo li ponuditi trenutke „digitalne pismenosti”?</li>
+                      <li>Potiče li tehnologija u našim zajednicama sudjelovanje svih ili stvara nove hijerarhije između onih koji „imaju alate”, onih koji „znaju kako ih koristiti” i onih koji su isključeni?</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Iskustva</h4>
+                <p class="pk-block__sub">Na osobnoj razini</p>
+                <ol>
+                  <li><strong>Post od dijeljenja sadržaja:</strong> tijekom jednog tjedna obveži se da nećeš podijeliti nijednu poveznicu, vijest ili video prije nego odgovoriš na tri pitanja: Je li istinito? Je li dobro? Je li korisno? Ako je neka vijest namijenjena samo tomu da izazove bijes ili ogorčenje, odluči je ne dijeliti.</li>
+                  <li><strong>Osobna provjera privatnosti:</strong> provjeri postavke na svojem telefonu. Isključi oglašivačko profiliranje i lokaciju ondje gdje to nije potrebno. To je čin slobode: vrati svoje „rijetke rude”, svoje podatke.</li>
+                </ol>
+                <p class="pk-block__sub">U zajednici</p>
+                <ol>
+                  <li><strong>„S onu stranu algoritma”:</strong> odaberite neku kontroverznu aktualnu temu. Podijelite skupinu na dvije: jedna će tražiti informacije samo na društvenim mrežama, druga samo u izravnim dokumentarnim izvorima (cjeloviti tekstovi, službeni podatci, opširni intervjui). Zatim usporedite rezultate. Kako je „protivnik” prikazan na društvenim mrežama? Koje su nijanse nedostajale?</li>
+                </ol>
+              </div>
+
+              <div class="pk-block pk-quiz pk-quiz--tf">
+                <h4 class="pk-block__title">Osobno vrednovanje</h4>
+                <p class="pk-block__sub">Točno ili netočno?</p>
+                <ol class="pk-quiz__list">
+                  <li>Ljudski rad ima vrijednost koja nadilazi učinkovitost.</li>
+                  <li>U traženju istine moramo potpuno ignorirati digitalne platforme kako bismo izbjegli utjecaj.</li>
+                  <li>„Nove rijetke rude moći” geografska su područja gdje električna energija košta manje za pogon umjetne inteligencije.</li>
+                  <li>Tehnologija mora pomagati ljudskoj osobi.</li>
+                </ol>
+                <details class="pk-answers">
+                  <summary>Rješenja</summary>
+                  <ol>
+                    <li><strong>Točno.</strong> Ljudski rad ima vrijednost koja nadilazi učinkovitost.</li>
+                    <li><strong>Netočno.</strong> Ne moramo potpuno ignorirati digitalne platforme — moramo ih razlučno koristiti.</li>
+                    <li><strong>Netočno.</strong> „Nove rijetke rude moći” su životni podaci, a ne geografska područja jeftine energije.</li>
+                    <li><strong>Točno.</strong> Tehnologija mora pomagati ljudskoj osobi.</li>
+                  </ol>
+                </details>
+              </div>
+
+              <div class="pk-prayer">
+                <p>Gospodine, Bože istine i života, nauči nas čuvati Istinu kao opće dobro.</p>
+                <p>Daruj nam razlučivanje da se ne izgubimo među iskrivljenim pripovijestima</p>
+                <p>i odgovornost da budemo svjedoci onoga što je istinito i pravedno,</p>
+                <p>bježeći od svake manipulacije koja ranjava demokraciju i bratstvo.</p>
+                <p>Blagoslovi one koji rade: neka tehnologija uvijek bude sredstvo služenja.</p>
+                <p>Zaštiti dostojanstvo svakoga radnika, da svatko</p>
+                <p>može u svome radu izraziti svoju ljepotu i kreativnost.</p>
+                <p>Pouči nas da ostanemo ljudi, spremni na susret i brigu,</p>
+                <p>kako bi naša sloboda uvijek bila dar za druge.</p>
+                <span class="pk-prayer__amen">Amen.</span>
+              </div>
+            </article>
+
+            <article class="pk-chapter" id="pk-poglavlje-5">
+              <header class="pk-chapter__head">
+                <span class="pk-chapter__kicker">Peto poglavlje</span>
+                <h3 class="pk-chapter__title">Kultura moći i civilizacija ljubavi</h3>
+              </header>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Kratak sažetak</h4>
+                <p>Peto poglavlje potiče na promišljanje o utjecaju umjetne inteligencije na oružane sukobe i na traženje mira. Upozorava na napast da se strojevima povjere odluke koje moraju ostati isključivo u rukama ljudi.</p>
+                <ol>
+                  <li><strong>Gramatika sukoba:</strong> umjetna inteligencija mijenja način ratovanja čineći ga bržim i neosobnijim putem kibernetičkih napada i kampanja dezinformiranja. Opasnost je u tomu da tehnologija snizi prag za uporabu sile, čineći rat previše lako dostupnom opcijom umjesto krajnjim sredstvom.</li>
+                  <li><strong>Autonomni oružani sustavi:</strong> stroj nema ni savjest ni razlučivanje; prepustiti algoritmu odluke o životu i smrti nečovječan je čin koji briše osobnu odgovornost.</li>
+                  <li><strong>Od moći do mira:</strong> tekst suprotstavlja „kulturu moći” (koja drugoga vidi kao neprijatelja kojega treba ukloniti ili kao podatak koji treba obraditi) „civilizaciji ljubavi”. Pravi mir nije samo odsutnost rata, nego aktivno zalaganje za dijalog i brigu za druge.</li>
+                  <li><strong>Diplomacija kao briga:</strong> enciklika ponovno potvrđuje životnu ulogu diplomacije, koja se mora služiti „poniznošću i strpljenjem” da bi popravljala prekinute odnose, pa i u digitalnom prostoru, sprječavajući kibernetičke napade koji mogu destabilizirati čitave narode.</li>
+                </ol>
+              </div>
+
+              <div class="pk-bible">
+                <span class="pk-bible__tag">Biblijski odlomak</span>
+                <p>„U danima koji dolaze… on će suditi narodima i mnogim će pucima sud biti. Oni će mačeve prekovati u plugove, a koplja u srpove. Neće više narod dizati mača protiv naroda niti će se više učiti ratovanju.”</p>
+                <span class="pk-bible__ref">Iz 2, 2–4</span>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Navodi iz enciklike</h4>
+                <blockquote class="pk-quote">
+                  <p>U svijetu koji je sve više međuovisan, mir nije tek jedno pitanje među drugima, nego preduvjet univerzalnoga općeg dobra i kušnja moralne zrelosti naroda, osobito onih koji nose odgovornost upravljanja.</p>
+                  <span class="pk-quote__ref">MH 182</span>
+                </blockquote>
+                <blockquote class="pk-quote">
+                  <p>Moramo se prisjetiti načelâ socijalnoga nauka — dostojanstva osobe, općega dobra, opće namjene dobara, supsidijarnosti, solidarnosti i pravednosti — jer su ona kriteriji za prosuđivanje služe li tehnologije doista čovječanstvu ili ga podvrgavaju sebi. Stoga ta načela trebamo smatrati smjernicama za svoje odlučivanje.</p>
+                  <span class="pk-quote__ref">MH 183</span>
+                </blockquote>
+                <blockquote class="pk-quote">
+                  <p>„Mir vama!” To je mir uskrsloga Krista. Mir koji je nenaoružan i razoružava, ponizan i ustrajan. […] Ne umorimo se nikada moliti za mir i zalagati se za njegovo ostvarenje u svojim odnosima i u društvu.</p>
+                  <span class="pk-quote__ref">MH 228</span>
+                </blockquote>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Pitanja za razmišljanje</h4>
+                <div class="pk-questions-grid">
+                  <div class="pk-questions-group">
+                    <p class="pk-block__sub">Na osobnoj razini</p>
+                    <ol>
+                      <li>Koji stavovi u meni hrane agresivnost ili zatvorenost?</li>
+                      <li>Koristim li u digitalnom prostoru (društvene mreže, chat) riječi kao „oružje” da napadnem one koji misle drukčije ili prakticiram „diplomaciju srca” tražeći dijalog?</li>
+                      <li>Shvaćam li da me prepuštanje vlastitih moralnih izbora automatiziranim sustavima (pa i malima, poput aplikacije koja odlučuje kako ću upravljati svojim vremenom ili odnosima) lišava moje ljudske odgovornosti?</li>
+                    </ol>
+                  </div>
+                  <div class="pk-questions-group">
+                    <p class="pk-block__sub">U zajednici</p>
+                    <ol>
+                      <li>Dižemo li glas protiv dehumanizacije rata i uporabe autonomnoga oružja ili ostajemo ravnodušni prema tehnologiji koja može odlučivati o životu i smrti?</li>
+                      <li>Kako možemo ljude odgajati da izaberu mir u digitalnom svijetu?</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Iskustva</h4>
+                <p class="pk-block__sub">Na osobnoj razini</p>
+                <ol>
+                  <li><strong>„Diplomacija jedne minute”:</strong> prije nego odgovoriš na agresivan komentar ili internetsku provokaciju, zastani u šutnji. Iskoristi to vrijeme da se podsjetiš kako je iza zaslona osoba, a ne „neprijatelj kojega treba poraziti”. Odgovori blago ili odluči ne hraniti sukob.</li>
+                  <li><strong>Razlučivanje zabave:</strong> često videoigre i medijski sadržaji prikazuju rat i nasilje kao neosobnu i zabavnu igru. Osvijesti takve oblike zabave u vlastitom životu, zatim napravi kratku stanku od takva sadržaja i promotri ga kritički pitajući se: „Pomaže li mi to prepoznati dostojanstvo drugih ljudi ili me navikava da ih gledam kao mete?”</li>
+                </ol>
+                <p class="pk-block__sub">U zajednici</p>
+                <ol>
+                  <li><strong>Radionica „Preobrazba”:</strong> organizirajte susret skupine nadahnut Izaijinim proroštvom mira (pretvaranje mačeva u plugove). Zajedno analizirajte neko tehnološko sredstvo koje redovito upotrebljavate: na koje načine ono može služiti da „povrijedi” (kao mač), a na koje se načine može „prekovati” kako bi „obrađivalo” odnose i opće dobro (kao plug)?</li>
+                  <li><strong>Podizanje svijesti o autonomnim oružanim sustavima:</strong> organizirajte informativni susret (npr. projekciju filma ili raspravu) o temi „algoritamskoga delegiranja” života i smrti. Možete pozvati stručnjake ili zajedno čitati odlomke iz petoga poglavlja enciklike kako biste razumjeli zašto Crkva traži „značajnu ljudsku kontrolu” nad oružjem.</li>
+                </ol>
+              </div>
+
+              <div class="pk-block pk-quiz">
+                <h4 class="pk-block__title">Osobno vrednovanje</h4>
+                <p class="pk-block__sub">Odaberi točan odgovor</p>
+                <ol class="pk-quiz__list">
+                  <li>Koja se glavna opasnost spominje u tekstu glede uporabe umjetne inteligencije u oružanim sukobima?
+                    <ul>
+                      <li>Da bi strojevi mogli osjetiti mržnju prema neprijatelju.</li>
+                      <li>Da odluke o životu i smrti čini bržima i neosobnijima.</li>
+                      <li>Da bi umjetna inteligencija mogla odbiti izvršavati vojne zapovijedi.</li>
+                    </ul>
+                  </li>
+                  <li>Što se misli pod „mirom uskrsloga Krista”?
+                    <ul>
+                      <li>Mir koji je nenaoružan, razoružavajući, ponizan i postojan.</li>
+                      <li>Privremeno naoružano primirje između velesila.</li>
+                      <li>Mir koji se može postići samo potpunom vojnom pobjedom.</li>
+                    </ul>
+                  </li>
+                  <li>Koja je uloga diplomacije u kibernetičkom prostoru prema tekstu?
+                    <ul>
+                      <li>Zamijeniti ljudske diplomate sustavima umjetne inteligencije.</li>
+                      <li>Poticati dijalog sa svim stranama kako bi se spriječili napadi koji destabiliziraju zemlje.</li>
+                      <li>Stvarati vojske hakera kao odgovor na kibernetičke napade.</li>
+                    </ul>
+                  </li>
+                  <li>Kako umjetna inteligencija utječe na percepciju „neprijatelja”?
+                    <ul>
+                      <li>Pomaže bolje razumjeti motive protivnika pomoću strojnoga prevođenja.</li>
+                      <li>Potiče kulturu u kojoj se neprijatelja svodi na metu koju treba pogoditi ili na podatak koji treba obraditi.</li>
+                      <li>Onemogućuje prepoznati tko je neprijatelj zbog anonimnosti.</li>
+                    </ul>
+                  </li>
+                </ol>
+                <details class="pk-answers">
+                  <summary>Točni odgovori</summary>
+                  <ol>
+                    <li>Da odluke o životu i smrti čini bržima i neosobnijima.</li>
+                    <li>Mir koji je nenaoružan, razoružavajući, ponizan i postojan.</li>
+                    <li>Poticati dijalog sa svim stranama kako bi se spriječili napadi koji destabiliziraju zemlje.</li>
+                    <li>Potiče kulturu u kojoj se neprijatelja svodi na metu koju treba pogoditi ili na podatak koji treba obraditi.</li>
+                  </ol>
+                </details>
+              </div>
+
+              <div class="pk-prayer">
+                <p>Gospodine, Bože mira,</p>
+                <p>molimo te za one koji razvijaju i upravljaju novim tehnologijama:</p>
+                <p>neka ne podlegnu napasti dominacije i neka nikada svetu odluku</p>
+                <p>o ljudskom životu ne prepuste izračunima algoritma.</p>
+                <p>Slomi naše „digitalne mačeve”, govor mržnje i izvore žuči,</p>
+                <p>i pomozi nam da ih prekujemo u plugove pravednosti</p>
+                <p>koji obrađuju zemlju i njeguju ljudsko bratstvo.</p>
+                <p>Daruj nam mudrost diplomacije, poniznost dijaloga i hrabrost blagosti,</p>
+                <p>da u ovome svijetu prebivamo ne kao graditelji Babilonske kule,</p>
+                <p>nego kao obrtnici tvoga mira.</p>
+                <span class="pk-prayer__amen">Amen.</span>
+              </div>
+            </article>
+
+            <article class="pk-chapter" id="pk-zakljucak">
+              <header class="pk-chapter__head">
+                <span class="pk-chapter__kicker">Zaključak</span>
+                <h3 class="pk-chapter__title">Tkalci nade</h3>
+              </header>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Kratak sažetak</h4>
+                <p>Enciklika predlaže „put kršćanskoga života” za digitalno doba. Ključne točke jesu:</p>
+                <ol>
+                  <li><strong>Utjelovljenje kao kompas:</strong> „U svijetu kojim vladaju algoritmi i tehnološke apstrakcije, središte ostaje Riječ tijelom postala.” Kršćanska nas vjera vraća konkretnosti tijela, lica i stvarnih veza.</li>
+                  <li><strong>Razlučivanje i odgovornost:</strong> odjekujući svetome Pavlu — „svatko neka pazi kako gradi” — pozvani smo pitati se kakav svijet gradimo: Babilonsku kulu ili zajednički dom za čovječanstvo?</li>
+                  <li><strong>Put Veliča:</strong> Marija je uzor onoga koji zna razabrati Božji naum i usred promjene. Njezin je hvalospjev inovativna snaga koja preokreće logiku dominacije u korist milosrđa.</li>
+                  <li><strong>Tkalci nade:</strong> završni poziv jest preobraziti ovo vrijeme u „povijest spasenja”, svjedočeći ljepotu ljudskosti u kojoj prebiva Bog.</li>
+                </ol>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Navodi iz enciklike</h4>
+                <blockquote class="pk-quote">
+                  <p>„Neka svaki graditelj pazi kako gradi” (1 Kor 3, 10). […] Razmišljali smo o svijetu koji gradimo i pitali se što znači štititi ljudsku osobu u dobu umjetne inteligencije.</p>
+                  <span class="pk-quote__ref">MH 229</span>
+                </blockquote>
+                <blockquote class="pk-quote">
+                  <p>S istom vjerom kao Marija, postanimo „tkaoci nade” u našem svijetu, dijeleći ono što jesmo i što imamo, kako bi među nama rasla Isusova prisutnost i kako bi se oblikovalo njegovo Kraljevstvo.</p>
+                  <span class="pk-quote__ref">MH 245</span>
+                </blockquote>
+                <blockquote class="pk-quote">
+                  <p>U poniznoj vjernosti svakodnevnom životu i doba umjetne inteligencije može postati vrijeme u kojem Duh Sveti u našim životima ostvaruje civilizaciju ljubavi. Doista, Gospodin i dalje sve čini novim […].</p>
+                  <span class="pk-quote__ref">MH 245</span>
+                </blockquote>
+              </div>
+
+              <div class="pk-bible">
+                <span class="pk-bible__tag">Biblijski odlomak</span>
+                <p>„Veliča duša moja Gospodina […] Silne zbaci s prijestolja, a uzvisi neznatne; gladne napuni dobrima, a bogate otpusti prazne.”</p>
+                <span class="pk-bible__ref">Lk 1, 46–52</span>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Pitanja za razmišljanje</h4>
+                <div class="pk-questions-grid">
+                  <div class="pk-questions-group">
+                    <p class="pk-block__sub">Na osobnoj razini</p>
+                    <ol>
+                      <li>Pokušavam li u načinu na koji se služim tehnologijom „ostaviti trag” ljubavi ili me nosi plima novih trendova?</li>
+                      <li>Tražim li Boga u konkretnom licu svoga bližnjega ili se sklanjam u bestjelesnu i osamljenu duhovnost posredovanu samo zaslonima?</li>
+                    </ol>
+                  </div>
+                  <div class="pk-questions-group">
+                    <p class="pk-block__sub">U zajednici</p>
+                    <ol>
+                      <li>Jesmo li mjesto na kojem se prenosi nada ili se raspiruju strahovi pred ovim vremenom promjene?</li>
+                      <li>Kako možemo digitalne alate koristiti da sačuvamo jedinstvo i zajedništvo, a ne da nas razdvajaju?</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Iskustva</h4>
+                <p class="pk-block__sub">Na osobnoj razini</p>
+                <ol>
+                  <li><strong>Hodočašće konkretnoga čina:</strong> odaberi jedan dan u tjednu da se „odmakneš od apstraktnoga”. Susretni nekoga, iz prve ruke posvjedoči situaciji potrebe i učini djelo ljubavi.</li>
+                  <li><strong>Dnevnik Veliča:</strong> svake večeri zapiši mali razlog za zahvalnost za nešto „novo” što je Bog toga dana učinio u tvojem životu.</li>
+                </ol>
+                <p class="pk-block__sub">U zajednici</p>
+                <ol>
+                  <li><strong>Veliča na našim ulicama:</strong> okupite se na nekom značajnom mjestu u susjedstvu. Zajedno pročitajte odlomak Veliča, a zatim podijelite „znak nade” koji je svatko tijekom tjedna vidio u svom digitalnom ili stvarnom okruženju.</li>
+                  <li><strong>Agape i blizina:</strong> zaključite ovo putovanje trenutkom zajedništva „offline”, ostavljajući telefone u košari na ulazu i usredotočujući se na hranu, razgovor i pogled oči u oči.</li>
+                </ol>
+              </div>
+
+              <div class="pk-block pk-quiz">
+                <h4 class="pk-block__title">Osobno vrednovanje</h4>
+                <p class="pk-block__sub">Odaberi točan odgovor</p>
+                <ol class="pk-quiz__list">
+                  <li>Koji „kompas” tekst predlaže za digitalno doba?
+                    <ul>
+                      <li>Brzinu algoritama.</li>
+                      <li>Otajstvo Utjelovljenja.</li>
+                      <li>Učinkovitost tržišta.</li>
+                    </ul>
+                  </li>
+                  <li>Tko je prikazan kao uzor nade i novosti?
+                    <ul>
+                      <li>Sveti Pavao.</li>
+                      <li>Marija, žena Veliča.</li>
+                      <li>Suvremeni znanstvenici umjetne inteligencije.</li>
+                    </ul>
+                  </li>
+                  <li>Što znači biti „tkalac nade”?
+                    <ul>
+                      <li>Graditi sigurne tehnološke mreže.</li>
+                      <li>Svjedočiti Božju prisutnost usred promjena našega vremena.</li>
+                      <li>Zanemarivati izazove budućnosti kako bismo ostali u prošlosti.</li>
+                    </ul>
+                  </li>
+                </ol>
+                <details class="pk-answers">
+                  <summary>Točni odgovori</summary>
+                  <ol>
+                    <li>Otajstvo Utjelovljenja.</li>
+                    <li>Marija, žena Veliča.</li>
+                    <li>Svjedočiti Božju prisutnost usred promjena našega vremena.</li>
+                  </ol>
+                </details>
+              </div>
+
+              <div class="pk-prayer">
+                <p>Gospodine Isuse, utjelovljena Riječi,</p>
+                <p>ti koji si iz ljubavi prebivao u vremenu i prostoru,</p>
+                <p>nauči nas živjeti u ovom dobu algoritama budna srca.</p>
+                <p>Daruj nam Marijinu vjeru da možemo pjevati Veliča i među strojevima,</p>
+                <p>prepoznajući da prava moć pripada samo tvojem milosrđu.</p>
+                <p>Učini nas „tkalcima nade”, sposobnima svako sredstvo koristiti da ujedinjuje, a nikada da razdvaja,</p>
+                <p>da civilizacija ljubavi može poprimiti oblik i na mreži i kroz digitalne povezanosti.</p>
+                <p>Učini našu ljudskost „veličanstvenom”, da bude povijest spasenja</p>
+                <p>koja o tebi govori cijelomu svijetu.</p>
+                <span class="pk-prayer__amen">Amen.</span>
+              </div>
+            </article>
+
+            <article class="pk-chapter" id="pk-djeca">
+              <header class="pk-chapter__head">
+                <span class="pk-chapter__kicker">Za djecu</span>
+                <h3 class="pk-chapter__title">Pismo i aktivnosti za najmlađe</h3>
+              </header>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Pismo pape Lava XIV.</h4>
+                <p>Papa Lav napisao je pismo cijelome svijetu u kojem i djecu poziva da se brinu jedni za druge, da grade ljepše i bratskije društvo, u kojem si ljudi pomažu, u kojem nema rata i u kojem druge ne gledamo kao neprijatelje.</p>
+                <p>To pismo pripovijeda o dva grada.</p>
+                <ol>
+                  <li><strong>Babel:</strong> ljudi su htjeli sagraditi golemu kulu koja bi dosegnula nebo kako bi pokazali koliko su jaki. Ali ubrzo su se počeli među sobom prepirati i više se nisu mogli razumjeti, kao da govore različitim jezicima.</li>
+                  <li><strong>Jeruzalem:</strong> nakon što je grad Jeruzalem bio razoren (usp. Neh 2, 17), svi su se složili da ga zajedno obnove. Svatko je radio zajedno s drugima, unoseći svoje sposobnosti i ono što ima. Tako je njihov pothvat uspio.</li>
+                </ol>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Aktivnosti</h4>
+
+                <div class="pk-activity">
+                  <p class="pk-activity__title">Zid radosti (nadahnut Nehemijom)</p>
+                  <p>Svako dijete dobiva jednu ili više „opeka” od papira u boji i na njih piše nešto lijepo što može učiniti (npr. „Mogu se nasmiješiti”, „Pomažem mami”, „Dobar sam u nogometu”) ili neko djelo dobrote (npr. pomoći prijatelju, slušati učiteljicu, izmoliti molitvu).</p>
+                  <p>Zajedno mogu zalijepiti opeke na plakat kako bi sagradili „zidine Jeruzalema”. Možemo dobro graditi samo ako to činimo zajedno, stavljajući Boga u središte i pomažući jedni drugima.</p>
+                </div>
+
+                <div class="pk-activity">
+                  <p class="pk-activity__title">Kula koja nema smisla</p>
+                  <p>Uprizorite priču o Babelu koristeći samo plastične kocke ili kutije. Djeca trebaju pokušati sagraditi vrlo visoku kulu, natječući se međusobno i govoreći „izmišljene” jezike, stvarajući veliku zbrku. Zatim objasnite kako su Nehemija i ostali obnovili Jeruzalem: mirno, u molitvi i slušajući jedni druge.</p>
+                </div>
+
+                <div class="pk-activity">
+                  <p class="pk-activity__title">Robot i dijete</p>
+                  <p>Možda mislimo da su računala jako dobra zato što su brza, ali papa nas podsjeća da postoje mnoge „divne” stvari koje samo mi možemo činiti.</p>
+                  <p>Pogledaj crtež i oboji ga, a zatim dodaj druge stvari koje samo ljudi mogu činiti i osjećati.</p>
+                  <p>Strojevi pomažu, ali ljudsko je srce jedinstveno i predivno. Ljude se ne mjeri po tome što mogu učiniti ni koliko brzo to čine, nego po ljepoti njihova srca i pažnji koju iskazuju drugima.</p>
+                </div>
+
+                <div class="pk-activity">
+                  <p class="pk-activity__title">Šutnja kao polazište za slušanje</p>
+                  <p>Tri minute: svi u šutnji, zatvorenih očiju. Nakon toga trenutka šutnje zapitaj se: Kako sam se osjećao? Je li lako biti u šutnji? Što sam osjećao i mislio?</p>
+                  <p>U šutnji možemo slušati Boga i druge.</p>
+                </div>
+
+                <div class="pk-activity">
+                  <p class="pk-activity__title">Pravila za ispravnu uporabu tehnologije</p>
+                  <p>Zajedno sastavite 10 jednostavnih pravila i napišite ih na plakat. Na primjer:</p>
+                  <ol>
+                    <li>Koristim lijepe riječi.</li>
+                    <li>Nikoga ne isključujem.</li>
+                    <li>Provjeravam je li neka vijest istinita.</li>
+                    <li>Isključujem telefon kada s nekim razgovaram.</li>
+                    <li>Tehnologiju koristim da činim dobro.</li>
+                  </ol>
+                </div>
+
+                <div class="pk-activity">
+                  <p class="pk-activity__title">Naš svijet</p>
+                  <p>Stanite u krug držeći se za ruke, kao znak jedinstva, i poljubite mali globus da biste pokazali kako smo pozvani skrbiti za stvorenje.</p>
+                  <p>Bog nam je povjerio cijeli svijet u ruke kako bismo se za nj brinuli i svakoga dana činili ljepšim. Brinuti se za svijet ono je što Isus od nas svaki dan traži, a moramo se brinuti i za one koji su ranjivi i kojima je teže nego nama.</p>
+                </div>
+
+                <div class="pk-activity">
+                  <p class="pk-activity__title">Mreža bratstva</p>
+                  <p>Djeca stoje u krugu. Jedno dijete dobiva klupko vune i zamoli ga se da izgovori neku pozitivnu riječ (npr. prijateljstvo, pomoć, mir, slušanje). Zatim klupko dodaje drugom djetetu, stvarajući mrežu.</p>
+                  <p>Poticaj za razmišljanje može biti: „Svi smo povezani nevidljivim nitima. Kada si pomažemo, gradimo mrežu dobrote; ako pak jedni prema drugima postupamo loše, tada nas ta mreža ranjava.”</p>
+                </div>
+              </div>
+
+              <div class="pk-prayer">
+                <p>Isuse, nauči nas mudro koristiti svoje riječi, mobitele i računala.</p>
+                <p>Pomozi nam biti dobri, govoriti istinu, graditi mir i ljubiti jedni druge.</p>
+                <p>Neka nam nijedan stroj nikada ne dade zaboraviti</p>
+                <p>koliko su naša srca važna.</p>
+                <span class="pk-prayer__amen">Amen.</span>
+              </div>
+            </article>
+
+            <article class="pk-chapter" id="pk-mladi">
+              <header class="pk-chapter__head">
+                <span class="pk-chapter__kicker">Za mlade</span>
+                <h3 class="pk-chapter__title">Tko postajem u dobu zaslona?</h3>
+              </header>
+
+              <div class="pk-block">
+                <p>Živimo u dobu u kojem smo stalno povezani: telefoni, društvene mreže, umjetna inteligencija, slike, obavijesti. Sve se kreće vrlo brzo i često riskiramo da i sami tako živimo: u žurbi, rastreseni, puni riječi, ali slabi u slušanju.</p>
+                <p>U svojem pismu <em>Magnifica Humanitas</em> papa Lav poziva mlade da se ne boje tehnologije, nego da se njome nauče služiti s mudrošću i slobodom. Strojevi nam mogu pomoći na mnogo načina, ali nikada ne mogu zamijeniti ono što ljudsko srce doista čini ljudskim: ljubiti, slušati, birati dobro, graditi autentične odnose i brinuti se za druge.</p>
+                <p>Umjetna inteligencija moćan je alat, ali o nama ovisi kakav će oblik poprimiti. Zato nas papa poziva da ne postanemo pasivni promatrači digitalnoga svijeta, nego mladi sposobni graditi bratstvo, istinu i nadu.</p>
+                <p>I danas postoje dva načina gradnje svijeta.</p>
+                <p>Jedan je poput <strong>Babela</strong>, gdje svatko misli samo na sebe, traži vidljivost i moć, ali na kraju više ne razumije druge. Ljudi iz Babela htjeli su se do neba uspeti oslanjajući se samo na vlastitu snagu, koristeći opeke koje su sve iste i standardizirane. Često digitalni svijet riskira postati upravo to: mjesto performansa, gdje hladna učinkovitost sve izračunava, gdje se ljudi svode na „podatke koje treba izvući” (nove rijetke rude) i gdje se iza umirujuće retorike skrivaju usamljenost, polarizacija i nesposobnost dubokoga razumijevanja drugih. U Babelu se mnogo govori, ali više nema stvarne komunikacije.</p>
+                <p>Drugi je način poput <strong>Jeruzalema</strong>, gdje zajedno obnavljamo stavljajući osobu, suradnju i opće dobro u središte. Jeruzalem je, u toj slici, grad zajedništva i blizine, gdje Bog bira prebivati među ljudima. Ovdje se ne rabe standardizirane opeke, nego „živo kamenje”, sve različito, svako sa svojim identitetom i vlastitim krhkostima. To je model onih koji se tehnologijom ne služe kao polugom dominacije, nego kao sredstvom brige, stavljajući ljudsko biće u središte i polazeći upravo od odbačenih (siromašnih, bolesnih i onih koji trpe) da bi ih učinili zaglavnim kamenom.</p>
+                <p>Pozvani smo zastati, promišljati i pitati se:</p>
+                <ol>
+                  <li>Tko postajem?</li>
+                  <li>Jesam li slobodan ili ovisim o pogledu drugih?</li>
+                  <li>Približava li me tehnologija doista drugima?</li>
+                  <li>Što danas znači biti čovjek?</li>
+                </ol>
+                <p>Jer budućnost neće ovisiti samo o strojevima koje smo sposobni stvoriti, nego prije svega o ljudskosti koju smo sposobni sačuvati.</p>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Rječnik ključnih pojmova</h4>
+                <p>Da bismo razumjeli ovaj dokument, moramo govoriti istim jezikom. Evo nekih ključnih pojmova:</p>
+                <dl class="pk-vocab">
+                  <dt>UI (umjetna inteligencija)</dt>
+                  <dd>Moćan alat koji oblikuje procese odlučivanja i kolektivnu imaginaciju; nije neutralan jer prima obilježja onih koji je osmišljavaju i koriste.</dd>
+                  <dt>Tehnokratska paradigma</dt>
+                  <dd>Sklonost da se tehnologija smatra jedinim načinom razumijevanja stvarnosti, svodeći ljudska bića na podatke ili pokazatelje uspješnosti.</dd>
+                  <dt>Cjeloviti ljudski razvoj</dt>
+                  <dd>Rast koji se ne tiče samo ekonomije, nego svake dimenzije osobe (duhovne, društvene, odnosne).</dd>
+                  <dt>Supsidijarnost</dt>
+                  <dd>Poticanje suradnje između malih skupina, mladih i ustanova, tako da nitko ne bude isključen iz doprinosa koji može dati.</dd>
+                  <dt>Strukture grijeha</dt>
+                  <dd>Gospodarski ili politički sustavi koji potiču nepravdu i iskorištavanje, tretirajući ljude kao „potrošnu robu”.</dd>
+                  <dt>Epistemička asimetrija</dt>
+                  <dd>Neravnoteža moći između onih koji upravljaju podatcima i algoritmima i onih koji su samo njihovi objekti.</dd>
+                  <dt>Odgovornost</dt>
+                  <dd>Zahtjev da svaka automatizirana odluka bude povezana s prepoznatljivom ljudskom odgovornošću.</dd>
+                </dl>
+              </div>
+
+              <div class="pk-block">
+                <h4 class="pk-block__title">Aktivnosti</h4>
+
+                <div class="pk-activity">
+                  <p class="pk-activity__title">Šutnja i razmišljanje</p>
+                  <p>Prije početka susreta učenike se zamoli da stave mobitele na zrakoplovni način rada i polože ih u kutiju na sredini prostorije. Slijedi 15 minuta duboke šutnje, a zatim zajedničko čitanje Uvoda s prethodne stranice.</p>
+                  <p>Odmah potom započinje razgovor:</p>
+                  <ol>
+                    <li>Kako je isključiti se iz neprestanoga toka obavijesti?</li>
+                    <li>Oblikuju li algoritmi naše želje ili smo mi oni koji usmjeravaju vlastitu slobodu?</li>
+                    <li>Kako možemo tehnologiju koristiti da stvara stvarnu povezanost, a ne izolaciju?</li>
+                  </ol>
+                </div>
+
+                <div class="pk-activity">
+                  <p class="pk-activity__title">Tko sam ja online?</p>
+                  <p>Svaka se mlada osoba pita:</p>
+                  <ol>
+                    <li>Jesam li ista osoba online i offline? Kakvu sliku o sebi pokazujem na društvenim mrežama? Što skrivam?</li>
+                    <li>Koliko ovisim o lajkovima ili odobravanju?</li>
+                    <li>Mogu li bez telefona?</li>
+                  </ol>
+                  <p>Potom to mogu podijeliti u malim skupinama.</p>
+                </div>
+
+                <div class="pk-activity">
+                  <p class="pk-activity__title">Radionica živoga kamenja (Knjiga Nehemijina i Psalam 85)</p>
+                  <p>Svaka mlada osoba dobiva pravi kamen. Pozvani su promatrati ga: jedinstven je, sa svojim rubovima, bojom, teksturom i neponovljivošću — baš kao i naša tijela i naše priče.</p>
+                  <p>Zatim je svatko pozvan razmisliti o nekom „odbačenom kamenu” u svojoj okolini (fakultet, škola, društvene mreže, susjedstvo): nekoj situaciji izolacije, nevidljivom platformskom radniku (dostavljaču) ili vršnjaku koji se osjeća isključenim.</p>
+                  <p>Svatko na svoj kamen napiše ključnu riječ ili konkretno zauzimanje za „brigu” i „blizinu” kojim će tu situaciju ponovno staviti u središte (npr. slušanje, verbalno razoružavanje, fizička prisutnost, pravednost).</p>
+                  <p>Jedan po jedan polažu svoj kamen na plakat (sa skicom grada ili zajedničkoga doma), uklapajući ga s ostalima.</p>
+                  <p>Za razliku od standardiziranih opeka Babilona, Jeruzalem mladih gradi se vrednovanjem različitosti i krhkosti. Tehnologija postaje most samo ako joj je u temelju autentičan ljudski odnos.</p>
+                </div>
+
+                <div class="pk-activity">
+                  <p class="pk-activity__title">Radionica „Istina ili laž?”</p>
+                  <p>Učenicima podijelite novinske članke, slike, videozapise i/ili objave s društvenih mreža, od kojih su neki stvarni, a neki izmijenjeni ili generirani.</p>
+                  <p>Skupine zatim razmišljaju o ovome:</p>
+                  <ol>
+                    <li>Što je pouzdano.</li>
+                    <li>Koji nam znakovi pomažu u razlučivanju.</li>
+                    <li>Zašto je lako povjerovati lažnim vijestima.</li>
+                  </ol>
+                </div>
+
+                <div class="pk-activity">
+                  <p class="pk-activity__title">Što nas čini ljudima?</p>
+                  <p>Na sredinu plakata napišite: <strong>„Stroj nikada neće moći…”</strong></p>
+                  <p>Svatko dodaje riječi ili izraze (npr. istinski ljubiti, oprostiti, moliti, trpjeti s nekim, slobodno se darivati).</p>
+                </div>
+
+                <div class="pk-activity">
+                  <p class="pk-activity__title">Umjetna inteligencija na sudu</p>
+                  <p>Sastavite tim tužiteljstva, tim obrane i porotu. Tema neka bude: <strong>„Pomaže li umjetna inteligencija čovječanstvu ili ga ugrožava?”</strong></p>
+                  <p>Svaka skupina priprema argumente o radu, slobodi, odnosima, obrazovanju, ratu i usamljenosti, a zatim suđenje započinje.</p>
+                </div>
+
+                <div class="pk-activity">
+                  <p class="pk-activity__title">„Uredski algoritam”</p>
+                  <p>Skupina mora u samo nekoliko minuta izvršiti praktičan i kreativan zadatak (npr. sagraditi čvrstu strukturu koristeći samo sirove špagete i marshmallowe ili zamotati nekoliko poklona).</p>
+                  <p>Jedan voditelj glumi „algoritam”. Ne govori, nego samo pokazuje natpise sa strogim, neosobnim uputama u kratkim razmacima (npr. još 30 sekundi, smijeh nije dopušten, tko pogriješi ispada, povećajte brzinu za 20%). Algoritam procjenjuje samo broj proizvedenih predmeta, zanemarujući trud, suradnju i uzajamnu pomoć.</p>
+                  <p>Na pola aktivnosti algoritam nasumično „otpušta” ili „kažnjava” svakoga tko je zastao pomoći kolegi u poteškoći.</p>
+                  <p>Na kraju se dijele odgovori na sljedeća pitanja:</p>
+                  <ol>
+                    <li>Kako je raditi za kôd, a ne za osobu?</li>
+                    <li>Kako tehnologija na radnom mjestu može oduzeti dušu i svesti čovjeka na stroj?</li>
+                    <li>Kako možemo vratiti „srce” i odnose u svoje svakodnevne aktivnosti i učenje?</li>
+                  </ol>
+                </div>
+
+                <div class="pk-activity">
+                  <p class="pk-activity__title">Soba riječi</p>
+                  <p>Napravite dva plakata:</p>
+                  <ol>
+                    <li>Riječi koje izgrađuju.</li>
+                    <li>Riječi koje ranjavaju.</li>
+                  </ol>
+                  <p>Učenici zapisuju izraze koje su stvarno čuli online, u školi ili u skupinama na društvenim mrežama.</p>
+                  <p>Zatim razmišljaju:</p>
+                  <ol>
+                    <li>Zašto nam neke riječi ostaju urezane?</li>
+                    <li>Koliku težinu nosi jedan komentar?</li>
+                    <li>Mogu li ja na društvenim mrežama biti prisutnost mira?</li>
+                  </ol>
+                  <p>Aktivnost završava čitanjem evanđeoskoga odlomka o riječima i uzajamnoj ljubavi.</p>
+                </div>
+              </div>
+
+              <div class="pk-prayer">
+                <p>Gospodine Isuse, pomozi nam kretati se digitalnim svijetom a da ne izgubimo same sebe.</p>
+                <p>Daruj nam nutarnju slobodu, riječi koje izgrađuju druge, oči koje vide druge</p>
+                <p>i srce otvoreno istini.</p>
+                <p>Neka tehnologija nikada ne zamijeni prijateljstvo, slušanje, suosjećanje i ljubav.</p>
+                <p>Učini nas mladima sposobnima graditi zajednicu i nadu.</p>
+                <span class="pk-prayer__amen">Amen.</span>
+              </div>
+            </article>
+          </section>
         </article>
         </div>
       </main>
@@ -4842,7 +6380,8 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
       chapter4: "četvrto poglavlje",
       chapter5: "peto poglavlje",
       conclusion: "zaključak",
-      footnotes: "bilješke"
+      footnotes: "bilješke",
+      pastoral: "pastoralni priručnik"
     };
 
     function applyTheme(value) {
@@ -4869,9 +6408,20 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
 
     function applySection(value, shouldStore = true, scroll = true) {
       const showAll = value === "all";
-      sections.forEach((s) => { s.hidden = !showAll && s.dataset.section !== value; });
+      sections.forEach((s) => {
+        const isPastoral = s.dataset.section === "pastoral";
+        if (isPastoral) {
+          s.hidden = value !== "pastoral";
+        } else {
+          s.hidden = !showAll && s.dataset.section !== value;
+        }
+      });
       sectionSelect.value = value;
       readingStatus.textContent = labels[value] || labels.all;
+      const allChip = document.getElementById("show-all-mobile");
+      const pkChip = document.getElementById("show-pk-mobile");
+      if (allChip) allChip.classList.toggle("is-active", showAll);
+      if (pkChip) pkChip.classList.toggle("is-active", value === "pastoral");
       if (shouldStore) localStorage.setItem(storageKeys.section, value);
       if (scroll) window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -4907,7 +6457,15 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
       closeDrawer();
       requestAnimationFrame(() => requestAnimationFrame(() => window.print()));
     });
+
+    // Save just the pastoral kit appendix — switches to that view, then prints.
+    document.getElementById("pk-save-pdf").addEventListener("click", () => {
+      applySection("pastoral", true, false);
+      closeDrawer();
+      requestAnimationFrame(() => requestAnimationFrame(() => window.print()));
+    });
     document.getElementById("show-all-mobile").addEventListener("click", () => applySection("all"));
+    document.getElementById("show-pk-mobile").addEventListener("click", () => applySection("pastoral"));
     sectionSelect.addEventListener("change", (e) => applySection(e.target.value));
 
     document.addEventListener("click", (event) => {
@@ -5145,7 +6703,7 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
       const sections = docRoot.querySelectorAll(".doc-section");
       let text = "";
       sections.forEach((s) => {
-        if (s.dataset.section !== "footnotes") text += " " + s.textContent;
+        if (s.dataset.section !== "footnotes" && s.dataset.section !== "pastoral") text += " " + s.textContent;
       });
       return text;
     }
@@ -5241,13 +6799,16 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
     };
 
     function buildStats() {
-      const text = docRoot.textContent;
+      const text = Array.from(docRoot.querySelectorAll(".doc-section"))
+        .filter((s) => s.dataset.section !== "pastoral")
+        .map((s) => s.textContent)
+        .join(" ");
       const bodyText = rawText();
       const words = (bodyText.match(/\b[\p{L}\-]+\b/gu) || []).length;
       const minutes = Math.max(1, Math.round(words / 220));
       const paragraphs = docRoot.querySelectorAll("p.MsoNormal").length;
       const footnotes = docRoot.querySelectorAll(".MsoFootnoteText").length;
-      const links = docRoot.querySelectorAll("section:not([data-section='footnotes']) a[href^='http']").length;
+      const links = docRoot.querySelectorAll("section:not([data-section='footnotes']):not([data-section='pastoral']) a[href^='http']").length;
       const sentences = (bodyText.match(/[.!?](?=\s+[A-ZČĆŠŽĐ„])/g) || []).length;
       const questions = (bodyText.match(/\?/g) || []).length;
       const avgPar = paragraphs > 0 ? Math.round(words / paragraphs) : 0;
