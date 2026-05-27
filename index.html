@@ -2220,6 +2220,50 @@
       .reader p.pp-read::before { display: none !important; }
     }
 
+    /* Custom scrollbar — matches the warm parchment palette */
+    .sidebar,
+    .pp-bm-list,
+    .pp-quote-list {
+      scrollbar-width: thin;
+      scrollbar-color: color-mix(in srgb, var(--line) 75%, transparent) transparent;
+    }
+    .sidebar::-webkit-scrollbar,
+    .pp-bm-list::-webkit-scrollbar,
+    .pp-quote-list::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    .sidebar::-webkit-scrollbar-track,
+    .pp-bm-list::-webkit-scrollbar-track,
+    .pp-quote-list::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .sidebar::-webkit-scrollbar-thumb,
+    .pp-bm-list::-webkit-scrollbar-thumb,
+    .pp-quote-list::-webkit-scrollbar-thumb {
+      background: color-mix(in srgb, var(--line) 75%, transparent);
+      border-radius: 999px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      transition: background 0.18s ease;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover,
+    .pp-bm-list::-webkit-scrollbar-thumb:hover,
+    .pp-quote-list::-webkit-scrollbar-thumb:hover {
+      background: color-mix(in srgb, var(--accent-2) 70%, transparent);
+      background-clip: padding-box;
+    }
+    .sidebar:hover {
+      scrollbar-color: color-mix(in srgb, var(--accent-2) 60%, transparent) transparent;
+    }
+    .pp-bm-list::-webkit-scrollbar,
+    .pp-quote-list::-webkit-scrollbar { width: 6px; }
+    html[data-theme="dark"] .sidebar,
+    html[data-theme="dark"] .pp-bm-list,
+    html[data-theme="dark"] .pp-quote-list {
+      scrollbar-color: color-mix(in srgb, var(--line) 55%, transparent) transparent;
+    }
+
     /* Print-only translation disclaimer (hidden on screen) */
     .print-disclaimer { display: none; }
 
