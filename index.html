@@ -2682,44 +2682,25 @@
     }
     .pk-activity p:last-child { margin-bottom: 0; }
 
-    /* Hero-card pointer to the pastoral kit, shown above section-select */
-    .pk-pointer {
-      display: flex;
-      gap: 0.85rem;
-      align-items: flex-start;
-      margin: 1.4rem 0 0;
-      padding: 0.85rem 1rem;
-      background: var(--surface);
-      border: 1px solid var(--line-soft);
-      border-left: 3px solid var(--accent-2);
-      border-radius: var(--radius-sm);
+    /* Subtle one-line pointer to the pastoral kit, sits under the lang-links */
+    .pk-note {
+      margin: 0.9rem 0 0;
       font-family: var(--font-ui);
-      font-size: 0.88rem;
-      color: var(--ink-soft);
-      text-align: left;
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.01em;
     }
-    .pk-pointer__icon {
-      flex-shrink: 0;
-      width: 1.4rem;
-      height: 1.4rem;
-      color: var(--accent-2);
-      margin-top: 0.05rem;
-    }
-    .pk-pointer__body strong {
-      display: block;
-      color: var(--accent);
-      font-weight: 700;
-      margin-bottom: 0.1rem;
-    }
-    .pk-pointer__cta {
-      display: inline-block;
-      margin-top: 0.3rem;
-      color: var(--accent);
+    .pk-note a {
+      color: var(--muted);
       text-decoration: underline;
       text-decoration-color: var(--line);
       text-underline-offset: 3px;
+      transition: color 0.15s ease, text-decoration-color 0.15s ease;
     }
-    .pk-pointer__cta:hover { text-decoration-color: currentColor; }
+    .pk-note a:hover {
+      color: var(--accent);
+      text-decoration-color: currentColor;
+    }
 
     @media (min-width: 720px) {
       .pk-questions-grid {
@@ -2870,7 +2851,7 @@
       .reader p, .reader .MsoFootnoteText { break-inside: avoid; }
 
       /* Pastoral kit appendix — print rules */
-      .pk-pointer { display: none !important; }
+      .pk-note { display: none !important; }
       .pk { border-top: 1pt solid #999; margin-top: 1.5em; padding-top: 1em; }
       .pk-hero { page-break-before: always; }
       .pk-hero__title { color: #6e2733; font-size: 22pt; font-style: italic; }
@@ -2945,15 +2926,6 @@
         <span><strong>Neslužbeni prijevod — samo za osobnu upotrebu.</strong> Hrvatsku verziju s engleskoga izvornika preveo je jezični model GPT&#8209;5.4 — moguće su pogreške ili netočno prenesena značenja. Sva prava na izvorni tekst pripadaju originalnom izdavaču (© Dikasterij za komunikaciju — Libreria Editrice Vaticana). Za autoritativan tekst pogledajte službene jezične inačice na vatican.va.</span>
       </p>
 
-      <a class="pk-pointer" href="#pk-top" id="pk-jump">
-        <svg class="pk-pointer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h11l3 3v13.5"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M9 7h5"/><path d="M9 11h7"/></svg>
-        <span class="pk-pointer__body">
-          <strong>Prilog: Pastoralni priručnik</strong>
-          Neslužbeni hrvatski prijevod priručnika za župe, katehezu i animatore mladih — sažeci, biblijski tekstovi, pitanja, aktivnosti i molitve uz svako poglavlje.
-          <span class="pk-pointer__cta">Pogledaj prilog →</span>
-        </span>
-      </a>
-
       <nav class="lang-links" aria-label="Službeni prijevodi enciklike">
         <span class="lang-links__title">Službeni prijevodi:</span>
         <a href="https://www.vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html" lang="en" hreflang="en" rel="noopener" target="_blank"><span class="lang-links__code">EN</span><span class="lang-links__name">English</span></a>
@@ -2964,6 +2936,8 @@
         <a href="https://www.vatican.va/content/leo-xiv/pt/encyclicals/documents/20260515-magnifica-humanitas.html" lang="pt" hreflang="pt" rel="noopener" target="_blank"><span class="lang-links__code">PT</span><span class="lang-links__name">Português</span></a>
         <a href="https://www.vatican.va/content/leo-xiv/pl/encyclicals/documents/20260515-magnifica-humanitas.html" lang="pl" hreflang="pl" rel="noopener" target="_blank"><span class="lang-links__code">PL</span><span class="lang-links__name">Polski</span></a>
       </nav>
+
+      <p class="pk-note">Uz tekst je dostupan i <a href="#pk-top" id="pk-jump">pastoralni priručnik</a> za župe, katehezu i mlade.</p>
     </section>
 
     <div class="layout">
@@ -3410,14 +3384,14 @@
 <p class="MsoNormal">5. Sada je na nama da se s izazovima svojega vremena suočimo jasnoćom misli i odgovornošću. Potrebno je uspostaviti odgovarajuće regulatorne instrumente sposobne štititi pravdu i suzbijati iskrivljujuće učinke tehnološke moći. Ipak, pitanje se ne svodi samo na regulaciju. Kako je upozorio <a href="https://www.vatican.va/content/francesco/en.html">Papa Franjo</a>, moramo se realistično zapitati tko danas posjeduje tu moć i kako se njome služi: „Treba također priznati da su nuklearna energija, biotehnologija, informatika, poznavanje vlastite DNA i mnoge druge sposobnosti koje smo stekli… dali onima koji posjeduju znanje, a osobito gospodarska sredstva da se njime služe, dojmljivu nadmoć nad cijelim čovječanstvom i nad čitavim svijetom.” <a name="_ftnref7" href="#_ftn7" class=" cleaner">[7]</a> U prošlosti je uglavnom na državi bilo da usmjerava i vodi inovacije. Danas su, međutim, glavni pokretači razvoja privatni, često transnacionalni akteri, koji raspolažu resursima i sposobnošću djelovanja što nadmašuju mogućnosti mnogih vlada. Tehnološka moć tako poprima neviđeno, pretežito „privatno” obilježje, što još više otežava razlučivanje, upravljanje i usmjeravanje te moći prema općemu dobru.</p> 
 <p class="MsoNormal">6. Zbog toga je potrebno započeti proces zajedničkoga razlučivanja kako bismo prepoznali duhovne i kulturne korijene preobrazbi koje su u tijeku. Ako se usredotočimo samo na okolnosti trenutka, riskiramo da slijed izvanrednih stanja odredi smjer našega puta. Živimo kroz ubrzanu fazu prijelaza, „promjenu epohe”, u kojoj — dok se jedni natječu za budućnost novih tehnologija, a drugi se posvećuju razmišljanju o tome pitanju — većina ljudi promatra i čeka, gledajući izdaleka i tek se nadajući najboljemu. Upravo zato presudna pitanja navaljuju na našu savjest i više ih se ne može izbjegavati: Kamo idemo? Prema kojemu cilju želimo biti usmjereni? Koji smjer trebamo izabrati kao narod i kao ljudska zajednica?</p> 
 <p class="MsoNormal"><b><a name="Two_biblical_images"></a>Dvije biblijske slike</b></p> 
-<p class="MsoNormal">7. Da bismo odgovorili na ta pitanja i razabrali kako odgovorno upravljati dobom umjetne inteligencije, želim prizvati u pamet dva prizora iz Biblije: gradnju Kule babilonske (usp. <i>Post</i> 11,1-9) i obnovu jeruzalemskih zidina (usp. <i>Neh</i> 2–6). Priča o Babelu pojavljuje se u Knjizi Postanka, na ishodištu čovječanstva, odmah nakon rodoslovlja Noinih sinova. Pošto se narod nastanio u ravnici u zemlji Šinaru, odlučio je sagraditi grad i kulu „kojoj će vrh biti do neba” (<i>Post</i> 11,4). U strahu da se ne rasprši po zemlji, nastojao je sebi zajamčiti postojanost i moć te nadasve sebi „steći ime”. Bio je to dojmljiv pothvat: jedan jezik, jedna tehnologija, jedan smjer. Međutim, taj je projekt skrivao duboku opasnost. Bio je to projekt začet bez odnosa prema Bogu, poduprt jednolikošću koja je uklanjala različitost i birala homogenizaciju umjesto zajedništva. Kad se grad gradi na oholosti i na zahtjevu za samodostatnošću, komunikacija se raspada, jezici se miješaju i ljudi se više ne razumiju. Ishod nije jedinstvo, nego raspršenost. Babel tako razotkriva granice svakoga nastojanja koje, ma kako veliko bilo, proizlazi iz samopotvrđivanja, žrtvuje ljudsko dostojanstvo učinkovitosti i teži dosegnuti nebo bez Božjega blagoslova.</p> 
+<p class="MsoNormal">7. Da bismo odgovorili na ta pitanja i razabrali kako odgovorno upravljati dobom umjetne inteligencije, želim prizvati u pamet dva prizora iz Biblije: gradnju Kule babilonske (usp. <i>Post</i> 11,1-9) i obnovu jeruzalemskih zidina (usp. <i>Neh</i> 2–6). Priča o Babelu pojavljuje se u Knjizi Postanka, na ishodištu čovječanstva, odmah nakon rodoslovlja Noinih sinova. Pošto se narod nastanio u ravnici u zemlji Šinaru, odlučio je sagraditi grad i kulu „s vrhom do neba” (<i>Post</i> 11,4). U strahu da se ne rasprši po zemlji, nastojao je sebi zajamčiti postojanost i moć te nadasve „pribaviti sebi ime”. Bio je to dojmljiv pothvat: jedan jezik, jedna tehnologija, jedan smjer. Međutim, taj je projekt skrivao duboku opasnost. Bio je to projekt začet bez odnosa prema Bogu, poduprt jednolikošću koja je uklanjala različitost i birala homogenizaciju umjesto zajedništva. Kad se grad gradi na oholosti i na zahtjevu za samodostatnošću, komunikacija se raspada, jezici se miješaju i ljudi se više ne razumiju. Ishod nije jedinstvo, nego raspršenost. Babel tako razotkriva granice svakoga nastojanja koje, ma kako veliko bilo, proizlazi iz samopotvrđivanja, žrtvuje ljudsko dostojanstvo učinkovitosti i teži dosegnuti nebo bez Božjega blagoslova.</p> 
 <p class="MsoNormal">8. Knjiga Nehemijina, naprotiv, otvara se u času velike ranjivosti u povijesti drevnoga Izraela. Nakon babilonskoga progonstva, dio se naroda vratio u Jeruzalem, ali je grad još bio u ruševinama, zidine su bile srušene, a vrata spaljena (usp. <i>Neh </i>1–2). Nehemija, Židov u službi perzijskoga kralja Artakserksa, primio je vijest o pogubnom stanju grada svojih otaca. Prije nego što je poduzeo bilo što, postio je, molio i posredovao za narod. Potom je zamolio kralja za dopuštenje da se vrati u Jeruzalem te je, po dolasku, u tišini pregledao razorena mjesta.&nbsp; Nije nametao rješenja odozgo. Sazvao je obitelji, svakoj povjerio dio zida koji treba obnoviti, slušao njihove brige, usklađivao njihove napore i suprotstavljao se svakomu protivljenju. Pripovijest pokazuje kako se grad ponovno rađa ne inicijativom jednoga čovjeka, nego zajedničkom odgovornošću svih: muškaraca, žena, svećenika, obrtnika, glavara obitelji i mladih — svi imaju svoj udio. To je pothvat s Bogom u središtu, koji obnavlja odnose prije nego što obnavlja kamenje. Tako drevni Jeruzalem ponovno otkriva zajednički jezik — ne jezik jednolikosti, nego jezik zajedništva, to jest sklad koji nastaje kada sve osobe preuzimaju vlastitu ulogu i priznaju da njihova snaga dolazi od Gospodina.</p> 
 <p class="MsoNormal">9. U svjetlu tih dviju slika, Duh Sveti danas nas izaziva glede našega odnosa prema tehnologiji i digitalnoj revoluciji koja je u tijeku. Znanstvena otkrića talenti su povjereni čovječanstvu da donesu plod (usp. <i>Mt</i> 25,14-30). Tehnologija ima moć liječiti, povezivati, poučavati i štititi naš zajednički dom; ali može i dijeliti, isključivati te stvarati nove oblike nepravde. Apstraktno promatrano, tehnologija sama po sebi nije rješenje za probleme čovječanstva, kao što nije ni po sebi zla. U praksi, međutim, tehnologija nikada nije neutralna, jer poprima obilježja onih koji je osmišljavaju, financiraju, reguliraju i služe se njome. Stoga prvotni izbor nije između „da” ili „ne” tehnologiji, nego između izgradnje Babela ili obnove Jeruzalema; između moći koja želi gospodariti nebesima i naroda koji u Božjoj prisutnosti zajednički radi na obnovi zidina bratskoga suživota.</p> 
-<p class="MsoNormal">10. Moramo dakle izbjeći „sindrom Babela”, to jest idolopoklonstvo dobiti koje žrtvuje slabe, jednolikost koja neutralizira razlike i umišljenost da jedan jedini jezik — pa i digitalni — može sve, uključujući otajstvo osobe, prevesti u podatke i performanse. Opasnost od dehumanizacije — od izgradnje budućnosti koja isključuje Boga i drugoga svodi na sredstvo — drevna je i uvijek nova napast koja danas poprima tehničko obličje. Umjesto toga, izaberimo „Nehemijin put”, koji ističe važnost zajedničkoga rada kako bi Grad Božji postao sigurno mjesto za prognanike koji se vraćaju. Obnavljati danas znači priznati da upravo iz mnoštva glasova i vizija koji nas, premda katkad podsjećaju na zbrku uzrokovanu raznolikošću govornih jezika, podsjećaju i na blistavu mogućnost. Ta je mogućnost, naime, u tome da zajedno gradimo, da različitost preobrazimo u bogatstvo i da slušanje i dijalog učinimo zajedničkim tlom na kojem će se njegovati pravda i bratstvo. U toj zajedničkoj zadaći kršćani otkrivaju svoju posebnu ulogu usmjeravanja djelovanja prema Bogu kako se, u njegovu svjetlu, pluralizam ne bi rasuo u nered, nego da bi, po praksi sinodalnosti, postao prostor u kojem čovječanstvo ponovno otkriva svoje čvrste temelje i svoj konačni cilj. U Knjizi Otkrivenja Ivan vidi Novi Jeruzalem „gdje silazi s neba od Boga” (<i>Otk</i> 21,2) kao dar za cijelo čovječanstvo. A ta vizija milosti poziv je nama kršćanima da zajednički radimo kako bismo u današnjim „gradovima” promicali miran, pravedan i dostojanstven život u zajednici.</p> 
+<p class="MsoNormal">10. Moramo dakle izbjeći „sindrom Babela”, to jest idolopoklonstvo dobiti koje žrtvuje slabe, jednolikost koja neutralizira razlike i umišljenost da jedan jedini jezik — pa i digitalni — može sve, uključujući otajstvo osobe, prevesti u podatke i performanse. Opasnost od dehumanizacije — od izgradnje budućnosti koja isključuje Boga i drugoga svodi na sredstvo — drevna je i uvijek nova napast koja danas poprima tehničko obličje. Umjesto toga, izaberimo „Nehemijin put”, koji ističe važnost zajedničkoga rada kako bi Grad Božji postao sigurno mjesto za prognanike koji se vraćaju. Obnavljati danas znači priznati da upravo iz mnoštva glasova i vizija koji nas, premda katkad podsjećaju na zbrku uzrokovanu raznolikošću govornih jezika, podsjećaju i na blistavu mogućnost. Ta je mogućnost, naime, u tome da zajedno gradimo, da različitost preobrazimo u bogatstvo i da slušanje i dijalog učinimo zajedničkim tlom na kojem će se njegovati pravda i bratstvo. U toj zajedničkoj zadaći kršćani otkrivaju svoju posebnu ulogu usmjeravanja djelovanja prema Bogu kako se, u njegovu svjetlu, pluralizam ne bi rasuo u nered, nego da bi, po praksi sinodalnosti, postao prostor u kojem čovječanstvo ponovno otkriva svoje čvrste temelje i svoj konačni cilj. U Knjizi Otkrivenja Ivan vidi Novi Jeruzalem kako „silazi s neba od Boga” (<i>Otk</i> 21,2) kao dar za cijelo čovječanstvo. A ta vizija milosti poziv je nama kršćanima da zajednički radimo kako bismo u današnjim „gradovima” promicali miran, pravedan i dostojanstven život u zajednici.</p> 
 <p class="MsoNormal"><b><a name="Building_"></a>Izgrađivati za opće dobro</b></p> 
-<p class="MsoNormal">11. Graditi grad utemeljen na općemu dobru znači, prije svega, graditi na čvrstom odnosu s Bogom. To znači priznati da nas istina njegove ljubavi poziva na život „u izobilju” ( <i>Iv</i> 10,10) i na zajedništvo s njime. Poput svetoga Augustina, i mi možemo reći: „Za sebe si nas stvorio, Gospodine, i nemirno je srce naše dok se ne smiri u tebi.” <a name="_ftnref8" href="#_ftn8" class=" cleaner">[8]</a> Doista, Bog je u naša srca upisao želju za srećom koja obuhvaća sve dimenzije života. Crkva, u dijalogu s muškarcima i ženama našega vremena, prepoznaje hitnu potrebu da tu težnju čuva i usmjerava prema njezinoj najdubljoj istini.</p> 
+<p class="MsoNormal">11. Graditi grad utemeljen na općemu dobru znači, prije svega, graditi na čvrstom odnosu s Bogom. To znači priznati da nas istina njegove ljubavi poziva „da život imaju, u izobilju da ga imaju” ( <i>Iv</i> 10,10) i na zajedništvo s njime. Poput svetoga Augustina, i mi možemo reći: „Za sebe si nas stvorio, Gospodine, i nemirno je srce naše dok se ne smiri u tebi.” <a name="_ftnref8" href="#_ftn8" class=" cleaner">[8]</a> Doista, Bog je u naša srca upisao želju za srećom koja obuhvaća sve dimenzije života. Crkva, u dijalogu s muškarcima i ženama našega vremena, prepoznaje hitnu potrebu da tu težnju čuva i usmjerava prema njezinoj najdubljoj istini.</p> 
 <p class="MsoNormal">12. Kao drugo, graditi za opće dobro znači prihvatiti granice i slabost čovjeka, ne smatrajući ih pogrješkom koju valja ispraviti. Danas prijeti opasnost da se čovjekova želja za punoćom života zavede prijevarnim ciljevima, kao što je obzor tehnologije koja obećava da će nas osloboditi svake slabosti, i modeli blagostanja koji iza sebe ostavljaju čitava stanovništva. Prečesto polažemo nadu u neograničene „nadogradnje”, u oblike napretka koji produbljuju nejednakosti i u neposredna rješenja nesposobna izliječiti ljudske rane. Kao posljedica toga, dok neki slijede iluziju neograničenoga samopotvrđivanja, mnogi ostaju lišeni osnovnih životnih potreba. Crkva nas čvrstim, ali poniznim glasom podsjeća da se istinsko ispunjenje ne postiže uklanjanjem slabosti, nego skladnim rastom. Ono se nalazi ondje gdje su sloboda i odgovornost isprepletene uzajamnom brigom i istinskom solidarnošću te gdje se napredak mjeri dostojanstvom svake osobe i dobrom svih naroda.</p> 
-<p class="MsoNormal">13. Kao treće, izgradnja svijeta u kojem svatko može cvasti zahtijeva zajedničku odgovornost i hrabrost. Nitko sam ne može nositi težinu izazova s kojima se svijet suočava, kao što nitko nije toliko slab da ne bi mogao dati svoj doprinos, jer se „snaga u slabosti usavršuje” (<i>2 Kor</i> 12,9). Svima je povjeren vlastiti dio zida: znanstvenicima i istraživačima, poduzetnicima i radnicima, odgojiteljima i zakonodavcima, civilnom društvu, pučkim pokretima i vjerskim zajednicama. To je logika supsidijarnosti koja suradnju među naraštajima, narodima, disciplinama i kulturama vrednuje kao najbolji put za promicanje stabilnosti, blagostanja i mira. Ne trebamo se plašiti napetosti ni razlika, jer one mogu postati stvaralačke snage kada ih vodi zajednička odgovornost.</p> 
+<p class="MsoNormal">13. Kao treće, izgradnja svijeta u kojem svatko može cvasti zahtijeva zajedničku odgovornost i hrabrost. Nitko sam ne može nositi težinu izazova s kojima se svijet suočava, kao što nitko nije toliko slab da ne bi mogao dati svoj doprinos, jer „snaga se u slabosti usavršuje” (<i>2 Kor</i> 12,9). Svima je povjeren vlastiti dio zida: znanstvenicima i istraživačima, poduzetnicima i radnicima, odgojiteljima i zakonodavcima, civilnom društvu, pučkim pokretima i vjerskim zajednicama. To je logika supsidijarnosti koja suradnju među naraštajima, narodima, disciplinama i kulturama vrednuje kao najbolji put za promicanje stabilnosti, blagostanja i mira. Ne trebamo se plašiti napetosti ni razlika, jer one mogu postati stvaralačke snage kada ih vodi zajednička odgovornost.</p> 
 <p class="MsoNormal">14. Napokon, izgrađivati za opće dobro zahtijeva evanđeoski jezik. Moramo izbjegavati ponižavajuće ili neprijateljske riječi te radije izabrati jasnoću koja rasvjetljuje i otvorenost koja otvara nove mogućnosti. Ne možemo odobravati naivne zanose, niti pothranjivati neutemeljene strahove. Umjesto toga, uspostavimo mjerila razlučivanja — dostojanstvo ljudske osobe, opću namjenu dobara, povlaštenu ljubav prema siromašnima, brigu za naš zajednički dom i mir — te ta mjerila prevedimo u prakse kao što su odgovorno planiranje, procjena ljudskoga i društvenoga utjecaja, uključivanje najranjivijih, promicanje digitalne pismenosti i usmjeravanje istraživanja i industrije prema pravdi i miru.</p> 
 <p class="MsoNormal"><b><a name="Remaining_human"></a>Ostati čovjekom</b></p> 
 <p class="MsoNormal">15. <a href="https://www.iubilaeum2025.va/en.html">U nedavnoj Redovnoj jubilejskoj godini 2025.</a> hodili smo kao hodočasnici nade i bili obdareni mnogim milostima. Ojačani tim darovima, možemo pouzdano krenuti naprijed kako bismo se suočili s teškim zadaćama i zahtjevnim izazovima koji su pred nama. U dobu umjetne inteligencije, kada je ljudsko dostojanstvo ugroženo novim oblicima dehumanizacije, naša je hitna dužnost ostati duboko ljudskima. Moramo s ljubavlju čuvati veličinu čovještva koja nam je darovana i u punini objavljena u Kristu, a čiji sjaj nijedan stroj nikada ne može nadomjestiti. Istinski napredak uvijek izvire iz srca otvorena drugima, iz razuma spremna slušati i iz volje koja traži ono što sjedinjuje, a ne ono što razdvaja.</p> 
@@ -3896,9 +3870,8 @@ jednoga Oca. Na taj način i navještaj Evanđelja i
 kršćanski život, vođen djelovanjem Duha Svetoga, teže 
 stvarati društvene posljedice u svijetu. <a name="_ftnref54" href="#_ftn54" class=" cleaner">[54]</a></p> 
 <p class="MsoNormal">50. U središtu kršćanskog razumijevanja 
-ljudske osobe nalazi se velika biblijska tvrdnja da su muškarci i žene 
-stvoreni na sliku i priliku (usp. <i>Gen</i> 1:26-27) 
-trojstvenoga Boga. Stvorena za odnos, svaka je ljudska osoba zamišljena i 
+ljudske osobe nalazi se velika biblijska tvrdnja da je čovjek „na sliku Božju” stvoren kao „muško i žensko” (usp. <i>Post</i> 1:26-27). Stvoren na sliku 
+trojstvenoga Boga, svaka je ljudska osoba zamišljena i 
 htjena od Boga da uđe u zajedništvo s njim, s drugima i sa 
 stvorenjem. Ljudsko dostojanstvo ne ovisi o čovjekovim sposobnostima, bogatstvu 
 ili položaju u životu, niti o ispravnim ili pogrešnim izborima; naprotiv,
@@ -4270,7 +4243,7 @@ naraštaje.</p>
 <p class="MsoNormal"><b><i><a name="The_principle_of_social_justice"></a>Načelo socijalne pravde</i></b></p> 
 <p class="MsoNormal">77. Za kršćansku zajednicu socijalna je pravda
  konkretan način nasljedovanja Isusa i ostajanja vjeran Evanđelju. 
-U Novom zavjetu Isus naviješta „radosnu vijest siromasima” ( <i>Lk</i> 4:18) i poistovjećuje se s malenima, bolesnima, zatvorenima i strancima (usp. <i>Mt</i>
+U Novom zavjetu Isus naviješta da je poslan „blagovjesnikom biti siromasima” ( <i>Lk</i> 4:18) i poistovjećuje se s gladnima, žednima, strancima, bolesnima i utamničenima (usp. <i>Mt</i>
  25:31-46). Time nas uči da pravda izvire iz bratstva i u njemu se ispunja, 
 jer način na koji pristupamo i odnosimo se prema najmanjima 
 među nama postaje, na konkretan način, mjerilo našega odnosa 
@@ -4405,8 +4378,7 @@ sudioničkih tijela. <a name="_ftnref115" href="#_ftn115" class=" cleaner">[115]
 <p class="MsoNormal">88. Za kršćansku zajednicu solidarnost nalazi 
 svoj izvor u Kristovu otajstvu i hrani se Euharistijom. 
 Solidarnost izvire iz zajedništva u vjeri i sakramentima: krštenje 
-i potvrda sjedinjuju nas u Kristu kako bismo postali jedno Tijelo i 
-jedan Duh, jedno srce i jedna duša (usp. <i>Eph</i> 4:4; <i>Acts</i> 
+i potvrda sjedinjuju nas u Kristu kako bismo postali „jedno tijelo i jedan Duh” te „jedno srce i jedna duša” (usp. <i>Ef</i> 4:4; <i>Dj</i> 
 4:32). Euharistija, koja je sakrament jedinstva, hrani našu 
 pripadnost Kristovu Tijelu i uči nas kako dijeliti. Različite
  osjetljivosti prisutne u Crkvi i snažna uvjerenja koja 
@@ -4425,8 +4397,7 @@ zajedništva i poslanja. Svaki je autoritet u službi Božjega
 naroda. Ta se služba služenja izražava ne samo kroz našu vjeru 
 slavljenu i življenu u sakramentima te prihvaćanje sinodalnoga
  stila, nego i u konkretnom dijeljenju dobara. Slijedeći primjer
- rane Crkve, crkvena dobra treba dijeliti kako nitko 
-među nama ne bi oskudijevao (usp. <i>Acts</i> 4:34) i kako bi njihovo 
+ rane Crkve, crkvena dobra treba dijeliti kako „nitko među njima ne bi oskudijevao” (usp. <i>Dj</i> 4:34) i kako bi njihovo 
 upravljanje podupiralo poslanje naviještanja Evanđelja 
 najsiromašnijima. Treba poticati redovita vrednovanja vršenja službenih 
 odgovornosti, ne kao sudove o pojedincima, 
@@ -4605,15 +4576,15 @@ odgovornost i bratstvo, nije utopija, nego stvarna mogućnost. <a name="_ftnref1
 <p class="MsoNormal">208. U tim situacijama pitanje konkretnih zaštitnih mjera za sprječavanje budućega nasilja ostaje otvoreno. Kada kultura normalizira i opravdava sukob, otvara se opasan put, jer ono što se danas čini nezamislivim sutra može postati prihvatljivo u ime korisnosti ili sigurnosti. U zemljama obilježenima ozbiljnim društvenim napetostima ne možemo isključiti mogućnost da neki vođe oružani sukob smatraju djelotvornim načinom odvraćanja pozornosti od domaćih problema i ciničnim sredstvom upravljanja teškoćama.</p> 
 <p class="MsoNormal">209. Posebna odgovornost počiva na ramenima onih koji rade na području istraživanja. Svi ključni dionici na tom području — znanstvenici, poduzetnici, ulagači, akademske vlasti, političari i drugi — moraju djelovati transparentno i odgovorno, uz živu svijest o širem kontekstu tehnološkoga napretka koji pomažu njegovati, uključujući i onaj povezan s UI. Kada se ljudi ograniče na to da gledaju samo vlastiti sektor, mogu sami sebe zavarati misleći da poduzimaju postupke koji su moralno neutralni te izbjeći pitanja o krajnjim ciljevima koji usmjeravaju određene eksperimente. Na taj način riskiraju surađivati — možda i nesvjesno — u upitnim projektima koji potiču nove oblike nasilja, manipulacije i dominacije.</p> 
 <p class="MsoNormal"><b><a name="Building_the_civilization"></a>Izgradnja civilizacije ljubavi</b></p> 
-<p class="MsoNormal">210. Gradnja svijeta u stanju trajnog sukoba zlo je i treba ga nazvati pravim imenom. Takav prikaz našega sadašnjeg stanja može se činiti tmurnim ili pesimističnim, no smatram da je potrebno tako ga iznijeti. Kršćanska perspektiva, međutim, nije ograničena na prokazivanje zla. Povijest promatramo u svjetlu raspetoga i uskrsloga Gospodina, kojemu je Otac dao “svu vlast na nebu i na zemlji” (<i>Mt</i> 28:18). Sadašnjost ne smatramo unaprijed određenom sudbinom, nego prigodom za osobno i zajedničko obraćenje. Štoviše, vjerujemo u snagu Kraljevstva, koje raste iz sićušnosti gorušičina zrna, koje, jednom posijano, niče i raste (usp. <i>Mk</i> 4:26-32). Dok je posvuda oko nas metež zbrke, dobrota tiho raste iz zemlje. Riječima proroka Izaije: “Evo, činim nešto novo; već nastaje, zar ne opažate?” (<i>Is </i>43:19).</p> 
-<p class="MsoNormal">211. Pomnija analiza povijesti to potvrđuje. I u najmračnijim noćima Gospodin podiže muškarce i žene koji odbijaju odustati, koji ustraju u činjenju dobra, koji štite ranjive i otvaraju putove pomirenju. Spomen na svece, pravednike i često zaboravljene graditelje mira pokazuje nam da milost ne uklanja sukob na čudesan način, nego nadahnjuje djelatni otpor zlu i zadivljujuću kreativnost u činjenju dobra. Kršćani vide tamu i priznaju je onim što jest, ali ne zure u nju pasivno, jer poznaju svjetlo i razumiju da ga tama nije nadvladala niti ga može pobijediti (usp. <i>Jn</i> 1:5). Zbog toga, čak i kada se čini da patnja ima posljednju riječ, kršćani služe dobru i nosi ih teološka nada koja stvarnosti daje i smisao i smjer.</p> 
+<p class="MsoNormal">210. Gradnja svijeta u stanju trajnog sukoba zlo je i treba ga nazvati pravim imenom. Takav prikaz našega sadašnjeg stanja može se činiti tmurnim ili pesimističnim, no smatram da je potrebno tako ga iznijeti. Kršćanska perspektiva, međutim, nije ograničena na prokazivanje zla. Povijest promatramo u svjetlu raspetoga i uskrsloga Gospodina, kojemu je Otac dao „Dana mi je sva vlast na nebu i na zemlji!” (<i>Mt</i> 28:18). Sadašnjost ne smatramo unaprijed određenom sudbinom, nego prigodom za osobno i zajedničko obraćenje. Štoviše, vjerujemo u snagu Kraljevstva, u kojemu „sjeme klija i raste – sam ne zna kako” i u kojemu gorušičino zrno, „jednoć posijano, naraste i postane veće od svega povrća” (usp. <i>Mk</i> 4:26-32). Dok je posvuda oko nas metež zbrke, dobrota tiho raste iz zemlje. Riječima proroka Izaije: „Evo, činim nešto novo; već nastaje. Zar ne opažate?” (<i>Iz</i> 43:19).</p> 
+<p class="MsoNormal">211. Pomnija analiza povijesti to potvrđuje. I u najmračnijim noćima Gospodin podiže muškarce i žene koji odbijaju odustati, koji ustraju u činjenju dobra, koji štite ranjive i otvaraju putove pomirenju. Spomen na svece, pravednike i često zaboravljene graditelje mira pokazuje nam da milost ne uklanja sukob na čudesan način, nego nadahnjuje djelatni otpor zlu i zadivljujuću kreativnost u činjenju dobra. Kršćani vide tamu i priznaju je onim što jest, ali ne zure u nju pasivno, jer znaju da „svjetlo u tami svijetli i tama ga ne obuze” (usp. <i>Iv</i> 1:5). Zbog toga, čak i kada se čini da patnja ima posljednju riječ, kršćani služe dobru i nosi ih teološka nada koja stvarnosti daje i smisao i smjer.</p> 
 <p class="MsoNormal"><b><i>Mi <a name="can_all_do_our_part"></a>možemo svi dati svoj doprinos</i></b></p> 
 <p class="MsoNormal">212. U ovom se trenutku, međutim, može pojaviti suptilna napast, naime misao da su problemi preveliki, a mi premaleni, pa stoga naši izbori ne mogu ništa promijeniti. To je uljudan oblik rezignacije, često prerušen u realizam. Zacijelo, nemaju svi jednaku moć da nešto promijene. Ima onih koji upravljaju, donose investicijske odluke, vode ustanove, provode istraživanja, odgajaju, proizvode ili pružaju informacije, a zatim ima i onih koji samo naizgled žive svoj svakodnevni život. Pa ipak, nitko nije bez odgovornosti. Svi imamo vlastita područja djelovanja i upravo ondje — i nigdje drugdje — moramo izabrati hoćemo li pothranjivati mentalitet sile (pa makar samo ravnodušnošću, cinizmom, lažima ili mržnjom), ili čuvati mentalitet mira (istinitošću, umjerenošću, blizinom i brigom).</p> 
 <p class="MsoNormal">213. Katolički autor dvadesetoga stoljeća J.R.R. Tolkien, riječima jednoga lika u jednom od svojih romana, ovako je opisao našu odgovornost: “Nije na nama da ovladamo svim mijenama svijeta, nego da učinimo ono što je u našoj moći za pomoć godinama u koje smo postavljeni, iskorjenjujući zlo na poljima koja poznajemo, kako bi oni koji dolaze poslije imali čistu zemlju za obrađivanje.” <a name="_ftnref187" href="#_ftn187" class=" cleaner">[187]</a> Civilizacija ljubavi neće nastati iz jednoga jedinog ili spektakularnog čina, nego iz sveukupnosti malih i postojanih djela vjernosti koja služe kao brana protiv dehumanizacije. Zato je vrijedno zastati i razmisliti o nekim vidovima načina na koji mi, svatko na svoj način, možemo surađivati u izgradnji civilizacije ljubavi. Ne pretvarajući se da sam iscrpio tu temu, želim predložiti pet putova prema svakodnevnoj i javnoj odgovornosti: potrebu da se razoružaju riječi, izgradnju mira po pravednosti, prihvaćanje perspektive žrtava, njegovanje zdravoga realizma te oživljavanje dijaloga i multilateralizma.</p> 
 <p class="MsoNormal"><b><i><a name="The_need_to_disarm_words"></a>Potreba da se razoružaju riječi</i></b></p> 
 <p class="MsoNormal">214. Prvi doprinos koji možemo dati humanijoj civilizaciji jest paziti na svoje riječi. “Razoružajmo riječi i pomoći ćemo razoružati svijet.” <a name="_ftnref188" href="#_ftn188" class=" cleaner">[188]</a> Riječi imaju golemu snagu, što doživljavamo u svakodnevnim odnosima; primjerice, izgovorene riječi mogu promijeniti naše raspoloženje nabolje ili nagore. “Mir počinje od svakoga od nas: u načinu na koji gledamo druge, slušamo druge i govorimo o drugima. U tom je smislu način na koji komuniciramo od temeljne važnosti: moramo reći ‘ne’ ratu riječî i slikâ, moramo odbaciti paradigmu rata.” <a name="_ftnref189" href="#_ftn189" class=" cleaner">[189]</a> Stoga svi moramo ispitati svoju savjest s obzirom na riječi kojima se služimo, predrasude koje imamo i izričitu ili prešutnu agresiju koja se u njima skriva. Imamo stvarnu mogućnost pridonijeti općemu dobru svaki put kada govorimo istinu, dajemo mudar savjet, podupiremo one kojima treba utjeha, prokazujemo nepravdu i dajemo glas onima koji ga nemaju.</p> 
 <p class="MsoNormal"><b><i><a name="Building_peace_through_justice"></a>Graditi mir po pravednosti</i></b></p> 
-<p class="MsoNormal">215. Svi mi, na svakoj razini, možemo pridonijeti izgradnji temelja mira, a to je pravednost. Ne tražimo naprosto bilo kakav mir — kao što bi bila odsutnost sukoba pod svaku cijenu — nego istinski mir koji se rađa iz pravednosti. “Postoji vrlo uska povezanost između pravednosti pojedinca i mira svih.” <a name="_ftnref190" href="#_ftn190" class=" cleaner">[190]</a> Komentirajući psalamski redak “pravednost i mir zagrlili su se” ( <i>Ps</i> 84:11), sveti Augustin piše: “Nema nikoga tko ne izbjegava želju za mirom, a ipak nisu svi spremni vršiti pravednost… Ali činite djela pravednosti, imajući na umu da su se pravednost i mir zagrlili; oni nisu u proturječju jedno s drugim. Zašto se suprotstavljaš pravednosti? Evo, na primjer, pravednost ti govori da ne kradeš, ali ti ne mariš; da ne činiš preljuba, a ti se oglušuješ; da drugima ne činiš ono što ne bi htio da se tebi čini; da o svome bližnjemu ne govoriš ono što ne bi htio da se o tebi govori… Želiš li dakle postići mir? Onda vrši pravednost!” <a name="_ftnref191" href="#_ftn191" class=" cleaner">[191]</a> Ne umorimo se nikada tražiti pravednost!</p> 
+<p class="MsoNormal">215. Svi mi, na svakoj razini, možemo pridonijeti izgradnji temelja mira, a to je pravednost. Ne tražimo naprosto bilo kakav mir — kao što bi bila odsutnost sukoba pod svaku cijenu — nego istinski mir koji se rađa iz pravednosti. “Postoji vrlo uska povezanost između pravednosti pojedinca i mira svih.” <a name="_ftnref190" href="#_ftn190" class=" cleaner">[190]</a> Komentirajući psalamski redak „Ljubav će se i vjernost sastati, pravda i mir zagrliti.” ( <i>Ps</i> 85:11), sveti Augustin piše: “Nema nikoga tko ne izbjegava želju za mirom, a ipak nisu svi spremni vršiti pravednost… Ali činite djela pravednosti, imajući na umu da su se pravednost i mir zagrlili; oni nisu u proturječju jedno s drugim. Zašto se suprotstavljaš pravednosti? Evo, na primjer, pravednost ti govori da ne kradeš, ali ti ne mariš; da ne činiš preljuba, a ti se oglušuješ; da drugima ne činiš ono što ne bi htio da se tebi čini; da o svome bližnjemu ne govoriš ono što ne bi htio da se o tebi govori… Želiš li dakle postići mir? Onda vrši pravednost!” <a name="_ftnref191" href="#_ftn191" class=" cleaner">[191]</a> Ne umorimo se nikada tražiti pravednost!</p> 
 <p class="MsoNormal"><b><i><a name="Adopting_the_perspective_of_victims"></a>Prihvatiti perspektivu žrtava</i></b></p> 
 <p class="MsoNormal">216. Postoje trenutci kada, da bismo ostali ljudi, moramo odložiti svoje zadrške i zauzeti stav. U nekim je sukobima nepravedno ostati neutralan, niti je dovoljno samo tvrditi da nismo sukrivci. <a name="_ftnref192" href="#_ftn192" class=" cleaner">[192]</a> Kada svjedočimo bombardiranju civila, napadima na bolnice, škole ili vitalnu infrastrukturu te nasilju koje pogađa djecu, suočeni smo sa sablaznima koje ranjavaju samo čovještvo. Zbog toga se ne možemo zadržati na razini apstraktne analize. <a href="https://www.vatican.va/content/francesco/en.html">Papa Franjo</a>&nbsp;nas je potaknuo da “dotaknemo ranjeno tijelo” <a name="_ftnref193" href="#_ftn193" class=" cleaner">[193]</a> onih koji trpe, pogledamo njihova lica, poslušamo njihove priče i priznamo njihove rane. Bolni događaji zahtijevaju i povijest i pamćenje: prvo da iznese činjenice, drugo da posvjedoči o proživljenim iskustvima.</p> 
 <p class="MsoNormal">217. Davanje prostora perspektivama i glasovima žrtava kroz komunikaciju i odgoj pomaže nam da postanemo svjesni bezdana zla svojstvena ratu, a općenito i svim oblicima nasilja. To nam pomaže odbaciti normalizaciju sukoba; ne okrenuti glavu kada se krši ljudsko dostojanstvo; te žrtvama vratiti dostojanstvo da budu prepoznate i saslušane. <a name="_ftnref194" href="#_ftn194" class=" cleaner">[194]</a> Obraćanje pozornosti tim glasovima učvršćuje uvjerenje da, osim nasilnih manjina, čovječanstvo ne želi rat. Na poseban način Crkva može biti mjesto živoga sjećanja na žrtve. Kako je podsjetio <a href="https://www.vatican.va/content/paul-vi/en.html">sveti Pavao VI.</a>, Crkva osjeća da mora učiniti svojim i glas onih koji su poginuli u prošlim ratovima i glas živih koji još danas nose rane, kako bi njihov vapaj postao apel za mir i sklad, a ne uvod u nove sukobe. <a name="_ftnref195" href="#_ftn195" class=" cleaner">[195]</a></p> 
@@ -4636,7 +4607,7 @@ odgovornost i bratstvo, nije utopija, nego stvarna mogućnost. <a name="_ftnref1
 
           <section class="doc-section" data-section="conclusion">
 <p class="MsoNormal" style="text-align: center;"><b><a name="CONCLUSION"></a>ZAKLJUČAK</b></p> 
-<p class="MsoNormal">229. “Neka svaki graditelj pazi kako gradi” (<i>1 Cor</i>
+<p class="MsoNormal">229. „Ali svaki neka pazi kako naziđuje” (<i>1 Kor</i>
  3:10). Tim je riječima sveti Pavao poticao kršćane u 
 Korintu da čuvaju jedinstvo. Draga braćo i sestre, razmišljali smo 
 o svijetu koji gradimo i pitali se što znači 
@@ -4703,8 +4674,8 @@ koja razlučuje dobro od zla. Čak i kada strojevi nadmašuju u učinkovitosti,
 ljudsko lice koje traži da bude gledano ostaje središte naše povijesti.
  To je ljudsko lice punina prema kojoj povijest ide. To je 
 otajstvo “rekapitulacije”: sigurnost da je Otac odredio da sve, 
-ono na nebu i ono na zemlji, ponovno sabere u
- Kristu, jedinoj Glavi (usp. <i>Eph</i> 1:10). U tom naumu ništa 
+ono na nebu i ono na zemlji, uglavi u
+Kristu, jedinoj Glavi (usp. <i>Ef</i> 1:10). U tom naumu ništa 
 što je autentično ljudsko neće biti izgubljeno. Štoviše, sve će biti pročišćeno
  i ponovno sjedinjeno u Jednome, koji sabire svaki djelić života, svaku suzu
  i svako autentično ljudsko postignuće, spašavajući ih od 
@@ -4723,7 +4694,7 @@ načelo jedinstva i izvor novoga života. Iz toga zajedništva
  kruh i vino na oltaru sakrament su jedinstva 
 vjernika u Kristu: “Ono što se vidi tek je tjelesna slika; ono što se 
 shvaća donosi duhovni plod. Dakle, ako želite razumjeti 
-tijelo Kristovo, poslušajte Apostola Pavla kako govori vjernicima: <i>vi ste zajedno tijelo Kristovo </i>( <i>1 Cor</i>
+tijelo Kristovo, poslušajte Apostola Pavla kako govori vjernicima: <i>A vi ste tijelo Kristovo i, pojedinačno, udovi.</i> ( <i>1 Kor</i>
  12:27). Ako ste tijelo i udovi Kristovi, tada je vaš 
 sakrament postavljen na stol Gospodnji; to je vaš sakrament 
 koji primate. Odgovarate ‘Amen’, i time što tako odgovarate 
@@ -4747,15 +4718,15 @@ budu usmjereni na poštivanje dostojanstva osobe.</p>
 <p class="MsoNormal"><b><i><a name="The_construction"></a>Gradilište našega vremena</i></b></p> 
 <p class="MsoNormal">236.&nbsp; Duhovnost koju želim preporučiti jest 
 duhovnost “mudroga graditelja” koji, nošen nadom u Kraljevstvo Božje,
- predano gradi svijet za opće dobro (usp. <i>1 Cor</i> 3:10). Kao što sam spomenuo na početku ovoga razmišljanja, <a name="_ftnref217" href="#_ftn217" class=" cleaner">[217]</a>
+predano gradi svijet za opće dobro (usp. <i>1 Kor</i> 3:10). Kao što sam spomenuo na početku ovoga razmišljanja, <a name="_ftnref217" href="#_ftn217" class=" cleaner">[217]</a>
  zadaća građenja u naše vrijeme mora u središte staviti naš odnos s Bogom. 
 Naše pravilo mora biti prihvaćanje ljudskih ograničenja kao 
 naravne i pozitivne stvarnosti te se mora odlikovati podijeljenom 
 odgovornošću i jezikom obilježenim evanđeljem. Na kraju
  ovoga razmišljanja naum civilizacije ljubavi može se jasnije 
 vidjeti, a gradilište se doima kao da je već u tijeku,
- zahvaljujući osobito mnogim živim kamenovima čvrsto sjedinjenima s Kristom, 
-ugaonim kamenom (usp. <i>1 Pet</i> 2:4-6). U toj smo zadaći pozvani preuzeti aktivnu ulogu, ne sklanjajući se u duhovni sentimentalizam <b></b>niti
+zahvaljujući osobito mnogim živim kamenovima koji se ugrađuju u duhovni Dom s Kristom, 
+dragocjenim kamenom ugaonim (usp. <i>1 Pt</i> 2:4-6). U toj smo zadaći pozvani preuzeti aktivnu ulogu, ne sklanjajući se u duhovni sentimentalizam <b></b>niti
  povlačeći se u svoje malene svjetove. Moramo ostati vjerni 
 istini, ulagati u odgoj, njegovati odnose te ljubiti pravednost i
  mir.</p> 
@@ -4839,14 +4810,14 @@ mogao postati primjerenije mjesto za život.</p>
 <p class="MsoNormal">242. Slika ponovne izgradnje Jeruzalema priziva 
 novozavjetno obećanje svetoga grada, koji nam je ponajprije dan kao dar. 
 U Knjizi Otkrivenja novi Jeruzalem 
-silazi kao dar za sav Božji narod, “pripremljen kao zaručnica urešena 
-za svoga muža” (<i>Rev</i> 21:2). Jeruzalemske zidine više nisu
+silazi kao dar za sav Božji narod, „opremljen kao zaručnica nakićena 
+za svoga muža” (<i>Otk</i> 21:2). Jeruzalemske zidine više nisu
  obrambene utvrde, nego dragocjeni uresi Zaručnice 
 Jaganjčeve. Njegova vrata, koja je Nehemija tako brižno čuvao, ostaju 
 trajno otvorena svim narodima. Božja prisutnost svima pruža svjetlo i život.
  Grad je novi Eden, sa svojom živom vodom ponuđenom 
-žednima i svojim stablom života čije je lišće “za ozdravljenje 
-naroda” (<i>Rev</i> 22:2). Dok očekujemo njegovo ispunjenje, ta nam je vizija 
+žednima i svojim stablom života čije je lišće „za zdravlje je 
+narodima” (<i>Otk</i> 22:2). Dok očekujemo njegovo ispunjenje, ta nam je vizija 
 stavljena pred oči kao ohrabrenje — kao poziv da nadiđemo svoje podjele i
  da radimo zajedno — jer to je put Isusa Krista, jučer, 
 danas i uvijeke.</p> 
@@ -6474,7 +6445,12 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
       const hash = link.getAttribute("href");
       if (!hash || hash === "#") return;
       const section = sectionForHash(hash);
-      if (section && sectionSelect.value !== "all" && sectionSelect.value !== section) {
+      // Pastoral kit is hidden in every view except its own, so links pointing
+      // into it must always force a view switch.
+      const needsSwitch = section && sectionSelect.value !== section && (
+        section === "pastoral" || sectionSelect.value !== "all"
+      );
+      if (needsSwitch) {
         applySection(section, true, false);
         requestAnimationFrame(() => {
           const target = document.querySelector(hash);
@@ -7187,12 +7163,14 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
       }
       function clearChildren(el) { while (el.firstChild) el.removeChild(el.firstChild); }
 
-      // ── Discover numbered paragraphs (skip footnotes section) ─────────
+      // ── Discover numbered paragraphs (skip footnotes + pastoral appendix) ─
       const footnoteSection = document.querySelector('.doc-section[data-section="footnotes"]');
+      const pastoralSection = document.querySelector('.doc-section[data-section="pastoral"]');
       const numbered = [];
       const byNumSeen = new Set();
       docEl.querySelectorAll("p").forEach((p) => {
         if (footnoteSection && footnoteSection.contains(p)) return;
+        if (pastoralSection && pastoralSection.contains(p)) return;
         const m = (p.textContent || "").trim().match(/^(\d+)\.\s/);
         if (!m) return;
         const num = parseInt(m[1], 10);
@@ -7577,6 +7555,8 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
           const anc = range.commonAncestorContainer;
           const node = anc.nodeType === 1 ? anc : anc.parentElement;
           if (!docEl.contains(node)) { hideQuoteFab(); return; }
+          // Quote-saving is for the encyclical only; ignore selections inside the pastoral appendix.
+          if (node.closest && node.closest('[data-section="pastoral"]')) { hideQuoteFab(); return; }
           const para = node.closest && node.closest("[data-pp]");
           pendingSelection = {
             text: text.slice(0, 600),
