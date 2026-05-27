@@ -2088,9 +2088,109 @@
       .resume-toast { font-size: 0.8rem; padding: 0.6rem 0.7rem 0.6rem 0.95rem; }
     }
 
+    /* Floating 'Spremi citat' button shown on text selection */
+    .quote-fab {
+      position: absolute;
+      z-index: 65;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.8rem;
+      background: var(--accent);
+      color: #f8efe1;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      font: 600 0.75rem / 1 var(--font-ui);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 10px 30px -10px rgba(80, 45, 20, 0.45);
+      transform: translateY(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.18s ease, opacity 0.18s ease;
+    }
+    .quote-fab.show {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .quote-fab svg { width: 0.85rem; height: 0.85rem; }
+    .quote-fab:hover { background: var(--accent-soft); border-color: var(--accent-soft); }
+
+    /* Citati list inside the progress panel */
+    .pp-quote-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-height: 18rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .pp-quote {
+      background: var(--surface);
+      border: 1px solid var(--line-soft);
+      border-radius: 8px;
+      padding: 0.55rem 0.65rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .pp-quote__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+    }
+    .pp-quote__num {
+      font-family: var(--font-display);
+      font-style: italic;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .pp-quote__num:hover { text-decoration: underline; }
+    .pp-quote__source {
+      font-style: italic;
+      color: var(--muted);
+    }
+    .pp-quote__actions { display: inline-flex; gap: 0.15rem; }
+    .pp-quote__action {
+      appearance: none;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--muted);
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+    .pp-quote__action:hover { background: var(--surface-2); color: var(--accent); border-color: var(--line); }
+    .pp-quote__body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: var(--ink);
+      font-style: italic;
+      border-left: 2px solid var(--line);
+      padding-left: 0.55rem;
+    }
+    .pp-quote-empty {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-style: italic;
+      margin: 0;
+    }
+
     /* Print: hide all progress UI */
     @media print {
-      .pp-bookmark, .resume-toast, .pp-card, .pp-bm-list { display: none !important; }
+      .pp-bookmark, .resume-toast, .pp-card, .pp-bm-list, .quote-fab, .pp-quote-list { display: none !important; }
       .reader p.pp-read::before { display: none !important; }
     }
 
@@ -2545,6 +2645,12 @@
                 <p class="pp-card__title">Oznake</p>
                 <p class="pp-bm-empty" id="pp-bookmark-empty">Klikni ikonu uz odlomak da ga označiš.</p>
                 <ul class="pp-bm-list" id="pp-bookmark-list" aria-label="Označeni odlomci"></ul>
+              </div>
+
+              <div class="pp-card">
+                <p class="pp-card__title">Citati</p>
+                <p class="pp-quote-empty" id="pp-quote-empty">Označi dio teksta u enciklici i pojavit će se gumb „Spremi citat”.</p>
+                <ul class="pp-quote-list" id="pp-quote-list" aria-label="Spremljeni citati"></ul>
               </div>
 
               <div class="pp-card__row" style="justify-content: flex-end;">
@@ -4618,6 +4724,11 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
     <a class="fn-pop__jump" id="fn-pop-jump" href="#">Otvori bilješku ↓</a>
   </div>
 
+  <button type="button" class="quote-fab" id="quote-fab" aria-label="Spremi odabrani citat">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21c3-2 4-5 4-9V5h7v9H9.5"/><path d="M14 21c3-2 4-5 4-9V5h7v9h-4.5"/></svg>
+    Spremi citat
+  </button>
+
   <div class="resume-toast" id="resume-toast" role="status" aria-live="polite">
     <span class="resume-toast__text">Nastavi gdje si stao · <span class="resume-toast__num" id="resume-toast-num">¶1</span></span>
     <button type="button" class="pp-btn pp-btn--primary" id="resume-toast-go">Nastavi</button>
@@ -5472,10 +5583,11 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
       function saveState() {
         try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
       }
-      const defaults = { lastRead: null, bookmarks: [], read: {}, plan: null };
+      const defaults = { lastRead: null, bookmarks: [], read: {}, plan: null, quotes: [] };
       let state = Object.assign({}, defaults, loadState() || {});
       state.bookmarks = Array.isArray(state.bookmarks) ? state.bookmarks : [];
       state.read = (state.read && typeof state.read === "object") ? state.read : {};
+      state.quotes = Array.isArray(state.quotes) ? state.quotes : [];
       // Snapshot before observers can overwrite, so the resume toast can compare against pre-session state
       const initialLastRead = state.lastRead ? { ...state.lastRead } : null;
 
@@ -5501,6 +5613,9 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
       const elBmList = document.getElementById("pp-bookmark-list");
       const elBmEmpty = document.getElementById("pp-bookmark-empty");
       const elReset = document.getElementById("pp-reset");
+      const elQuoteFab = document.getElementById("quote-fab");
+      const elQuoteList = document.getElementById("pp-quote-list");
+      const elQuoteEmpty = document.getElementById("pp-quote-empty");
       const elToast = document.getElementById("resume-toast");
       const elToastNum = document.getElementById("resume-toast-num");
       const elToastGo = document.getElementById("resume-toast-go");
@@ -5741,18 +5856,152 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
         });
       }
 
+      // ── Quotes: text selection → save → list ──────────────────────────
+      function renderQuotes() {
+        if (!elQuoteList) return;
+        clearChildren(elQuoteList);
+        if (!state.quotes.length) {
+          if (elQuoteEmpty) elQuoteEmpty.hidden = false;
+          return;
+        }
+        if (elQuoteEmpty) elQuoteEmpty.hidden = true;
+        state.quotes.slice().sort((a, b) => (b.ts || 0) - (a.ts || 0)).forEach((q) => {
+          const li = document.createElement("li");
+          li.className = "pp-quote";
+          const head = document.createElement("div");
+          head.className = "pp-quote__head";
+          if (q.num) {
+            const ref = document.createElement("a");
+            ref.className = "pp-quote__num";
+            ref.href = "#pp-" + q.num;
+            ref.textContent = "¶" + q.num;
+            head.appendChild(ref);
+          } else {
+            const ref = document.createElement("span");
+            ref.className = "pp-quote__source";
+            ref.textContent = "citat";
+            head.appendChild(ref);
+          }
+          const actions = document.createElement("div");
+          actions.className = "pp-quote__actions";
+          const copyBtn = document.createElement("button");
+          copyBtn.type = "button";
+          copyBtn.className = "pp-quote__action";
+          copyBtn.dataset.qaction = "copy";
+          copyBtn.dataset.id = q.id;
+          copyBtn.setAttribute("aria-label", "Kopiraj citat");
+          copyBtn.textContent = "⧉";
+          const rmBtn = document.createElement("button");
+          rmBtn.type = "button";
+          rmBtn.className = "pp-quote__action";
+          rmBtn.dataset.qaction = "remove";
+          rmBtn.dataset.id = q.id;
+          rmBtn.setAttribute("aria-label", "Ukloni citat");
+          rmBtn.textContent = "×";
+          actions.appendChild(copyBtn);
+          actions.appendChild(rmBtn);
+          head.appendChild(actions);
+          const body = document.createElement("blockquote");
+          body.className = "pp-quote__body";
+          body.textContent = "“" + q.text + "”";
+          li.appendChild(head);
+          li.appendChild(body);
+          elQuoteList.appendChild(li);
+        });
+      }
+
+      let pendingSelection = null;
+      function hideQuoteFab() {
+        if (!elQuoteFab) return;
+        elQuoteFab.classList.remove("show");
+        pendingSelection = null;
+      }
+      function showQuoteFabFor(range) {
+        if (!elQuoteFab) return;
+        const rect = range.getBoundingClientRect();
+        if (!rect.width && !rect.height) { hideQuoteFab(); return; }
+        const fabH = 36;
+        const top = rect.top + window.scrollY - fabH - 6;
+        const left = rect.left + window.scrollX + (rect.width / 2);
+        elQuoteFab.style.top = Math.max(window.scrollY + 8, top) + "px";
+        elQuoteFab.style.left = left + "px";
+        elQuoteFab.style.transform = "translate(-50%, 0)";
+        elQuoteFab.classList.add("show");
+      }
+      let selTimer = null;
+      function onSelectionChange() {
+        clearTimeout(selTimer);
+        selTimer = setTimeout(() => {
+          const sel = document.getSelection();
+          if (!sel || sel.isCollapsed || sel.rangeCount === 0) { hideQuoteFab(); return; }
+          const text = sel.toString().trim();
+          if (text.length < 4) { hideQuoteFab(); return; }
+          const range = sel.getRangeAt(0);
+          const anc = range.commonAncestorContainer;
+          const node = anc.nodeType === 1 ? anc : anc.parentElement;
+          if (!docEl.contains(node)) { hideQuoteFab(); return; }
+          const para = node.closest && node.closest("[data-pp]");
+          pendingSelection = {
+            text: text.slice(0, 600),
+            num: para ? parseInt(para.dataset.pp, 10) : null,
+          };
+          showQuoteFabFor(range);
+        }, 180);
+      }
+      document.addEventListener("selectionchange", onSelectionChange);
+      window.addEventListener("scroll", () => { if (elQuoteFab.classList.contains("show")) hideQuoteFab(); }, { passive: true });
+
+      if (elQuoteFab) {
+        elQuoteFab.addEventListener("mousedown", (e) => e.preventDefault()); // keep selection alive
+        elQuoteFab.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (!pendingSelection) return;
+          const id = Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 8);
+          state.quotes.push(Object.assign({ id, ts: Date.now() }, pendingSelection));
+          saveState();
+          renderQuotes();
+          hideQuoteFab();
+          const s = document.getSelection();
+          if (s) s.removeAllRanges();
+        });
+      }
+
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest(".pp-quote__action");
+        if (!a) return;
+        const id = a.dataset.id;
+        const idx = state.quotes.findIndex((q) => q.id === id);
+        if (idx < 0) return;
+        if (a.dataset.qaction === "remove") {
+          state.quotes.splice(idx, 1);
+          saveState();
+          renderQuotes();
+        } else if (a.dataset.qaction === "copy") {
+          const q = state.quotes[idx];
+          const out = "“" + q.text + "”" + (q.num ? " (Magnifica Humanitas, ¶" + q.num + ")" : "");
+          const done = () => { a.textContent = "✓"; setTimeout(() => { a.textContent = "⧉"; }, 1200); };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(out).then(done, done);
+          } else {
+            done();
+          }
+        }
+      });
+
       // ── Reset ─────────────────────────────────────────────────────────
       if (elReset) {
         elReset.addEventListener("click", () => {
-          if (!confirm("Resetirati sav napredak, oznake i plan?")) return;
+          if (!confirm("Resetirati sav napredak, oznake, citate i plan?")) return;
           state = Object.assign({}, defaults);
           state.bookmarks = [];
           state.read = {};
+          state.quotes = [];
           ensurePlan();
           saveState();
           refreshReadClasses();
           refreshBookmarkClasses();
           renderBookmarks();
+          renderQuotes();
           renderOverall();
           renderPlan();
         });
@@ -5764,6 +6013,7 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
       refreshReadClasses();
       refreshBookmarkClasses();
       renderBookmarks();
+      renderQuotes();
       renderOverall();
       renderPlan();
       setTimeout(maybeShowResumeToast, 900);
