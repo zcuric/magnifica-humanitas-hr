@@ -961,6 +961,10 @@
     }
     .doc-contents__eyebrow {
       margin: 0 0 1.4em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55em;
       text-align: center;
       font-family: var(--font-ui);
       font-size: 0.7em;
@@ -968,7 +972,29 @@
       letter-spacing: 0.32em;
       text-transform: uppercase;
       color: var(--accent);
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+      padding: 0.25em 0.4em;
+      border-radius: 6px;
+      transition: background 0.15s ease, color 0.15s ease;
     }
+    .doc-contents__eyebrow::-webkit-details-marker { display: none; }
+    .doc-contents__eyebrow:hover { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+    .doc-contents__eyebrow:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .doc-contents__chevron {
+      width: 1em;
+      height: 1em;
+      transition: transform 0.22s ease;
+      flex-shrink: 0;
+    }
+    .doc-contents[open] .doc-contents__chevron { transform: rotate(180deg); }
+    /* When collapsed, tighten the surrounding padding so the card stays compact */
+    .doc-contents:not([open]) { padding-block: clamp(0.85em, 2vw, 1.35em); }
+    .doc-contents:not([open]) .doc-contents__eyebrow { margin-bottom: 0; }
     .doc-contents__chapters {
       list-style: none;
       margin: 0;
@@ -2715,11 +2741,14 @@
           </aside>
           <article id="document">
           <section class="doc-section" data-section="intro">
-<div class="abstract text parbase vaticanrichtext"><p style="text-align: center;"><span class="color-text">ENCIKLIKA</span><i><br> <b><span class="title-1-color">MAGNIFICA HUMANITAS</span><br> </b></i><span class="color-text">NJEGOVE SVETOSTI<br> <b>PAPE LEONA XIV.<br> </b>O ZAŠTITI LJUDSKE OSOBE<br> </span>U VREMENU UMJETNE INTELIGENCIJE</p> 
+<div class="abstract text parbase vaticanrichtext"><p style="text-align: center;"><span class="color-text">ENCIKLIKA</span><i><br> <b><span class="title-1-color">MAGNIFICA HUMANITAS</span><br> </b></i><span class="color-text">NJEGOVE SVETOSTI<br> <b>PAPE LAVA XIV.<br> </b>O ZAŠTITI LJUDSKE OSOBE<br> </span>U VREMENU UMJETNE INTELIGENCIJE</p> 
 <p style="text-align: center;">___________________________</p><div class="clearfix"></div></div>
 <!-- TESTO -->
-                    <nav class="doc-contents" aria-label="Sadržaj enciklike">
-                      <p class="doc-contents__eyebrow">Sadržaj</p>
+                    <details class="doc-contents" id="doc-contents" aria-label="Sadržaj enciklike" open>
+                      <summary class="doc-contents__eyebrow">
+                        <span>Sadržaj</span>
+                        <svg class="doc-contents__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                      </summary>
                       <ol class="doc-contents__chapters">
 
                         <li class="doc-contents__chapter">
@@ -2887,9 +2916,9 @@
                         </li>
 
                       </ol>
-                    </nav>
+                    </details>
 
-<p class="MsoNormal" style="text-align: center;"><b><a name="INTRODUCTION_"></a>UVOD</b></p> 
+<p class="MsoNormal" style="text-align: center;"><b><a name="INTRODUCTION_"></a>UVOD</b></p>
 <p class="MsoNormal">1. Čovječanstvo, stvoreno od Boga u svoj svojoj veličini, danas je suočeno s presudnim izborom: ili izgraditi novu Kulu babilonsku ili graditi grad u kojem Bog i čovjek prebivaju zajedno. Svaki naraštaj prima u baštinu zadaću oblikovati vlastito doba, usmjeravati povijest da postane mjestom gdje se čuva dostojanstvo svake osobe, promiče pravda i omogućuje bratstvo. Pa ipak, svako doba nosi i opasnost stvaranja svijeta koji je neljudski i nepravedniji. Kad god čovječanstvu prijeti opasnost da nagrdi svoj istinski identitet, mi kršćani uzdižemo oči k utjelovljenomu Bogu, znajući da se „samo u otajstvu utjelovljene Riječi doista razjašnjava otajstvo čovjeka”. <a name="_ftnref1" href="#_ftn1" class=" cleaner">[1]</a> U Isusu Kristu ta čovječnost u svojoj veličini postaje Put, Istina i Život, otvarajući svakomu od nas put rasta prema punini.</p> 
 <p class="MsoNormal">2. Utemeljeni na Kristu, živomu kamenu, doživljavamo silno i otajstveno djelovanje Duha Svetoga te vjerujemo da će svaki autentični ljudski napor da s njime surađuje na dobru biti blagoslovljen od našega nebeskog Oca, u kojega polažemo svoju nadu. Zato možemo zauzeto pridonositi svakoj inicijativi koja izgrađuje pravedniji svijet te pozivati druge na suradnju u promicanju cjelovitoga razvoja svakoga čovjeka. Želimo stupiti u dijalog sa svim muškarcima i ženama našega vremena, s kojima dijelimo događaje, pitanja i težnje čovječanstva. <a name="_ftnref2" href="#_ftn2" class=" cleaner">[2]</a> Zajedno s njima nastojimo pronaći nove putove za opće dobro i za promicanje dostojanstvenoga života za sve. Doista, otvorenost dijalogu sastavni je dio poslanja Crkve jer ona, ustrojena u Kristu kao „sakrament… zajedništva s Bogom i jedinstva cijeloga ljudskog roda”, <a name="_ftnref3" href="#_ftn3" class=" cleaner">[3]</a> prepoznaje povijest kao mjesto na kojem Evanđelje izaziva i usmjeruje ljudsko iskustvo.</p> 
 <p class="MsoNormal">3. U tome je duhu <a href="https://www.vatican.va/content/leo-xiii/en.html">Papa Lav XIII.</a>&nbsp;1891. godine objavio svoju encikliku <a href="https://www.vatican.va/content/leo-xiii/en/encyclicals/documents/hf_l-xiii_enc_15051891_rerum-novarum.html"><i>Rerum Novarum</i></a> <i></i>, čiju 135<sup>.</sup> obljetnicu ove godine slavimo s dubokom zahvalnošću. Tim je dokumentom moj ljubljeni prethodnik dao zamah promišljanju o društvu, gospodarstvu i politici, koje je danas poznato kao „socijalni nauk Crkve”. Kada su neki prigovarali da Crkva ne bi smjela trošiti snagu na svjetovne stvari, nego se usredotočiti na naviještanje poruke vječnoga života, <a href="https://www.vatican.va/content/leo-xiii/en.html">Lav XIII.</a>&nbsp;odgovorio je realistično i mudro rekavši da navještaj Evanđelja ne može zanemariti konkretne živote ljudi. <a name="_ftnref4" href="#_ftn4" class=" cleaner">[4]</a> Od tada su prošla mnoga desetljeća, a Učiteljstvo, pastiri, teolozi i vjernici nastavili su u svjetlu Evanđelja promišljati o društvenim pitanjima. Danas je socijalni nauk Crkve baština mudrosti u kojoj nalazimo načela mišljenja, kriterije razlučivanja i prosuđivanja te konkretne smjernice za djelovanje. Utemeljen na Svetome pismu i Predaji te u dijalogu sa znanostima, on nam pomaže jasno tumačiti izazove sadašnjosti i prepoznati prikladne putove za življenje jasnoga kršćanskog svjedočanstva, s radošću i u službi svijetu. On nije nepomičan skup pojmova, nego živi <i>corpus</i> istine koji čuva i tumači čovjekov poziv na pun i pravedan život. Stoga želim pridružiti i svoj glas toj živoj predaji, zazivajući pomoć Duha mudrosti, koji prebiva u svijetu od njegova početka (usp. <i>Izr</i> 8,22-31).</p> 
@@ -4939,7 +4968,7 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
     // ─────────────────────────────────────────────────────────────────────
     // Collapsible panel state persistence
     // ─────────────────────────────────────────────────────────────────────
-    document.querySelectorAll(".panel").forEach((panel) => {
+    document.querySelectorAll(".panel, #doc-contents").forEach((panel) => {
       const key = "magnifica-panel-" + panel.id;
       const stored = localStorage.getItem(key);
       if (stored === "open") panel.setAttribute("open", "");
