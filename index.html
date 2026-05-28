@@ -2036,6 +2036,142 @@
       .pp-bookmark { opacity: 0.22; }
     }
 
+    /* Compare-translations button — twin of .pp-bookmark, sits in same gutter */
+    .pp-compare {
+      position: absolute;
+      top: -1.35em;
+      right: 1.8rem;
+      width: 1.4rem;
+      height: 1.4rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.18s ease, color 0.18s ease, transform 0.15s ease;
+      border-radius: 999px;
+    }
+    @media (min-width: 920px) {
+      .pp-compare { top: 1.85em; right: -2.25rem; }
+    }
+    .pp-compare svg { width: 0.95rem; height: 0.95rem; }
+    .reader p[data-pp]:hover .pp-compare,
+    .pp-compare:focus-visible,
+    .pp-compare[aria-expanded="true"] { opacity: 1; }
+    .pp-compare:hover { color: var(--accent); transform: scale(1.08); }
+    .pp-compare[aria-expanded="true"] { color: var(--accent); }
+    @media (hover: none) {
+      .pp-compare { opacity: 0.22; }
+    }
+
+    /* Compare popover — reuses the visual language of .fn-pop */
+    .pp-compare-pop {
+      position: absolute;
+      z-index: 80;
+      width: min(34rem, calc(100vw - 2rem));
+      padding: 0.85rem 1rem 0.95rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 1px 0 rgba(60, 35, 12, 0.06), 0 24px 60px -22px rgba(80, 45, 20, 0.4);
+      font-family: var(--font-body);
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.16s ease, transform 0.16s ease;
+      pointer-events: none;
+    }
+    .pp-compare-pop.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .pp-compare-pop[data-flip="up"]::after,
+    .pp-compare-pop[data-flip="down"]::after {
+      content: "";
+      position: absolute;
+      left: var(--arrow-x, 50%);
+      width: 12px;
+      height: 12px;
+      background: var(--surface);
+      border-left: 1px solid var(--line);
+      border-top: 1px solid var(--line);
+      transform: translateX(-50%) rotate(45deg);
+    }
+    .pp-compare-pop[data-flip="down"]::after { top: -7px; }
+    .pp-compare-pop[data-flip="up"]::after { bottom: -7px; transform: translateX(-50%) rotate(-135deg); }
+    .pp-compare-pop__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.55rem;
+      font-family: var(--font-ui);
+      font-size: 0.66rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .pp-compare-pop__source {
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+    .pp-compare-pop__source:hover,
+    .pp-compare-pop__source:focus-visible {
+      color: var(--accent);
+      border-bottom-color: color-mix(in srgb, var(--accent) 50%, transparent);
+    }
+    .pp-compare-pop__body {
+      max-height: min(60vh, 28rem);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .pp-compare-pop__lang {
+      border-top: 1px solid var(--line-soft);
+      padding-top: 0.55rem;
+    }
+    .pp-compare-pop__lang:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+    .pp-compare-pop__lang-label {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.2rem;
+      font-family: var(--font-ui);
+      font-size: 0.66rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .pp-compare-pop__lang-code {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .pp-compare-pop__lang-text {
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--ink);
+    }
+    .pp-compare-pop__lang-text--it { font-style: italic; color: var(--ink-soft); }
+    .pp-compare-pop__status {
+      margin: 0;
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      color: var(--muted);
+      padding: 0.5rem 0;
+    }
+    .pp-compare-pop__status--err { color: var(--accent); }
+
     /* Read-paragraph marker — barely-there hairline at the top-left corner */
     .reader p.pp-read::before {
       content: "";
@@ -2573,7 +2709,7 @@
 
     /* Print: hide all progress UI */
     @media print {
-      .pp-bookmark, .resume-toast, .pp-card, .pp-bm-list, .quote-fab, .pp-quote-list, .quote-fab-toast, .hero__share, .share-dialog { display: none !important; }
+      .pp-bookmark, .pp-compare, .pp-compare-pop, .resume-toast, .pp-card, .pp-bm-list, .quote-fab, .pp-quote-list, .quote-fab-toast, .hero__share, .share-dialog { display: none !important; }
       .reader p.pp-read::before { display: none !important; }
     }
 
@@ -3246,7 +3382,7 @@
         line-height: 1.55;
       }
       .topbar, .hero, .sidebar, .scrim, .reader-status, .to-top, .progress,
-      .panel, .fn-pop, .disclaimer, .lang-links, .zen-exit, .reveal-side,
+      .panel, .fn-pop, .pp-compare-pop, .disclaimer, .lang-links, .zen-exit, .reveal-side,
       .stats-dialog, .hero__stats-link, #stats-open, #zen-toggle, #theme-toggle,
       .topbar__title, button.icon-btn { display: none !important; }
       .page, .layout, .reader-wrap, .reader {
@@ -6969,6 +7105,14 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
     <a class="fn-pop__jump" id="fn-pop-jump" href="#">Otvori bilješku ↓</a>
   </div>
 
+  <div class="pp-compare-pop" id="pp-compare-pop" role="dialog" aria-modal="false" aria-label="Usporedi prijevod" hidden>
+    <div class="pp-compare-pop__head">
+      <span id="pp-compare-pop-head">Usporedi ¶</span>
+      <a class="pp-compare-pop__source" id="pp-compare-pop-source" href="#" target="_blank" rel="noopener noreferrer">vatican.va ↗</a>
+    </div>
+    <div class="pp-compare-pop__body" id="pp-compare-pop-body"></div>
+  </div>
+
   <div class="quote-fab" id="quote-fab" role="toolbar" aria-label="Radnje za odabrani citat">
     <button type="button" class="quote-fab__main" id="quote-fab-save" aria-label="Spremi odabrani citat">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21c3-2 4-5 4-9V5h7v9H9.5"/><path d="M14 21c3-2 4-5 4-9V5h7v9h-4.5"/></svg>
@@ -8093,6 +8237,216 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
         btn.setAttribute("aria-label", "Označi odlomak " + num);
         btn.appendChild(bookmarkSvg());
         el.appendChild(btn);
+      });
+
+      // ── Inject compare-translation buttons ───────────────────────────
+      // Each numbered paragraph gets a small "globe" button that reveals a
+      // popover with links to the same paragraph on vatican.va in EN/IT.
+      // The Vatican site does not anchor paragraphs, so we use a browser
+      // text fragment (`#:~:text=N.`) which scrolls to the first occurrence
+      // of the number — in practice the start of paragraph N.
+      const COMPARE_LANGS = [
+        { code: "en", label: "Engleski", name: "English" },
+        { code: "it", label: "Talijanski", name: "Italiano" },
+      ];
+      const VATICAN_URL = (lang) =>
+        "https://www.vatican.va/content/leo-xiv/" + lang +
+        "/encyclicals/documents/20260515-magnifica-humanitas.html";
+      function globeSvg() {
+        const svgNs = "http://www.w3.org/2000/svg";
+        const svg = document.createElementNS(svgNs, "svg");
+        svg.setAttribute("viewBox", "0 0 24 24");
+        svg.setAttribute("fill", "none");
+        svg.setAttribute("stroke", "currentColor");
+        svg.setAttribute("stroke-width", "2");
+        svg.setAttribute("stroke-linecap", "round");
+        svg.setAttribute("stroke-linejoin", "round");
+        svg.setAttribute("aria-hidden", "true");
+        const parts = [
+          { tag: "circle", attrs: { cx: "12", cy: "12", r: "9" } },
+          { tag: "path", attrs: { d: "M3 12h18" } },
+          { tag: "path", attrs: { d: "M12 3a14 14 0 0 1 0 18" } },
+          { tag: "path", attrs: { d: "M12 3a14 14 0 0 0 0 18" } },
+        ];
+        parts.forEach((p) => {
+          const node = document.createElementNS(svgNs, p.tag);
+          Object.entries(p.attrs).forEach(([k, v]) => node.setAttribute(k, v));
+          svg.appendChild(node);
+        });
+        return svg;
+      }
+      numbered.forEach(({ num, el }) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "pp-compare";
+        btn.dataset.num = String(num);
+        btn.setAttribute("aria-label", "Usporedi odlomak " + num + " s drugim prijevodima");
+        btn.setAttribute("aria-expanded", "false");
+        btn.setAttribute("aria-haspopup", "dialog");
+        btn.appendChild(globeSvg());
+        el.appendChild(btn);
+      });
+
+      // ── Compare popover ──────────────────────────────────────────────
+      const cmpPop = document.getElementById("pp-compare-pop");
+      const cmpPopHead = document.getElementById("pp-compare-pop-head");
+      const cmpPopBody = document.getElementById("pp-compare-pop-body");
+      const cmpPopSource = document.getElementById("pp-compare-pop-source");
+      let cmpPopAnchor = null;
+      let cmpPopHideTimer = null;
+
+      // Lazy-loaded translation data (assets/compare.json). Fetched on first
+      // interaction; cached for the page lifetime.
+      let compareData = null;
+      let compareFetchPromise = null;
+      function loadCompareData() {
+        if (compareData) return Promise.resolve(compareData);
+        if (compareFetchPromise) return compareFetchPromise;
+        compareFetchPromise = fetch("assets/compare.json", { credentials: "same-origin" })
+          .then((r) => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+          .then((d) => { compareData = d; return d; })
+          .catch((err) => { compareFetchPromise = null; throw err; });
+        return compareFetchPromise;
+      }
+
+      function setStatus(message, isError) {
+        clearChildren(cmpPopBody);
+        const p = document.createElement("p");
+        p.className = "pp-compare-pop__status" + (isError ? " pp-compare-pop__status--err" : "");
+        p.textContent = message;
+        cmpPopBody.appendChild(p);
+      }
+
+      function renderCompareContent(num, data) {
+        clearChildren(cmpPopBody);
+        COMPARE_LANGS.forEach((lang) => {
+          const wrap = document.createElement("section");
+          wrap.className = "pp-compare-pop__lang";
+          const label = document.createElement("div");
+          label.className = "pp-compare-pop__lang-label";
+          const code = document.createElement("span");
+          code.className = "pp-compare-pop__lang-code";
+          code.textContent = lang.code.toUpperCase();
+          const nm = document.createElement("span");
+          nm.textContent = lang.name;
+          label.appendChild(code);
+          label.appendChild(nm);
+          const text = document.createElement("p");
+          text.className = "pp-compare-pop__lang-text pp-compare-pop__lang-text--" + lang.code;
+          const para = data[lang.code] && data[lang.code][num];
+          text.textContent = para || "(odlomak nije dostupan u ovom prijevodu)";
+          wrap.appendChild(label);
+          wrap.appendChild(text);
+          cmpPopBody.appendChild(wrap);
+        });
+      }
+
+      function renderComparePop(num) {
+        cmpPopHead.textContent = "Usporedi ¶" + num;
+        // Default the "Open on vatican.va" link to the English version with a
+        // text-fragment scroll-to so users can verify the source quickly.
+        cmpPopSource.href = VATICAN_URL("en") + "#:~:text=" + encodeURIComponent(num + ".");
+        cmpPopSource.setAttribute("aria-label",
+          "Otvori odlomak " + num + " na vatican.va (engleski) u novoj kartici");
+        if (compareData) {
+          renderCompareContent(num, compareData);
+          return;
+        }
+        setStatus("Učitavam prijevode…", false);
+        loadCompareData().then((data) => {
+          if (cmpPopAnchor && parseInt(cmpPopAnchor.dataset.num, 10) === num) {
+            renderCompareContent(num, data);
+            if (!cmpPop.hidden) requestAnimationFrame(() => positionComparePop(cmpPopAnchor));
+          }
+        }).catch(() => {
+          setStatus("Nije moguće učitati prijevode. Pokušaj otvoriti izvor na vatican.va.", true);
+        });
+      }
+
+      function positionComparePop(anchor) {
+        cmpPop.hidden = false;
+        cmpPop.style.visibility = "hidden";
+        cmpPop.classList.add("show");
+        const ar = anchor.getBoundingClientRect();
+        const pr = cmpPop.getBoundingClientRect();
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const margin = 12;
+        const spaceBelow = vh - ar.bottom;
+        const flip = spaceBelow < pr.height + 24 && ar.top > pr.height + 24;
+        const top = flip
+          ? ar.top + window.scrollY - pr.height - 10
+          : ar.bottom + window.scrollY + 10;
+        let left = ar.left + window.scrollX + ar.width / 2 - pr.width / 2;
+        left = Math.max(margin + window.scrollX,
+          Math.min(left, window.scrollX + vw - pr.width - margin));
+        cmpPop.style.top = top + "px";
+        cmpPop.style.left = left + "px";
+        cmpPop.dataset.flip = flip ? "up" : "down";
+        const anchorCenter = ar.left + ar.width / 2 + window.scrollX;
+        cmpPop.style.setProperty("--arrow-x", (anchorCenter - left) + "px");
+        cmpPop.style.visibility = "visible";
+      }
+
+      function showComparePop(btn) {
+        clearTimeout(cmpPopHideTimer);
+        if (cmpPopAnchor && cmpPopAnchor !== btn) {
+          cmpPopAnchor.setAttribute("aria-expanded", "false");
+        }
+        cmpPopAnchor = btn;
+        btn.setAttribute("aria-expanded", "true");
+        renderComparePop(parseInt(btn.dataset.num, 10));
+        requestAnimationFrame(() => positionComparePop(btn));
+      }
+
+      function hideComparePop(immediate) {
+        const close = () => {
+          cmpPop.classList.remove("show");
+          cmpPop.hidden = true;
+          if (cmpPopAnchor) {
+            cmpPopAnchor.setAttribute("aria-expanded", "false");
+            cmpPopAnchor = null;
+          }
+        };
+        clearTimeout(cmpPopHideTimer);
+        if (immediate) close();
+        else cmpPopHideTimer = setTimeout(close, 180);
+      }
+
+      docRoot.addEventListener("mouseover", (e) => {
+        const btn = e.target.closest(".pp-compare");
+        if (!btn) return;
+        showComparePop(btn);
+      });
+      docRoot.addEventListener("mouseout", (e) => {
+        const btn = e.target.closest(".pp-compare");
+        if (!btn) return;
+        const to = e.relatedTarget;
+        if (to && (cmpPop.contains(to) || btn.contains(to))) return;
+        hideComparePop(false);
+      });
+      cmpPop.addEventListener("mouseenter", () => clearTimeout(cmpPopHideTimer));
+      cmpPop.addEventListener("mouseleave", () => hideComparePop(false));
+      docRoot.addEventListener("click", (e) => {
+        const btn = e.target.closest(".pp-compare");
+        if (!btn) return;
+        e.preventDefault();
+        if (cmpPopAnchor === btn && !cmpPop.hidden) hideComparePop(true);
+        else showComparePop(btn);
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && cmpPopAnchor) hideComparePop(true);
+      });
+      document.addEventListener("click", (e) => {
+        if (!cmpPopAnchor) return;
+        if (e.target.closest(".pp-compare") || e.target.closest("#pp-compare-pop")) return;
+        hideComparePop(true);
+      });
+      window.addEventListener("scroll", () => {
+        if (cmpPopAnchor && !cmpPop.hidden) positionComparePop(cmpPopAnchor);
+      }, { passive: true });
+      window.addEventListener("resize", () => {
+        if (cmpPopAnchor && !cmpPop.hidden) positionComparePop(cmpPopAnchor);
       });
 
       // ── Element refs (sidebar widgets) ────────────────────────────────
