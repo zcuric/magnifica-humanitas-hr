@@ -799,6 +799,59 @@
       font-size: 0.95rem;
       color: var(--accent);
     }
+    .toc-legend {
+      margin-top: 1.4rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line-soft);
+    }
+    .toc-legend__title {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 0.65rem;
+    }
+    .toc-legend__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.45rem;
+    }
+    .toc-legend__item {
+      display: grid;
+      grid-template-columns: 1.4rem 1fr;
+      align-items: start;
+      gap: 0.6rem;
+      font: 500 0.82rem / 1.4 var(--font-ui);
+      color: var(--ink-soft);
+    }
+    .toc-legend__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.4rem;
+      height: 1.25rem;
+      color: var(--accent);
+      font-family: var(--font-display);
+      font-style: italic;
+    }
+    .toc-legend__icon svg { width: 0.95rem; height: 0.95rem; }
+    .toc-legend__icon--fn {
+      font-family: var(--font-body);
+      font-style: normal;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+    .toc-legend__label { color: var(--ink); }
+    .toc-legend__hint {
+      display: block;
+      font-weight: 400;
+      color: var(--muted);
+      font-size: 0.75rem;
+      margin-top: 0.05rem;
+    }
     .toc__hint {
       margin: 1rem 0 0;
       font-size: 0.78rem;
@@ -3869,6 +3922,53 @@
               <li><a href="#pk-top"><span class="num">+</span><span>Pastoralni priručnik</span></a></li>
             </ul>
             <p class="toc__hint">Unutarnje poveznice otvaraju odgovarajući odjeljak. Bilješke se otvaraju u oblačiću pri prijelazu mišem.</p>
+
+            <div class="toc-legend" aria-label="Legenda interaktivnih oznaka u tekstu">
+              <p class="toc-legend__title">Legenda</p>
+              <ul class="toc-legend__list">
+                <li class="toc-legend__item">
+                  <span class="toc-legend__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                  </span>
+                  <span>
+                    <span class="toc-legend__label">Označi odlomak</span>
+                    <span class="toc-legend__hint">Hover uz odlomak → klik za bookmark</span>
+                  </span>
+                </li>
+                <li class="toc-legend__item">
+                  <span class="toc-legend__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>
+                  </span>
+                  <span>
+                    <span class="toc-legend__label">Usporedi prijevod</span>
+                    <span class="toc-legend__hint">EN i IT tekst odlomka s vatican.va</span>
+                  </span>
+                </li>
+                <li class="toc-legend__item">
+                  <span class="toc-legend__icon toc-legend__icon--fn" aria-hidden="true">[N]</span>
+                  <span>
+                    <span class="toc-legend__label">Bilješka u oblačiću</span>
+                    <span class="toc-legend__hint">Hover preko broja bilješke u tekstu</span>
+                  </span>
+                </li>
+                <li class="toc-legend__item">
+                  <span class="toc-legend__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3-2 4-5 4-9V5h7v9H9.5"/><path d="M14 21c3-2 4-5 4-9V5h7v9h-4.5"/></svg>
+                  </span>
+                  <span>
+                    <span class="toc-legend__label">Spremi citat</span>
+                    <span class="toc-legend__hint">Odaberi tekst → gumb „Spremi citat”</span>
+                  </span>
+                </li>
+                <li class="toc-legend__item">
+                  <span class="toc-legend__icon toc-legend__icon--fn" aria-hidden="true">¶</span>
+                  <span>
+                    <span class="toc-legend__label">Pročitan odlomak</span>
+                    <span class="toc-legend__hint">Tanka crtica uz lijevi rub označava prošlu sesiju</span>
+                  </span>
+                </li>
+              </ul>
+            </div>
           </div>
 
           <div class="side-foot">
