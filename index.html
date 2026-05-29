@@ -547,32 +547,12 @@
     }
     .hero__lede {
       margin: 1.5rem 0 0;
-      max-width: 38rem;
+      max-width: 100%;
       font-family: var(--font-body);
       font-size: clamp(1.02rem, 1.3vw, 1.18rem);
       line-height: 1.55;
       color: var(--ink-soft);
     }
-    .hero__meta {
-      margin: 1.75rem 0 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem 1.5rem;
-      font-family: var(--font-ui);
-      font-size: 0.78rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .hero__meta span { display: inline-flex; align-items: center; gap: 0.45rem; }
-    .hero__meta .dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 999px;
-      background: var(--accent-2);
-      display: inline-block;
-    }
-
     /* ───────────────────────── Layout ───────────────────────── */
     .layout {
       display: grid;
@@ -1670,74 +1650,6 @@
     }
     .fn-pop__jump:hover { border-bottom-color: var(--accent); }
 
-    /* ───────────────────────── Language links ───────────────────────── */
-    .lang-links {
-      margin: 0.9rem 0 0;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.4rem 0.5rem;
-      font-family: var(--font-ui);
-    }
-    .lang-links__title {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-right: 0.3rem;
-    }
-    .lang-links a {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 0.35rem;
-      padding: 0.32rem 0.7rem;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      text-decoration: none;
-      color: var(--ink-soft);
-      background: var(--surface);
-      font-size: 0.78rem;
-      line-height: 1;
-      transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
-    }
-    .lang-links a:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: var(--surface-2);
-    }
-    .lang-links__code {
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      color: var(--accent);
-      font-size: 0.7rem;
-    }
-    .lang-links__name { color: inherit; }
-    @media (max-width: 520px) {
-      .lang-links__name { display: none; }
-      .lang-links a { padding: 0.32rem 0.55rem; }
-    }
-
-    /* ───────────────────────── Hero stats link ───────────────────────── */
-    .hero__stats-link {
-      appearance: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.32rem 0.75rem 0.32rem 0.55rem;
-      border: 1px solid var(--line);
-      background: var(--surface);
-      color: var(--ink-soft);
-      border-radius: 999px;
-      cursor: pointer;
-      font: 600 0.72rem / 1 var(--font-ui);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
-    }
-    .hero__stats-link:hover { border-color: var(--accent); color: var(--accent); background: var(--surface-2); }
-    .hero__stats-link svg { width: 0.85rem; height: 0.85rem; }
-
     /* ───────────────────────── Stats dialog ───────────────────────── */
     .stats-dialog {
       width: min(56rem, calc(100vw - 1.5rem));
@@ -1910,33 +1822,64 @@
       letter-spacing: 0;
     }
 
-    /* ───────────────────────── Translation disclaimer ───────────────────────── */
-    .disclaimer {
-      display: inline-flex;
+    /* ───────────────── Translation colophon (editorial imprint) ───────────────── */
+    .colophon {
+      margin: 0 0 clamp(1.5rem, 3.5vw, 2.25rem);
+      padding: clamp(1.2rem, 3.2vw, 1.75rem) clamp(1.25rem, 3.6vw, 2rem);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-sm);
+      background: var(--surface-2);
+      font-family: var(--font-ui);
+    }
+    .colophon__label {
+      display: flex;
       align-items: center;
       gap: 0.55rem;
-      margin: 1.4rem 0 0;
-      padding: 0.55rem 0.95rem;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: color-mix(in srgb, var(--accent-2) 12%, var(--surface));
-      font-family: var(--font-ui);
-      font-size: 0.76rem;
-      letter-spacing: 0.04em;
-      color: var(--ink-soft);
-      max-width: 100%;
+      margin: 0 0 0.7rem;
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-2);
     }
-    .disclaimer svg { width: 0.95rem; height: 0.95rem; color: var(--accent-2); flex-shrink: 0; }
-    .disclaimer strong { color: var(--accent); font-weight: 600; }
-    @media (max-width: 720px) {
-      .disclaimer {
-        align-items: flex-start;
-        border-radius: 10px;
-        padding: 0.7rem 0.85rem;
-        font-size: 0.78rem;
-        line-height: 1.45;
-      }
-      .disclaimer svg { margin-top: 0.15rem; }
+    .colophon__label .cross { font-size: 0.9rem; letter-spacing: 0; opacity: 0.85; }
+    .colophon__text {
+      margin: 0;
+      max-width: 100%;
+      font-family: var(--font-body);
+      font-size: clamp(1.02rem, 1.3vw, 1.18rem);
+      line-height: 1.65;
+      color: var(--ink-soft);
+    }
+    .colophon__warn { color: var(--accent); font-weight: 600; }
+    .colophon__text strong { color: var(--ink); font-weight: 600; }
+    .colophon__langs {
+      margin-top: clamp(1rem, 2.4vw, 1.25rem);
+      padding-top: clamp(0.85rem, 2vw, 1.05rem);
+      border-top: 1px solid var(--line-soft);
+    }
+    .colophon__langs-label {
+      display: block;
+      margin-bottom: 0.55rem;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .colophon__langs-row { margin: 0; line-height: 1.9; }
+    .colophon__langs-row a {
+      text-decoration: none;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      white-space: nowrap;
+      transition: color 0.15s ease;
+    }
+    .colophon__langs-row a:hover { color: var(--accent); }
+    .colophon__langs-row a:not(:last-child)::after {
+      content: "·";
+      margin: 0 0.6rem;
+      color: var(--line);
     }
 
     /* ───────────────────────── Desktop sidebar toggle ───────────────────────── */
@@ -1979,6 +1922,32 @@
     }
     .hide-side:hover { border-color: var(--accent); color: var(--accent); }
     .hide-side svg { width: 0.85rem; height: 0.85rem; }
+
+    /* Sidebar quick actions (statistika · podijeli) */
+    .side-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-bottom: 1.1rem;
+    }
+    .side-action {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.6rem 0.7rem;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink-soft);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font: 600 0.78rem / 1 var(--font-ui);
+      letter-spacing: 0.02em;
+      transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+    }
+    .side-action:hover { border-color: var(--accent); color: var(--accent); background: var(--surface-2); }
+    .side-action svg { width: 1rem; height: 1rem; }
 
     @media (min-width: 920px) {
       .sidebar__desktop-controls { display: block; }
@@ -2630,64 +2599,8 @@
     }
     html[data-theme="dark"] .share-btn--x .share-btn__icon { background: #f0f0f0; color: #0f1419; }
 
-    /* Hero share row (under disclaimers) */
-    .hero__share {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      margin-top: 1.1rem;
-      padding: 0.5rem 0.7rem;
-      background: var(--surface);
-      border: 1px solid var(--line-soft);
-      border-radius: 999px;
-      box-shadow: 0 1px 0 rgba(60, 35, 12, 0.04);
-    }
-    .hero__share-label {
-      font: 600 0.7rem / 1 var(--font-ui);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-right: 0.2rem;
-    }
-    .hero__share-btn {
-      appearance: none;
-      width: 2rem;
-      height: 2rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--surface-2);
-      color: var(--muted);
-      border: 1px solid transparent;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
-    }
-    .hero__share-btn:hover {
-      background: var(--accent);
-      color: #f8efe1;
-      border-color: var(--accent);
-      transform: translateY(-1px);
-    }
-    .hero__share-btn:active { transform: translateY(0); }
-    .hero__share-btn svg { width: 0.95rem; height: 0.95rem; }
-    .hero__share-btn--more {
-      width: auto;
-      padding: 0 0.7rem;
-      gap: 0.35rem;
-      font: 600 0.72rem / 1 var(--font-ui);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-    @media (max-width: 559px) {
-      .hero__share {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .hero__share-label { width: 100%; text-align: center; margin: 0; }
-    }
     @media print {
-      .hero__share, .share-dialog { display: none !important; }
+      .share-dialog { display: none !important; }
     }
 
     /* Citati list inside the progress panel */
@@ -2762,7 +2675,7 @@
 
     /* Print: hide all progress UI */
     @media print {
-      .pp-bookmark, .pp-compare, .pp-compare-pop, .resume-toast, .pp-card, .pp-bm-list, .quote-fab, .pp-quote-list, .quote-fab-toast, .hero__share, .share-dialog { display: none !important; }
+      .pp-bookmark, .pp-compare, .pp-compare-pop, .resume-toast, .pp-card, .pp-bm-list, .quote-fab, .pp-quote-list, .quote-fab-toast, .share-dialog { display: none !important; }
       .reader p.pp-read::before { display: none !important; }
     }
 
@@ -3379,7 +3292,7 @@
     .pk-activity p { margin: 0 0 0.55rem; line-height: 1.66; }
     .pk-activity p:last-child { margin-bottom: 0; }
 
-    /* Subtle one-line pointer to the pastoral kit (under lang-links) ------ */
+    /* Subtle one-line pointer to the pastoral kit (under hero meta) ------ */
     .pk-note {
       margin: 0.9rem 0 0;
       font-family: var(--font-ui);
@@ -3435,8 +3348,8 @@
         line-height: 1.55;
       }
       .topbar, .hero, .sidebar, .scrim, .reader-status, .to-top, .progress,
-      .panel, .fn-pop, .pp-compare-pop, .disclaimer, .lang-links, .zen-exit, .reveal-side,
-      .stats-dialog, .hero__stats-link, #stats-open, #zen-toggle, #theme-toggle,
+      .panel, .fn-pop, .pp-compare-pop, .colophon, .zen-exit, .reveal-side,
+      .stats-dialog, #zen-toggle, #theme-toggle,
       .topbar__title, button.icon-btn { display: none !important; }
       .page, .layout, .reader-wrap, .reader {
         all: unset; display: block;
@@ -3646,9 +3559,6 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
     </button>
     <div class="topbar__title"><em>Magnifica</em> Humanitas</div>
-    <button type="button" class="icon-btn" id="stats-open" aria-label="Statistika dokumenta" title="Statistika dokumenta">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-    </button>
     <button type="button" class="icon-btn zen-toggle" id="zen-toggle" aria-label="Uđi u režim usredotočenog čitanja" title="Usredotočeno čitanje (Z)">
       <span class="zen-on" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V3h4M21 7V3h-4M3 17v4h4M21 17v4h-4"/></svg>
@@ -3676,57 +3586,28 @@
         <img src="assets/stemma-leo-xiv.png" alt="Grb pape Lava XIV." loading="eager" decoding="async">
       </div>
 
-      <p class="eyebrow">Enciklika · 15. svibnja 2026.</p>
+      <p class="eyebrow">Enciklika</p>
       <h1 id="enciklika-title">Magnifica<span class="humanitas">Humanitas</span></h1>
       <p class="hero__lede">O zaštiti ljudske osobe u vremenu umjetne inteligencije. Hrvatsko čitateljsko izdanje enciklike Njegove Svetosti pape Lava XIV. — s cjelovitim tekstom, bilješkama i prilagodbama za udobno čitanje.</p>
-      <div class="hero__meta" aria-label="Podaci o dokumentu">
-        <span><span class="dot"></span>Vatikan, 15. svibnja 2026.</span>
-        <button type="button" class="hero__stats-link" id="hero-stats-link" aria-haspopup="dialog">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-          Pogledaj statistiku
-        </button>
-      </div>
-      <p class="disclaimer" role="note">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        <span><strong>Neslužbeni prijevod — samo za osobnu upotrebu.</strong> Hrvatsku verziju s engleskoga izvornika preveo je jezični model GPT&#8209;5.4 — moguće su pogreške ili netočno prenesena značenja. Sva prava na izvorni tekst pripadaju originalnom izdavaču (© Dikasterij za komunikaciju — Libreria Editrice Vaticana). Za autoritativan tekst pogledajte službene jezične inačice na vatican.va.</span>
-      </p>
-
-      <nav class="lang-links" aria-label="Službeni prijevodi enciklike">
-        <span class="lang-links__title">Službeni prijevodi:</span>
-        <a href="https://www.vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html" lang="en" hreflang="en" rel="noopener" target="_blank"><span class="lang-links__code">EN</span><span class="lang-links__name">English</span></a>
-        <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" lang="it" hreflang="it" rel="noopener" target="_blank"><span class="lang-links__code">IT</span><span class="lang-links__name">Italiano</span></a>
-        <a href="https://www.vatican.va/content/leo-xiv/es/encyclicals/documents/20260515-magnifica-humanitas.html" lang="es" hreflang="es" rel="noopener" target="_blank"><span class="lang-links__code">ES</span><span class="lang-links__name">Español</span></a>
-        <a href="https://www.vatican.va/content/leo-xiv/fr/encyclicals/documents/20260515-magnifica-humanitas.html" lang="fr" hreflang="fr" rel="noopener" target="_blank"><span class="lang-links__code">FR</span><span class="lang-links__name">Français</span></a>
-        <a href="https://www.vatican.va/content/leo-xiv/de/encyclicals/documents/20260515-magnifica-humanitas.html" lang="de" hreflang="de" rel="noopener" target="_blank"><span class="lang-links__code">DE</span><span class="lang-links__name">Deutsch</span></a>
-        <a href="https://www.vatican.va/content/leo-xiv/pt/encyclicals/documents/20260515-magnifica-humanitas.html" lang="pt" hreflang="pt" rel="noopener" target="_blank"><span class="lang-links__code">PT</span><span class="lang-links__name">Português</span></a>
-        <a href="https://www.vatican.va/content/leo-xiv/pl/encyclicals/documents/20260515-magnifica-humanitas.html" lang="pl" hreflang="pl" rel="noopener" target="_blank"><span class="lang-links__code">PL</span><span class="lang-links__name">Polski</span></a>
-      </nav>
-
       <p class="pk-note">Uz tekst je dostupan i <a href="#pk-top" id="pk-jump">pastoralni priručnik</a> za župe, katehezu i mlade.</p>
-
-      <div class="hero__share" aria-label="Podijeli enciklicu">
-        <span class="hero__share-label">Podijeli:</span>
-        <button type="button" class="hero__share-btn" data-share="whatsapp" aria-label="Podijeli na WhatsApp">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.2-.7.2s-.8 1-1 1.2c-.2.2-.4.2-.7.1-.3-.1-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.7 1.2 2.9.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4 0-.2-.3-.3-.6-.5zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3 1.3 4.8 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.5-4.4-1.3l-.3-.2-3.1.8.8-3-.2-.3c-.9-1.4-1.3-2.9-1.3-4.5C3.5 7.3 7.3 3.5 12 3.5s8.5 3.8 8.5 8.5-3.8 8.2-8.5 8.2z"/></svg>
-        </button>
-        <button type="button" class="hero__share-btn" data-share="facebook" aria-label="Podijeli na Facebook">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.99 3.66 9.13 8.44 9.88v-6.99H7.9V12h2.54V9.8c0-2.51 1.49-3.89 3.77-3.89 1.09 0 2.24.19 2.24.19v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99C18.34 21.13 22 16.99 22 12z"/></svg>
-        </button>
-        <button type="button" class="hero__share-btn" data-share="x" aria-label="Podijeli na X (Twitter)">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21l-6.52 7.452L22 22h-6.99l-4.585-5.99L4.99 22H2.233l6.974-7.97L2 2h7.166l4.146 5.486L18.244 2zm-1.22 18.385h1.534L7.05 3.522H5.4l11.624 16.863z"/></svg>
-        </button>
-        <button type="button" class="hero__share-btn" data-share="instagram" aria-label="Pripremi za Instagram (kopira tekst)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>
-        </button>
-        <button type="button" class="hero__share-btn" data-share="email" aria-label="Pošalji e-mailom">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
-        </button>
-        <button type="button" class="hero__share-btn hero__share-btn--more" id="hero-share-more" aria-label="Više opcija dijeljenja">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-          <span>Više</span>
-        </button>
-      </div>
     </section>
+
+    <aside class="colophon" role="note" aria-label="O ovom prijevodu">
+      <p class="colophon__label"><span class="cross" aria-hidden="true">✠</span> O ovom prijevodu</p>
+      <p class="colophon__text"><strong>Neslužbeni prijevod — samo za osobnu upotrebu.</strong> Hrvatsku verziju s engleskoga izvornika preveo je jezični model GPT&#8209;5.4, pa su moguće pogreške i netočno prenesena značenja. Sva prava na izvorni tekst pripadaju izvornom izdavaču (© Dikasterij za komunikaciju — Libreria Editrice Vaticana). <span class="colophon__warn">Ovaj se prijevod ni u kojem slučaju ne smije navoditi kao mjerodavan izvor niti citirati u znanstvenim, crkvenim ili bilo kojim drugim tekstovima</span> — za svako citiranje, pozivanje i tumačenje služi isključivo službena inačica enciklike na vatican.va.</p>
+      <nav class="colophon__langs" aria-label="Službeni prijevodi enciklike">
+        <span class="colophon__langs-label">Službeni prijevodi · vatican.va</span>
+        <p class="colophon__langs-row">
+          <a href="https://www.vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html" lang="en" hreflang="en" rel="noopener" target="_blank">English</a>
+          <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" lang="it" hreflang="it" rel="noopener" target="_blank">Italiano</a>
+          <a href="https://www.vatican.va/content/leo-xiv/es/encyclicals/documents/20260515-magnifica-humanitas.html" lang="es" hreflang="es" rel="noopener" target="_blank">Español</a>
+          <a href="https://www.vatican.va/content/leo-xiv/fr/encyclicals/documents/20260515-magnifica-humanitas.html" lang="fr" hreflang="fr" rel="noopener" target="_blank">Français</a>
+          <a href="https://www.vatican.va/content/leo-xiv/de/encyclicals/documents/20260515-magnifica-humanitas.html" lang="de" hreflang="de" rel="noopener" target="_blank">Deutsch</a>
+          <a href="https://www.vatican.va/content/leo-xiv/pt/encyclicals/documents/20260515-magnifica-humanitas.html" lang="pt" hreflang="pt" rel="noopener" target="_blank">Português</a>
+          <a href="https://www.vatican.va/content/leo-xiv/pl/encyclicals/documents/20260515-magnifica-humanitas.html" lang="pl" hreflang="pl" rel="noopener" target="_blank">Polski</a>
+        </p>
+      </nav>
+    </aside>
 
     <div class="layout">
       <div class="scrim" id="scrim" aria-hidden="true"></div>
@@ -3747,6 +3628,17 @@
         </div>
 
         <div class="sidebar__inner">
+          <div class="side-actions">
+            <button type="button" class="side-action" id="side-stats" aria-haspopup="dialog">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              Statistika
+            </button>
+            <button type="button" class="side-action" id="side-share" aria-haspopup="dialog">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Podijeli
+            </button>
+          </div>
+
           <details class="panel" id="panel-settings">
             <summary>
               <span class="panel__icon" aria-hidden="true">
@@ -8041,8 +7933,7 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
       if (typeof statsDialog.close === "function") statsDialog.close();
       else statsDialog.removeAttribute("open");
     }
-    document.getElementById("stats-open").addEventListener("click", openStats);
-    document.getElementById("hero-stats-link").addEventListener("click", openStats);
+    document.getElementById("side-stats")?.addEventListener("click", openStats);
     document.getElementById("stats-close").addEventListener("click", closeStats);
     statsDialog.addEventListener("click", (e) => {
       // Close when clicking on the backdrop (outside the dialog box)
@@ -8218,10 +8109,9 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
         else dlg.removeAttribute("open");
       }
 
-      document.getElementById("share-open").addEventListener("click", openShare);
+      document.getElementById("share-open")?.addEventListener("click", openShare);
+      document.getElementById("side-share")?.addEventListener("click", openShare);
       document.getElementById("share-close").addEventListener("click", closeShare);
-      const heroMore = document.getElementById("hero-share-more");
-      if (heroMore) heroMore.addEventListener("click", openShare);
 
       if (grid) {
         grid.addEventListener("click", (e) => {
@@ -8238,11 +8128,6 @@ Franjo, enciklika <a href="https://www.vatican.va/content/francesco/en/encyclica
           }
         });
       }
-
-      // Hero inline buttons
-      document.querySelectorAll(".hero__share-btn[data-share]").forEach((btn) => {
-        btn.addEventListener("click", () => sharePage(btn.dataset.share));
-      });
 
       // Expose to selection toolbar
       window.MagnificaShare = { sharePage, shareQuote, openShare };
