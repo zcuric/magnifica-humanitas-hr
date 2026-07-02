@@ -573,6 +573,63 @@
       color: var(--muted);
     }
     .hero .pk-note { margin-top: clamp(1.1rem, 2.5vw, 1.4rem); }
+
+    /* ───────── Official Croatian translation — the primary call to action ───────── */
+    .hero__official {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin: clamp(1.6rem, 3.8vw, 2.25rem) auto 0;
+      padding: 0.8rem 1.35rem 0.8rem 1.1rem;
+      border: 1px solid var(--accent-soft);
+      border-radius: var(--radius);
+      background: var(--accent);
+      color: var(--surface);
+      text-decoration: none;
+      font-family: var(--font-ui);
+      box-shadow: 0 1px 0 rgba(38, 29, 22, 0.05), 0 14px 28px -18px var(--accent);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+    .hero__official:hover {
+      color: var(--surface);
+      background: var(--accent-soft);
+      transform: translateY(-2px);
+      box-shadow: 0 2px 0 rgba(38, 29, 22, 0.06), 0 20px 34px -18px var(--accent);
+    }
+    .hero__official:focus-visible {
+      outline: 2px solid var(--accent-2);
+      outline-offset: 3px;
+    }
+    .hero__official-icon,
+    .hero__official-arrow { display: inline-flex; flex: none; }
+    .hero__official-icon svg { width: 1.55rem; height: 1.55rem; }
+    .hero__official-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.15;
+      text-align: left;
+    }
+    .hero__official-lead {
+      font-size: 0.98rem;
+      font-weight: 600;
+      letter-spacing: 0.005em;
+    }
+    .hero__official-sub {
+      margin-top: 0.22rem;
+      font-size: 0.64rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+    .hero__official-arrow {
+      margin-left: 0.1rem;
+      transition: transform 0.18s ease;
+    }
+    .hero__official-arrow svg { width: 1.05rem; height: 1.05rem; }
+    .hero__official:hover .hero__official-arrow { transform: translateX(3px); }
+
     /* ───────────────────────── Layout ───────────────────────── */
     .layout {
       display: grid;
@@ -3610,6 +3667,20 @@
       <h1 id="enciklika-title"><span class="magnifica">Magnifica</span><span class="humanitas">Humanitas</span></h1>
       <p class="hero__lede">O zaštiti ljudske osobe u vremenu umjetne inteligencije. Hrvatsko čitateljsko izdanje enciklike Njegove Svetosti pape Lava XIV. — s cjelovitim tekstom, bilješkama i prilagodbama za udobno čitanje.</p>
       <p class="hero__imprint">Vatikan · 15. svibnja 2026.</p>
+
+      <a class="hero__official" href="https://hbk.hr/wp-content/uploads/2026/07/MagnificaHumanitas.pdf" lang="hr" hreflang="hr" rel="noopener" target="_blank">
+        <span class="hero__official-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+        </span>
+        <span class="hero__official-text">
+          <span class="hero__official-lead">Pročitaj službeni hrvatski prijevod</span>
+          <span class="hero__official-sub">Hrvatska biskupska konferencija · PDF</span>
+        </span>
+        <span class="hero__official-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
+
       <p class="pk-note">Uz tekst je dostupan i <a href="#pk-top" id="pk-jump">pastoralni priručnik</a> za župe, katehezu i mlade.</p>
     </section>
 
